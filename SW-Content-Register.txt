@@ -1,0 +1,14 @@
+Package: Blhost porting on iMXRT685 
+Version: 1.0
+Outgoing License: LA_OPT_Online Code Hosting NXP_Software_License - v1.4 May 2025 
+License file: License.txt
+Type of content: Source code
+Release Location: https://github.com/nxp-appcodehub/gs-blhost-porting-on-imxrt685
+Origin: NXP (LA_OPT_Online Code Hosting NXP_Software_License)
+        NXP (BSD-3-Clause)
+        Bus Pirate Project (CC0-1.0), http://code.google.com/p/the-bus-pirate
+        HIDAPI (BSD-3-Clause), http://github.com/signal11/hidapi 
+        JSONCPP (MIT) Host tools - JSON support
+        bradapp@enteract.com (MIT) Host tools - options support, Command line parsing utility
+        Szymon Stefanek (stefanek@tin.it) (Public Domain) C++ interface to the Vincent Rijmen's Rijndael block cipher
+        ARM CMSIS v6.1.0 (Apache-2.0) - https://github.com/ARM-software/CMSIS_6/releases/tag/v6.1.0
