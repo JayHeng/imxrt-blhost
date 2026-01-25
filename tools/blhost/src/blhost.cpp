@@ -347,7 +347,7 @@ public:
 #if ((defined(LINUX) && defined(__ARM__)) || defined(MCUXPRESSO_SDK))
         , m_useI2c(false)
         , m_i2cAddress(0x10)
-        , m_useSpi(false)
+        , m_useSpi(false) // spi default setting
         , m_spiPolarity(1)
         , m_spiPhase(1)
         , m_spiSequence(0)
@@ -751,7 +751,7 @@ int BlHost::processOptions()
 #endif // #if defined(LINUX) && defined(__ARM__)
                 break;
             }
-            case 's':
+            case 's':  // -s param
             {
 #if ((defined(LINUX) && defined(__ARM__)) || defined(MCUXPRESSO_SDK))
                 if (m_useUart || m_useUsb || m_useI2c || m_useBusPal || m_useLpcUsbSio)

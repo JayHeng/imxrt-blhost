@@ -25,7 +25,7 @@
 #define BLHOST_ARGC0 (6)
 char *blhost_args0[] = {
     "blhost",
-    "-s",
+    "-s",  // -s means spi
     "5,4000",
     "--",
     "get-property",

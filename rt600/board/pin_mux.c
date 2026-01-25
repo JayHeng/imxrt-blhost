@@ -62,6 +62,9 @@ BOARD_InitPins:
  *
  * END ****************************************************************************************************************/
 /* Function assigned for the Cortex-M33 */
+
+void BOARD_InitSpiPins(void);
+
 void BOARD_InitPins(void)
 {
 
@@ -106,8 +109,13 @@ void BOARD_InitPins(void)
                                         IOPCTL_PIO_INV_DI);
     /* PORT0 PIN2 (coords: G4) is configured as FC0_RXD_SDA_MOSI_DATA */
     IOPCTL_PinMuxSet(IOPCTL, 0U, 2U, port0_pin2_config);
+    
+    BOARD_InitSpiPins();
 
+}
 
+void BOARD_InitSpiPins(void)
+{
     const uint32_t port1_pin3_config = (/* Pin is configured as FC5_SCK */
                                         IOPCTL_PIO_FUNC1 |
                                         /* Disable pull-up / pull-down function */

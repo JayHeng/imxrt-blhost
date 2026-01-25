@@ -22,7 +22,7 @@ int spi_setup(int fd, uint32_t speed, uint32_t mode, uint32_t bits_per_word)
     SPI_MasterGetDefaultConfig(&userConfig);
     srcFreq = CLOCK_GetFreq(kCLOCK_Flexcomm5Clk);
 
-	userConfig.baudRate_Bps = 1000000;
+    userConfig.baudRate_Bps = 1000000;
     userConfig.polarity                  = kSPI_ClockPolarityActiveLow;
     userConfig.phase                     = kSPI_ClockPhaseSecondEdge;	
     userConfig.sselNum = (spi_ssel_t)kSPI_Ssel0;

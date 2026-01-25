@@ -50,3 +50,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+/*/iar/RT600_firmware/
+/*/iar/RT700_firmware/
+/*/iar/settings/
+
+
+
