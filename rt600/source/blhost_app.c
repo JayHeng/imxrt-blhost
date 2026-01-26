@@ -83,9 +83,66 @@ char *blhost_i2c_args2[] = {
     "0x80000"
 };
 
+#define BLHOST_I2C_ARGC3 (8)
+char *blhost_i2c_args3_1[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "fill-memory",
+    "0x10c000",
+    "4",
+    "0xc1503051"
+};
+char *blhost_i2c_args3_2[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "fill-memory",
+    "0x10c004",
+    "4",
+    "0x20000014"
+};
+
+#define BLHOST_I2C_ARGC4 (7)
+char *blhost_i2c_args4[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "configure-memory",
+    "0x9",
+    "0x10c000"
+};
+
+#define BLHOST_I2C_ARGC5 (8)
+char *blhost_i2c_args5[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "flash-erase-region",
+    "0x08010000",
+    "0x10000",
+    "0x9"
+};
+
 #define BLHOST_I2C_ARGC6 (8)
-// arg for sdk20-app_rt600.bin
 char *blhost_i2c_args6[] = {
+    "blhost",
+    "-i",
+    "5,4000",
+    "--",
+    "write-memory",
+    "0x08010000",
+    "0x200000",
+    "0x4000"
+};
+
+#define BLHOST_I2C_ARGC7 (8)
+// arg for sdk20-app_rt600.bin
+char *blhost_i2c_args7[] = {
     "blhost",
     "-i",
     "2,0x10",
@@ -138,9 +195,16 @@ int main(void)
 #endif
 #elif BLHOST_USE_I2C
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
-    blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
-#if DEVICE_IN_3b110_SERIAL_ISP_BOOT
+    
+    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3_1, NULL);
+    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3_2, NULL);
+    blhost_main(BLHOST_I2C_ARGC4, blhost_i2c_args4, NULL);
+    blhost_main(BLHOST_I2C_ARGC5, blhost_i2c_args5, NULL);
     blhost_main(BLHOST_I2C_ARGC6, blhost_i2c_args6, NULL);
+    
+    //blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
+#if DEVICE_IN_3b110_SERIAL_ISP_BOOT
+    //blhost_main(BLHOST_I2C_ARGC7, blhost_i2c_args7, NULL);
 #endif
 #endif
     PRINTF("Done\r\n");
