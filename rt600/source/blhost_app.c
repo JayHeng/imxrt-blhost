@@ -18,6 +18,9 @@
 #define BLHOST_USE_SPI (0)
 #define BLHOST_USE_I2C (1)
 
+#define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (0)
+#define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (1)
+
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -28,8 +31,8 @@
 #define BLHOST_SPI_ARGC0 (6)
 char *blhost_spi_args0[] = {
     "blhost",
-    "-s",  // -s means spi
-    "5,4000",
+    "-s",           // -s means spi
+    "5,4000",       // means dev/spi-5,4000kHz(,1,1,msb)
     "--",
     "get-property",
     "1"
@@ -38,8 +41,8 @@ char *blhost_spi_args0[] = {
 #define BLHOST_I2C_ARGC0 (6)
 char *blhost_i2c_args0[] = {
     "blhost",
-    "-i",  // -i means i2c
-    "5,4000",
+    "-i",           // -i means i2c
+    "2,0x10",       // means dev/i2c-2,0x10(,100kHz)
     "--",
     "get-property",
     "1"
@@ -60,7 +63,7 @@ char *blhost_spi_args1[] = {
 char *blhost_spi_args2[] = {
     "blhost",
     "-s",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
     "0x80000",
@@ -78,6 +81,19 @@ char *blhost_i2c_args2[] = {
     "0x80000",
     "0x200000",
     "0x80000"
+};
+
+#define BLHOST_I2C_ARGC6 (8)
+// arg for sdk20-app_rt600.bin
+char *blhost_i2c_args6[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "execute",
+    "0x00082D09",
+    "0x0",
+    "0x20200000"
 };
 
 #ifdef RT700_BLINKY_IMAGE
@@ -123,6 +139,9 @@ int main(void)
 #elif BLHOST_USE_I2C
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
     blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
+#if DEVICE_IN_3b110_SERIAL_ISP_BOOT
+    blhost_main(BLHOST_I2C_ARGC6, blhost_i2c_args6, NULL);
+#endif
 #endif
     PRINTF("Done\r\n");
     while (1)
