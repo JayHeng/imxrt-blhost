@@ -8,7 +8,7 @@
 #ifndef MCU_SYSTEM_H_
 #define MCU_SYSTEM_H_
 
-#include "MIMXRT685S_cm33.h"
+#include "MIMXRT1189_cm33.h"
 
 #if defined(__cplusplus)
 extern "C" {
