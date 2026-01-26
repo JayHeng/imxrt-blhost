@@ -9,8 +9,13 @@
 
 #define IMAGE_SECTION_ADDRESS 0x20200000
 
+#if (defined(__ICCARM__))
+#pragma section = "__image_section"
+#endif
+
 #ifdef RT600_BLINKY_IMAGE
-#define IMAGE_SIZE 0x33DC
+//#define IMAGE_SIZE 0x33DC
+#define IMAGE_SIZE (__section_size("__image_section"))
 #elif RT700_BLINKY_IMAGE
 #define IMAGE_SIZE 11575 /* RT700 Blinky image */
 #endif
