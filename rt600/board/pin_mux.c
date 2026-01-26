@@ -64,6 +64,7 @@ BOARD_InitPins:
 /* Function assigned for the Cortex-M33 */
 
 void BOARD_InitSpiPins(void);
+void BOARD_InitI2cPins(void);
 
 void BOARD_InitPins(void)
 {
@@ -111,7 +112,7 @@ void BOARD_InitPins(void)
     IOPCTL_PinMuxSet(IOPCTL, 0U, 2U, port0_pin2_config);
     
     BOARD_InitSpiPins();
-
+    BOARD_InitI2cPins();
 }
 
 void BOARD_InitSpiPins(void)
@@ -199,6 +200,51 @@ void BOARD_InitSpiPins(void)
                                         IOPCTL_PIO_INV_DI);
     /* PORT1 PIN6 (coords: J17) is configured as FC5_CTS_SDA_SSEL0 */
     IOPCTL_PinMuxSet(IOPCTL, 1U, 6U, port1_pin6_config);
+}
+
+void BOARD_InitI2cPins(void)
+{
+    const uint32_t port0_pin15_config = (/* Pin is configured as FC2_CTS_SDA_SSEL0 */
+                                         IOPCTL_PIO_FUNC1 |
+                                         /* Enable pull-up / pull-down function */
+                                         IOPCTL_PIO_PUPD_EN |
+                                         /* Enable pull-up function */
+                                         IOPCTL_PIO_PULLUP_EN |
+                                         /* Enables input buffer function */
+                                         IOPCTL_PIO_INBUF_EN |
+                                         /* Normal mode */
+                                         IOPCTL_PIO_SLEW_RATE_NORMAL |
+                                         /* Full drive enable */
+                                         IOPCTL_PIO_FULLDRIVE_EN |
+                                         /* Analog mux is disabled */
+                                         IOPCTL_PIO_ANAMUX_DI |
+                                         /* Pseudo Output Drain is enabled */
+                                         IOPCTL_PIO_PSEDRAIN_EN |
+                                         /* Input function is not inverted */
+                                         IOPCTL_PIO_INV_DI);
+    /* PORT0 PIN15 is configured as FC2_CTS_SDA_SSEL0 */
+    IOPCTL_PinMuxSet(IOPCTL, 0U, 15U, port0_pin15_config);
+
+    const uint32_t port0_pin16_config = (/* Pin is configured as FC2_RTS_SCL_SSEL1 */
+                                         IOPCTL_PIO_FUNC1 |
+                                         /* Enable pull-up / pull-down function */
+                                         IOPCTL_PIO_PUPD_EN |
+                                         /* Enable pull-up function */
+                                         IOPCTL_PIO_PULLUP_EN |
+                                         /* Enables input buffer function */
+                                         IOPCTL_PIO_INBUF_EN |
+                                         /* Normal mode */
+                                         IOPCTL_PIO_SLEW_RATE_NORMAL |
+                                         /* Full drive enable */
+                                         IOPCTL_PIO_FULLDRIVE_EN |
+                                         /* Analog mux is disabled */
+                                         IOPCTL_PIO_ANAMUX_DI |
+                                         /* Pseudo Output Drain is enabled */
+                                         IOPCTL_PIO_PSEDRAIN_EN |
+                                         /* Input function is not inverted */
+                                         IOPCTL_PIO_INV_DI);
+    /* PORT0 PIN16 is configured as FC2_RTS_SCL_SSEL1 */
+    IOPCTL_PinMuxSet(IOPCTL, 0U, 16U, port0_pin16_config);
 }
 /***********************************************************************************************************************
  * EOF

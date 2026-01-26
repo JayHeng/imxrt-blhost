@@ -15,6 +15,9 @@
  * Definitions
  ******************************************************************************/
 
+#define BLHOST_USE_SPI (0)
+#define BLHOST_USE_I2C (1)
+
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -22,8 +25,8 @@
 /*******************************************************************************
  * Variables
  ******************************************************************************/
-#define BLHOST_ARGC0 (6)
-char *blhost_args0[] = {
+#define BLHOST_SPI_ARGC0 (6)
+char *blhost_spi_args0[] = {
     "blhost",
     "-s",  // -s means spi
     "5,4000",
@@ -32,8 +35,18 @@ char *blhost_args0[] = {
     "1"
 };
 
-#define BLHOST_ARGC1 (7)
-char *blhost_args1[] = {
+#define BLHOST_I2C_ARGC0 (6)
+char *blhost_i2c_args0[] = {
+    "blhost",
+    "-i",  // -i means i2c
+    "5,4000",
+    "--",
+    "get-property",
+    "1"
+};
+
+#define BLHOST_SPI_ARGC1 (7)
+char *blhost_spi_args1[] = {
     "blhost",
     "-s",
     "5,4000",
@@ -43,8 +56,8 @@ char *blhost_args1[] = {
     "0x80000110"
 };
 
-#define BLHOST_ARGC2 (8)
-char *blhost_args2[] = {
+#define BLHOST_SPI_ARGC2 (8)
+char *blhost_spi_args2[] = {
     "blhost",
     "-s",
     "5,4000",
@@ -55,10 +68,22 @@ char *blhost_args2[] = {
     "0x80000"
 };
 
+#define BLHOST_I2C_ARGC2 (8)
+char *blhost_i2c_args2[] = {
+    "blhost",
+    "-i",
+    "5,4000",
+    "--",
+    "write-memory",
+    "0x80000",
+    "0x200000",
+    "0x80000"
+};
+
 #ifdef RT700_BLINKY_IMAGE
-#define BLHOST_ARGC3 (8)
+#define BLHOST_SPI_ARGC3 (8)
 /* RT700 IMAGE */
-char *blhost_args3[] = {
+char *blhost_spi_args3[] = {
     "blhost",
     "-s",
     "5,4000",
@@ -77,8 +102,6 @@ char *blhost_args3[] = {
  */
 int main(void)
 {
-    char ch;
-
     gpio_pin_config_t gpio_pin_config;
     gpio_pin_config.pinDirection = kGPIO_DigitalOutput;
     gpio_pin_config.outputLogic = 1;
@@ -91,11 +114,15 @@ int main(void)
 
     PRINTF("BLHOST.\r\n");
 
-    blhost_main(BLHOST_ARGC0, blhost_args0, NULL);
-//    blhost_main(BLHOST_ARGC1, blhost_args1, NULL);
-    blhost_main(BLHOST_ARGC2, blhost_args2, NULL);
+#if BLHOST_USE_SPI
+    blhost_main(BLHOST_SPI_ARGC0, blhost_spi_args0, NULL);
+    blhost_main(BLHOST_SPI_ARGC2, blhost_spi_args2, NULL);
 #ifdef RT700_BLINKY_IMAGE
-    blhost_main(BLHOST_ARGC3, blhost_args3, NULL);
+    blhost_main(BLHOST_SPI_ARGC3, blhost_spi_args3, NULL);
+#endif
+#elif BLHOST_USE_I2C
+    blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
+    blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
 #endif
     PRINTF("Done\r\n");
     while (1)
