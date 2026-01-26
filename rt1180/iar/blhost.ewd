@@ -68,7 +68,7 @@
                 </option>
                 <option>
                     <name>MacFile</name>
-                    <state>$PROJ_DIR$/../evkmimxrt1180.mac</state>
+                    <state>$PROJ_DIR$/evkmimxrt1180.mac</state>
                 </option>
                 <option>
                     <name>MemOverride</name>
@@ -92,7 +92,7 @@
                 </option>
                 <option>
                     <name>CExtraOptions</name>
-                    <state>--jlink_script_file=$PROJ_DIR$/../evkmimxrt1180_cm33.jlinkscript</state>
+                    <state>--jlink_script_file=$PROJ_DIR$/evkmimxrt1180_cm33.jlinkscript</state>
                 </option>
                 <option>
                     <name>CFpuProcessor</name>

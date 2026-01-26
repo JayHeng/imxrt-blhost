@@ -674,17 +674,18 @@
                 <option>
                     <name>AUserIncludes</name>
                     <state>$PROJ_DIR$/..</state>
-                    <state>$PROJ_DIR$/../../../xip</state>
-                    <state>$PROJ_DIR$/../../../../../CMSIS/Core/Include</state>
-                    <state>$PROJ_DIR$/../../../../../CMSIS/Core/Include/m-profile</state>
-                    <state>$PROJ_DIR$/../../../../../devices/MIMXRT1189</state>
-                    <state>$PROJ_DIR$/../../../../../devices/MIMXRT1189/periph</state>
-                    <state>$PROJ_DIR$/../../../../../devices/MIMXRT1189/drivers</state>
-                    <state>$PROJ_DIR$/../../../../../devices/MIMXRT1189/utilities/debug_console_lite</state>
-                    <state>$PROJ_DIR$/../../../../../devices/MIMXRT1189/utilities/str</state>
-                    <state>$PROJ_DIR$/../../../../../components/uart</state>
-                    <state>$PROJ_DIR$/../../../../../components/silicon_id</state>
-                    <state>$PROJ_DIR$/../../../../../components/silicon_id/socs</state>
+                    <state>$PROJ_DIR$/../board</state>
+                    <state>$PROJ_DIR$/../xip</state>
+                    <state>$PROJ_DIR$/../CMSIS</state>
+                    <state>$PROJ_DIR$/../CMSIS/m-profile</state>
+                    <state>$PROJ_DIR$/../device</state>
+                    <state>$PROJ_DIR$/../device/periph</state>
+                    <state>$PROJ_DIR$/../drivers</state>
+                    <state>$PROJ_DIR$/../utilities/debug_console_lite</state>
+                    <state>$PROJ_DIR$/../utilities/str</state>
+                    <state>$PROJ_DIR$/../component/uart</state>
+                    <state>$PROJ_DIR$/../component/silicon_id</state>
+                    <state>$PROJ_DIR$/../component/silicon_id/socs</state>
                 </option>
                 <option>
                     <name>AExtraOptionsCheckV2</name>
