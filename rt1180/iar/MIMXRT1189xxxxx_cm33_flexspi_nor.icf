@@ -43,7 +43,10 @@ define symbol m_sdram_size             = isdefinedsymbol(__dual_image__) ? 0x002
 define symbol m_hyperram_start         = isdefinedsymbol(__dual_image__) ? 0x04600000 : 0x04000000;
 define symbol m_hyperram_size          = isdefinedsymbol(__dual_image__) ? 0x00200000 : 0x00800000;
 define symbol m_flash_start            = 0x28000000;
-define symbol m_flash_size             = 0x00800000;
+define symbol m_flash_size             = 0x00100000;
+
+define symbol m_image_start            = 0x28100000;
+define symbol m_image_end              = 0x287FFFFF;
 
 define symbol m_core1_image_maximum_size = 0x00040000;
 
@@ -68,13 +71,13 @@ define symbol vector_table_size        = 0x00000400;
 if (isdefinedsymbol(__stack_size__)) {
   define symbol __size_cstack__        = __stack_size__;
 } else {
-  define symbol __size_cstack__        = 0x0400;
+  define symbol __size_cstack__        = 0x8000;
 }
 
 if (isdefinedsymbol(__heap_size__)) {
   define symbol __size_heap__          = __heap_size__;
 } else {
-  define symbol __size_heap__          = 0x0400;
+  define symbol __size_heap__          = 0x30000;
 }
 
 define symbol m_qacode_start           = m_code_tcm_start + (isdefinedsymbol(__ram_vector_table__) ? vector_table_size : 0);
@@ -126,6 +129,7 @@ define region QADATA_region    = mem:[from m_qadata_start to m_qadata_end];
 if (isdefinedsymbol(__use_shmem__)) {
   define region rpmsg_sh_mem_region = mem:[from m_rpmsg_sh_mem_start to m_rpmsg_sh_mem_end];
 }
+define region IMAGE_region            = mem:[from m_image_start to m_image_end];
 
 /* Exported symbol definition */
 define exported symbol __VECTOR_TABLE          = m_interrupts_start;
@@ -181,3 +185,4 @@ if (isdefinedsymbol(__heap_noncacheable__)) {
 if (isdefinedsymbol(__use_shmem__)) {
   place in rpmsg_sh_mem_region              { section rpmsg_sh_mem_section };
 }
+place in IMAGE_region                       { section __image_section };

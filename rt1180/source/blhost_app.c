@@ -47,7 +47,7 @@ char *blhost_i2c_args2[] = {
     "--",
     "write-memory",
     "0x80000",
-    "0x200000",
+    "0x28100000",
     "0x80000"
 };
 
@@ -133,7 +133,7 @@ int main(void)
     BOARD_InitHardware();
 
     PRINTF("BLHOST.\r\n");
-/*
+
 #if BLHOST_USE_I2C
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
     
@@ -148,7 +148,7 @@ int main(void)
     //blhost_main(BLHOST_I2C_ARGC7, blhost_i2c_args7, NULL);
 #endif
 #endif
-*/
+
     PRINTF("Done\r\n");
     while (1)
     {
