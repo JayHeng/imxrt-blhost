@@ -40,8 +40,11 @@ pin_labels:
  * Description   : Calls initialization functions.
  * 
  * END ****************************************************************************************************************/
+void BOARD_InitUserI2cPins(void);
+
 void BOARD_InitBootPins(void) {
     BOARD_InitDEBUG_UARTPins();
+    BOARD_InitUserI2cPins();
 }
 
 /*
@@ -83,6 +86,30 @@ void BOARD_InitDEBUG_UARTPins(void) {
                                                  Pull / Keep Select Field: Pull Disable, Highz
                                                  Pull Up / Down Config. Field: Weak pull down
                                                  Open Drain Field: Disabled */
+}
+
+void BOARD_InitUserI2cPins(void)
+{
+  IOMUXC_SetPinMux(
+      IOMUXC_GPIO_AON_15_LPI2C2_SDA,          /* GPIO_AON_15 is configured as LPI2C2_SDA */
+      1U);                                    /* Software Input On Field: Force input path of pad GPIO_AON_15 */
+  IOMUXC_SetPinMux(
+      IOMUXC_GPIO_AON_16_LPI2C2_SCL,          /* GPIO_AON_16 is configured as LPI2C2_SCL */
+      1U);                                    /* Software Input On Field: Force input path of pad GPIO_AON_16 */
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AON_15_LPI2C2_SDA,          /* GPIO_AON_15 PAD functional properties : */
+      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+                                                 Drive Strength Field: high driver
+                                                 Pull / Keep Select Field: Pull Disable, Highz
+                                                 Pull Up / Down Config. Field: Weak pull up
+                                                 Open Drain Field: Enabled */
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AON_16_LPI2C2_SCL,          /* GPIO_AON_16 PAD functional properties : */
+      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+                                                 Drive Strength Field: high driver
+                                                 Pull / Keep Select Field: Pull Disable, Highz
+                                                 Pull Up / Down Config. Field: Weak pull up
+                                                 Open Drain Field: Enabled */
 }
 
 

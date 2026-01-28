@@ -83,7 +83,7 @@
                 </option>
                 <option>
                     <name>OGChipSelectEditMenu</name>
-                    <state>MIMXRT1189xxx8_M33	NXP MIMXRT1189xxx8_M33</state>
+                    <state>MIMXRT1186xxx8_M33	NXP MIMXRT1186xxx8_M33</state>
                 </option>
                 <option>
                     <name>GenLowLevelInterface</name>
@@ -129,7 +129,7 @@
                 </option>
                 <option>
                     <name>GFPUDeviceSlave</name>
-                    <state>MIMXRT1189xxx8_M33	NXP MIMXRT1189xxx8_M33</state>
+                    <state>MIMXRT1186xxx8_M33	NXP MIMXRT1186xxx8_M33</state>
                 </option>
                 <option>
                     <name>FPU2</name>
