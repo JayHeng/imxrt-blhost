@@ -5,7 +5,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#include "evkmimxrt1180_flexspi_nor_config.h"
+#include "frdmimxrt1186_flexspi_nor_config.h"
 
 /* Component ID definition, used by tools. */
 #ifndef FSL_COMPONENT_ID
@@ -26,26 +26,9 @@ __attribute__((section(".boot_hdr.xmcd_data"), used))
 #endif
 
 const uint32_t xmcd_data[] = {
-    0xC002000C, /* FlexSPI instance 2 */
-    0xC1000800, /* Option words = 2 */
-    0x00010000  /* PINMUX Secondary group */
-};
-
-#endif
-
-#if defined(USE_SDRAM)
-
-#if defined(__CC_ARM) || defined(__ARMCC_VERSION) || defined(__GNUC__)
-__attribute__((section(".boot_hdr.xmcd_data"), used))
-#elif defined(__ICCARM__)
-#pragma location = ".boot_hdr.xmcd_data"
-#endif
-
-const uint32_t xmcd_data[] = {
-    0xC010000D, /* SEMC -> SDRAM */
-    0xA60001A1, /* SDRAM config */
-    0x00008000, /* SDRAM config */
-    0X00000001  /* SDRAM config */
+    0xC001000C, /* FlexSPI instance 1 */
+    0xC1001800, /* Option words = 2 */
+    0x10000000  /* PORTB */
 };
 
 #endif
@@ -78,7 +61,7 @@ const flexspi_nor_config_t qspi_flash_nor_config = {
             .controllerMiscOption = 0x10,
             .deviceType           = kFlexSpiDeviceType_SerialNOR,
             .sflashPadType        = kSerialFlash_4Pads,
-            .serialClkFreq        = kFlexSpiSerialClk_133MHz,
+            .serialClkFreq        = kFlexSpiSerialClk_100MHz,
             .sflashA1Size         = 16u * 1024u * 1024u,
 
             .configModeType[0] = kDeviceConfigCmdType_Generic,

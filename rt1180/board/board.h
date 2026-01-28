@@ -1,6 +1,5 @@
 /*
- * Copyright 2021-2024 NXP
- * All rights reserved.
+ * Copyright 2021-2025 NXP
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -17,7 +16,7 @@
  * Definitions
  ******************************************************************************/
 /*! @brief The board name */
-#define BOARD_NAME "MIMXRT1180-EVK"
+#define BOARD_NAME "FRDM-IMXRT1186"
 #ifndef DEBUG_CONSOLE_UART_INDEX
 #define DEBUG_CONSOLE_UART_INDEX 1
 #endif
@@ -61,10 +60,10 @@
 #define LOGIC_LED_ON  (1U)
 #define LOGIC_LED_OFF (0U)
 #ifndef BOARD_USER_LED_GPIO
-#define BOARD_USER_LED_GPIO RGPIO4
+#define BOARD_USER_LED_GPIO RGPIO2
 #endif
 #ifndef BOARD_USER_LED_GPIO_PIN
-#define BOARD_USER_LED_GPIO_PIN (27U)
+#define BOARD_USER_LED_GPIO_PIN (11U)
 #endif
 
 #define USER_LED_INIT(output)                                             \
@@ -78,29 +77,29 @@
 
 /*! @brief Define the port interrupt number for the board switches */
 #ifndef BOARD_USER_BUTTON_GPIO
-#define BOARD_USER_BUTTON_GPIO RGPIO1
+#define BOARD_USER_BUTTON_GPIO RGPIO4
 #endif
 #ifndef BOARD_USER_BUTTON_GPIO_PIN
-#define BOARD_USER_BUTTON_GPIO_PIN (4U)
+#define BOARD_USER_BUTTON_GPIO_PIN (12U)
 #endif
-#define BOARD_USER_BUTTON_IRQ         GPIO1_0_IRQn
-#define BOARD_USER_BUTTON_IRQ_HANDLER GPIO1_0_IRQHandler
-#define BOARD_USER_BUTTON_NAME        "SW8"
+#define BOARD_USER_BUTTON_IRQ         GPIO4_IRQn
+#define BOARD_USER_BUTTON_IRQ_HANDLER GPIO4_IRQHandler
+#define BOARD_USER_BUTTON_NAME        "SW4"
 
-#define BOARD_WAKEUP_BUTTON_NAME      "SW4"
+#define BOARD_WAKEUP_BUTTON_NAME      "SW6"
 
 /*! @brief The board flash size */
 #define BOARD_FLASH_SIZE (0x1000000U)
 
 /*! @brief The Ethernet PHY addresses. */
-#define BOARD_EP0_PHY_ADDR       (0x03U)
-#define BOARD_SWT_PORT0_PHY_ADDR (0x02U)
-#define BOARD_SWT_PORT1_PHY_ADDR (0x05U)
+#define BOARD_EP0_PHY_ADDR       (0x00U) // TODO: Useless, should be removed
+#define BOARD_SWT_PORT0_PHY_ADDR (0x05U)
+#define BOARD_SWT_PORT1_PHY_ADDR (0x00U) // TODO: Useless, should be removed
 #define BOARD_SWT_PORT2_PHY_ADDR (0x04U)
-#define BOARD_SWT_PORT3_PHY_ADDR (0x07U)
+#define BOARD_SWT_PORT3_PHY_ADDR (0x00U) // TODO: Useless, should be removed
 
 /*! @brief The Ethernet PHY type of the board */
-#define BOARD_USE_NETC_PHY_RTL8201
+#define BOARD_USE_NETC_PHY_YT8521
 
 /* USB PHY condfiguration */
 #define BOARD_USB_PHY_D_CAL     (0x07U)
@@ -111,7 +110,7 @@
 #define BOARD_ARDUINO_I2C_IRQ   (LPI2C1_IRQn)
 #define BOARD_ARDUINO_I2C_INDEX (1)
 
-#define BOARD_HAS_SDCARD (1U)
+#define BOARD_HAS_SDCARD (0U)
 
 /* @Brief Board accelerator sensor configuration */
 #define BOARD_ACCEL_I2C_BASEADDR LPI2C2

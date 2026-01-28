@@ -1,9 +1,7 @@
 /*
 ** ###################################################################
-**     Processors:          MIMXRT1189CVM8B_cm33
-**                          MIMXRT1189CVM8C_cm33
-**                          MIMXRT1189XVM8B_cm33
-**                          MIMXRT1189XVM8C_cm33
+**     Processors:          MIMXRT1186CVJ8C_cm33
+**                          MIMXRT1186XVJ8C_cm33
 **
 **     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
@@ -15,7 +13,7 @@
 **     Build:               b250721
 **
 **     Abstract:
-**         CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+**         CMSIS Peripheral Access Layer for MIMXRT1186_cm33
 **
 **     Copyright 1997-2016 Freescale Semiconductor, Inc.
 **     Copyright 2016-2025 NXP
@@ -37,16 +35,16 @@
 */
 
 /*!
- * @file MIMXRT1189_cm33.h
+ * @file MIMXRT1186_cm33.h
  * @version 3.0
  * @date 2024-10-29
- * @brief CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+ * @brief CMSIS Peripheral Access Layer for MIMXRT1186_cm33
  *
- * CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+ * CMSIS Peripheral Access Layer for MIMXRT1186_cm33
  */
 
-#if !defined(MIMXRT1189_cm33_H_)  /* Check if memory map has not been already included */
-#define MIMXRT1189_cm33_H_
+#if !defined(MIMXRT1186_cm33_H_)  /* Check if memory map has not been already included */
+#define MIMXRT1186_cm33_H_
 
 /* IP Header Files List */
 #include "PERI_ADC.h"
@@ -155,4 +153,4 @@
 #include "PERI_XBAR_NUM_OUT32.h"
 #include "PERI_XCACHE.h"
 
-#endif  /* #if !defined(MIMXRT1189_cm33_H_) */
+#endif  /* #if !defined(MIMXRT1186_cm33_H_) */

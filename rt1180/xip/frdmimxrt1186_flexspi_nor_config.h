@@ -5,8 +5,8 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
-#ifndef __EVKMIMXRT1180_FLEXSPI_NOR_CONFIG__
-#define __EVKMIMXRT1180_FLEXSPI_NOR_CONFIG__
+#ifndef __frdmimxrt1186_FLEXSPI_NOR_CONFIG__
+#define __frdmimxrt1186_FLEXSPI_NOR_CONFIG__
 
 #include "fsl_common.h"
 
@@ -187,4 +187,4 @@ typedef struct _flexspi_nor_config
 } flexspi_nor_config_t;
 
 
-#endif /* __EVKMIMXRT1180_FLEXSPI_NOR_CONFIG__ */
+#endif /* __frdmimxrt1186_FLEXSPI_NOR_CONFIG__ */

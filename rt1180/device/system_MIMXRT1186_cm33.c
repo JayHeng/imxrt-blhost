@@ -1,9 +1,7 @@
 /*
 ** ###################################################################
-**     Processors:          MIMXRT1189CVM8B_cm33
-**                          MIMXRT1189CVM8C_cm33
-**                          MIMXRT1189XVM8B_cm33
-**                          MIMXRT1189XVM8C_cm33
+**     Processors:          MIMXRT1186CVJ8C_cm33
+**                          MIMXRT1186XVJ8C_cm33
 **
 **     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
@@ -39,10 +37,10 @@
 */
 
 /*!
- * @file MIMXRT1189_cm33
+ * @file MIMXRT1186_cm33
  * @version 1.0
  * @date 2025-07-21
- * @brief Device specific configuration file for MIMXRT1189_cm33 (implementation file)
+ * @brief Device specific configuration file for MIMXRT1186_cm33 (implementation file)
  *
  * Provides a system configuration function and a global variable that contains
  * the system frequency. It configures the device and initializes the oscillator

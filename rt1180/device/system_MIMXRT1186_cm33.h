@@ -1,9 +1,7 @@
 /*
 ** ###################################################################
-**     Processors:          MIMXRT1189CVM8B_cm33
-**                          MIMXRT1189CVM8C_cm33
-**                          MIMXRT1189XVM8B_cm33
-**                          MIMXRT1189XVM8C_cm33
+**     Processors:          MIMXRT1186CVJ8C_cm33
+**                          MIMXRT1186XVJ8C_cm33
 **
 **     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
@@ -39,18 +37,18 @@
 */
 
 /*!
- * @file MIMXRT1189_cm33
+ * @file MIMXRT1186_cm33
  * @version 1.0
  * @date 2025-07-21
- * @brief Device specific configuration file for MIMXRT1189_cm33 (header file)
+ * @brief Device specific configuration file for MIMXRT1186_cm33 (header file)
  *
  * Provides a system configuration function and a global variable that contains
  * the system frequency. It configures the device and initializes the oscillator
  * (PLL) that is part of the microcontroller device.
  */
 
-#ifndef _SYSTEM_MIMXRT1189_cm33_H_
-#define _SYSTEM_MIMXRT1189_cm33_H_                /**< Symbol preventing repeated inclusion */
+#ifndef _SYSTEM_MIMXRT1186_cm33_H_
+#define _SYSTEM_MIMXRT1186_cm33_H_                /**< Symbol preventing repeated inclusion */
 
 #ifdef __cplusplus
 extern "C" {
@@ -140,4 +138,4 @@ void Prepare_CM7(uint32_t m7_vtor);
 }
 #endif
 
-#endif  /* _SYSTEM_MIMXRT1189_cm33_H_ */
+#endif  /* _SYSTEM_MIMXRT1186_cm33_H_ */

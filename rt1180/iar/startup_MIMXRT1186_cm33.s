@@ -1,7 +1,7 @@
 ; -------------------------------------------------------------------------
-;  @file:    startup_MIMXRT1189_cm33.s
+;  @file:    startup_MIMXRT1186_cm33.s
 ;  @purpose: CMSIS Cortex-M33 Core Device Startup File
-;            MIMXRT1189_cm33
+;            MIMXRT1186_cm33
 ;  @version: 3.0
 ;  @date:    2024-10-29
 ;  @build:   b250721
@@ -134,7 +134,7 @@ __vector_table_0x1c
         DCD     GPIO3_1_IRQHandler                            ;GPIO3 interrupt 1
         DCD     I3C2_IRQHandler                               ;I3C2 interrupt
         DCD     LPI2C3_IRQHandler                             ;LPI2C3 interrupt
-        DCD     LPI2C4_IRQHandler                             ;LPI2C4 interrput
+        DCD     Reserved79_IRQHandler                         ;Reserved interrupt
         DCD     LPIT2_IRQHandler                              ;LPIT2 interrupt
         DCD     LPSPI3_IRQHandler                             ;LPSPI3 interrupt
         DCD     LPSPI4_IRQHandler                             ;LPSPI4 interrupt
@@ -148,8 +148,8 @@ __vector_table_0x1c
         DCD     SYS_CTR1_IRQHandler                           ;System Counter compare interrupt 0 and 1
         DCD     TPM3_IRQHandler                               ;TPM3 interrupt
         DCD     TPM4_IRQHandler                               ;TPM4 interrupt
-        DCD     TPM5_IRQHandler                               ;TPM5 interrupt
-        DCD     TPM6_IRQHandler                               ;TPM6 interrupt
+        DCD     Reserved93_IRQHandler                         ;Reserved interrupt
+        DCD     Reserved94_IRQHandler                         ;Reserved interrupt
         DCD     RTWDOG3_IRQHandler                            ;RTWDOG3 interrupt
         DCD     RTWDOG4_IRQHandler                            ;RTWDOG4 interrupt
         DCD     RTWDOG5_IRQHandler                            ;RTWDOG5 interrupt
@@ -157,7 +157,7 @@ __vector_table_0x1c
         DCD     TMPSNS_INT_IRQHandler                         ;Temperature alarm interrupt
         DCD     BBSM_IRQHandler                               ;BBSM wakeup alarm interrupt
         DCD     LDO_AON_ANA_IRQHandler                        ;Brown out interrupt
-        DCD     USDHC1_IRQHandler                             ;USDHC1
+        DCD     Reserved102_IRQHandler                        ;Reserved interrupt
         DCD     USDHC2_IRQHandler                             ;USDHC2
         DCD     TRDC_MGR_MEGA_IRQHandler                      ;MEGAMIX TRDC transfer error interrupt
         DCD     SFA_IRQHandler                                ;Signal Frequency Analyzer interrupt
@@ -223,14 +223,14 @@ __vector_table_0x1c
         DCD     LPIT3_IRQHandler                              ;LPIT3 interrupt
         DCD     LPTMR3_IRQHandler                             ;LPTMR3 interrupt
         DCD     TMR4_IRQHandler                               ;TMR4 interrupt
-        DCD     LPI2C5_IRQHandler                             ;LPI2C5 interrupt
+        DCD     Reserved168_IRQHandler                        ;Reserved interrupt
         DCD     LPI2C6_IRQHandler                             ;LPI2C6 interrupt
         DCD     SAI4_IRQHandler                               ;SAI4 interrupt
         DCD     SPDIF_IRQHandler                              ;SPDIF interrupt
-        DCD     LPUART9_IRQHandler                            ;LPUART9 interrupt
-        DCD     LPUART10_IRQHandler                           ;LPUART10 interrupt
-        DCD     LPUART11_IRQHandler                           ;LPUART11 interrupt
-        DCD     LPUART12_IRQHandler                           ;LPUART12 interrupt
+        DCD     Reserved172_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved173_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved174_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved175_IRQHandler                        ;Reserved interrupt
         DCD     INTG_BOOTROM_DEBUG_CTRL_IRQHandler            ;CM33, CM7, DAP access IRQ
         DCD     EDGELOCK_REQ1_IRQHandler                      ;Edgelock reuqest 1 interrupt
         DCD     EDGELOCK_REQ2_IRQHandler                      ;Edgelock reuqest 2 interrupt
@@ -262,19 +262,19 @@ __vector_table_0x1c
         DCD     EQDC4_IRQHandler                              ;EQDC4 interrupt
         DCD     ADC2_IRQHandler                               ;ADC2 interrupt
         DCD     DCDC_IRQHandler                               ;DCDC brown out interrupt
-        DCD     CAN3_IRQHandler                               ;CAN3 interrupt
-        DCD     CAN3_ERROR_IRQHandler                         ;CAN3 error interrupt
+        DCD     Reserved207_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved208_IRQHandler                        ;Reserved interrupt
         DCD     DAC_IRQHandler                                ;DAC interrupt
         DCD     LPSPI5_IRQHandler                             ;LPSPI5 interrupt
         DCD     LPSPI6_IRQHandler                             ;LPSPI6 interrupt
         DCD     LPUART7_IRQHandler                            ;LPUART7 interrupt
         DCD     LPUART8_IRQHandler                            ;LPUART8 interrupt
         DCD     SAI2_IRQHandler                               ;SAI2 interrupt
-        DCD     SAI3_IRQHandler                               ;SAI3 interrupt
-        DCD     ACMP1_IRQHandler                              ;CMP1 interrupt
-        DCD     ACMP2_IRQHandler                              ;CMP2 interrupt
+        DCD     Reserved215_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved216_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved217_IRQHandler                        ;Reserved interrupt
         DCD     ACMP3_IRQHandler                              ;CMP3 interrupt
-        DCD     ACMP4_IRQHandler                              ;CMP4 interrupt
+        DCD     Reserved219_IRQHandler                        ;Reserved interrupt
         DCD     CM7_PS_IRQHandler                             ;M7 PS Tag/Data Parity Error
         DCD     CM7_MCM_IRQHandler                            ;M7 MCM interrupt
         DCD     CM33_MCM_IRQHandler                           ;M33 MCM interrupt
@@ -284,8 +284,8 @@ __vector_table_0x1c
         DCD     GPT2_IRQHandler                               ;GPT2 interrupt
         DCD     KPP_IRQHandler                                ;KPP interrupt
         DCD     USBPHY1_IRQHandler                            ;USBPHY1 interrupt
-        DCD     USBPHY2_IRQHandler                            ;USBPHY2 interrupt
-        DCD     USB_OTG2_IRQHandler                           ;USBOTG2 interrupt
+        DCD     Reserved229_IRQHandler                        ;Reserved interrupt
+        DCD     Reserved230_IRQHandler                        ;Reserved interrupt
         DCD     USB_OTG1_IRQHandler                           ;USBOTG1 interrupt
         DCD     FLEXSPI_SLV_IRQHandler                        ;FLEXSPI follower interrupt
         DCD     NETC_IRQHandler                               ;NETC interrupt
@@ -635,13 +635,7 @@ LPI2C3_IRQHandler
         LDR     R0, =LPI2C3_DriverIRQHandler
         BX      R0
 
-        PUBWEAK LPI2C4_IRQHandler
-        PUBWEAK LPI2C4_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPI2C4_IRQHandler
-        LDR     R0, =LPI2C4_DriverIRQHandler
-        BX      R0
-
+        PUBWEAK Reserved79_IRQHandler
         PUBWEAK LPIT2_IRQHandler
         PUBWEAK LPSPI3_IRQHandler
         PUBWEAK LPSPI3_DriverIRQHandler
@@ -691,8 +685,8 @@ LPUART6_IRQHandler
         PUBWEAK SYS_CTR1_IRQHandler
         PUBWEAK TPM3_IRQHandler
         PUBWEAK TPM4_IRQHandler
-        PUBWEAK TPM5_IRQHandler
-        PUBWEAK TPM6_IRQHandler
+        PUBWEAK Reserved93_IRQHandler
+        PUBWEAK Reserved94_IRQHandler
         PUBWEAK RTWDOG3_IRQHandler
         PUBWEAK RTWDOG4_IRQHandler
         PUBWEAK RTWDOG5_IRQHandler
@@ -700,13 +694,7 @@ LPUART6_IRQHandler
         PUBWEAK TMPSNS_INT_IRQHandler
         PUBWEAK BBSM_IRQHandler
         PUBWEAK LDO_AON_ANA_IRQHandler
-        PUBWEAK USDHC1_IRQHandler
-        PUBWEAK USDHC1_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-USDHC1_IRQHandler
-        LDR     R0, =USDHC1_DriverIRQHandler
-        BX      R0
-
+        PUBWEAK Reserved102_IRQHandler
         PUBWEAK USDHC2_IRQHandler
         PUBWEAK USDHC2_DriverIRQHandler
         SECTION .text:CODE:REORDER:NOROOT(2)
@@ -1078,13 +1066,7 @@ DMA4_CH30_CH31_CH62_CH63_IRQHandler
         PUBWEAK LPIT3_IRQHandler
         PUBWEAK LPTMR3_IRQHandler
         PUBWEAK TMR4_IRQHandler
-        PUBWEAK LPI2C5_IRQHandler
-        PUBWEAK LPI2C5_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPI2C5_IRQHandler
-        LDR     R0, =LPI2C5_DriverIRQHandler
-        BX      R0
-
+        PUBWEAK Reserved168_IRQHandler
         PUBWEAK LPI2C6_IRQHandler
         PUBWEAK LPI2C6_DriverIRQHandler
         SECTION .text:CODE:REORDER:NOROOT(2)
@@ -1106,34 +1088,10 @@ SPDIF_IRQHandler
         LDR     R0, =SPDIF_DriverIRQHandler
         BX      R0
 
-        PUBWEAK LPUART9_IRQHandler
-        PUBWEAK LPUART9_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPUART9_IRQHandler
-        LDR     R0, =LPUART9_DriverIRQHandler
-        BX      R0
-
-        PUBWEAK LPUART10_IRQHandler
-        PUBWEAK LPUART10_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPUART10_IRQHandler
-        LDR     R0, =LPUART10_DriverIRQHandler
-        BX      R0
-
-        PUBWEAK LPUART11_IRQHandler
-        PUBWEAK LPUART11_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPUART11_IRQHandler
-        LDR     R0, =LPUART11_DriverIRQHandler
-        BX      R0
-
-        PUBWEAK LPUART12_IRQHandler
-        PUBWEAK LPUART12_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-LPUART12_IRQHandler
-        LDR     R0, =LPUART12_DriverIRQHandler
-        BX      R0
-
+        PUBWEAK Reserved172_IRQHandler
+        PUBWEAK Reserved173_IRQHandler
+        PUBWEAK Reserved174_IRQHandler
+        PUBWEAK Reserved175_IRQHandler
         PUBWEAK INTG_BOOTROM_DEBUG_CTRL_IRQHandler
         PUBWEAK EDGELOCK_REQ1_IRQHandler
         PUBWEAK EDGELOCK_REQ2_IRQHandler
@@ -1165,20 +1123,8 @@ LPUART12_IRQHandler
         PUBWEAK EQDC4_IRQHandler
         PUBWEAK ADC2_IRQHandler
         PUBWEAK DCDC_IRQHandler
-        PUBWEAK CAN3_IRQHandler
-        PUBWEAK CAN3_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-CAN3_IRQHandler
-        LDR     R0, =CAN3_DriverIRQHandler
-        BX      R0
-
-        PUBWEAK CAN3_ERROR_IRQHandler
-        PUBWEAK CAN3_ERROR_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-CAN3_ERROR_IRQHandler
-        LDR     R0, =CAN3_ERROR_DriverIRQHandler
-        BX      R0
-
+        PUBWEAK Reserved207_IRQHandler
+        PUBWEAK Reserved208_IRQHandler
         PUBWEAK DAC_IRQHandler
         PUBWEAK LPSPI5_IRQHandler
         PUBWEAK LPSPI5_DriverIRQHandler
@@ -1215,17 +1161,11 @@ SAI2_IRQHandler
         LDR     R0, =SAI2_DriverIRQHandler
         BX      R0
 
-        PUBWEAK SAI3_IRQHandler
-        PUBWEAK SAI3_DriverIRQHandler
-        SECTION .text:CODE:REORDER:NOROOT(2)
-SAI3_IRQHandler
-        LDR     R0, =SAI3_DriverIRQHandler
-        BX      R0
-
-        PUBWEAK ACMP1_IRQHandler
-        PUBWEAK ACMP2_IRQHandler
+        PUBWEAK Reserved215_IRQHandler
+        PUBWEAK Reserved216_IRQHandler
+        PUBWEAK Reserved217_IRQHandler
         PUBWEAK ACMP3_IRQHandler
-        PUBWEAK ACMP4_IRQHandler
+        PUBWEAK Reserved219_IRQHandler
         PUBWEAK CM7_PS_IRQHandler
         PUBWEAK CM7_MCM_IRQHandler
         PUBWEAK CM33_MCM_IRQHandler
@@ -1235,8 +1175,8 @@ SAI3_IRQHandler
         PUBWEAK GPT2_IRQHandler
         PUBWEAK KPP_IRQHandler
         PUBWEAK USBPHY1_IRQHandler
-        PUBWEAK USBPHY2_IRQHandler
-        PUBWEAK USB_OTG2_IRQHandler
+        PUBWEAK Reserved229_IRQHandler
+        PUBWEAK Reserved230_IRQHandler
         PUBWEAK USB_OTG1_IRQHandler
         PUBWEAK FLEXSPI_SLV_IRQHandler
         PUBWEAK FLEXSPI_SLV_DriverIRQHandler
@@ -1338,7 +1278,7 @@ GPIO3_0_IRQHandler
 GPIO3_1_IRQHandler
 I3C2_DriverIRQHandler
 LPI2C3_DriverIRQHandler
-LPI2C4_DriverIRQHandler
+Reserved79_IRQHandler
 LPIT2_IRQHandler
 LPSPI3_DriverIRQHandler
 LPSPI4_DriverIRQHandler
@@ -1352,8 +1292,8 @@ BBNSM_IRQHandler
 SYS_CTR1_IRQHandler
 TPM3_IRQHandler
 TPM4_IRQHandler
-TPM5_IRQHandler
-TPM6_IRQHandler
+Reserved93_IRQHandler
+Reserved94_IRQHandler
 RTWDOG3_IRQHandler
 RTWDOG4_IRQHandler
 RTWDOG5_IRQHandler
@@ -1361,7 +1301,7 @@ TRDC_MGR_WKUP_IRQHandler
 TMPSNS_INT_IRQHandler
 BBSM_IRQHandler
 LDO_AON_ANA_IRQHandler
-USDHC1_DriverIRQHandler
+Reserved102_IRQHandler
 USDHC2_DriverIRQHandler
 TRDC_MGR_MEGA_IRQHandler
 SFA_IRQHandler
@@ -1427,14 +1367,14 @@ SEMC_IRQHandler
 LPIT3_IRQHandler
 LPTMR3_IRQHandler
 TMR4_IRQHandler
-LPI2C5_DriverIRQHandler
+Reserved168_IRQHandler
 LPI2C6_DriverIRQHandler
 SAI4_DriverIRQHandler
 SPDIF_DriverIRQHandler
-LPUART9_DriverIRQHandler
-LPUART10_DriverIRQHandler
-LPUART11_DriverIRQHandler
-LPUART12_DriverIRQHandler
+Reserved172_IRQHandler
+Reserved173_IRQHandler
+Reserved174_IRQHandler
+Reserved175_IRQHandler
 INTG_BOOTROM_DEBUG_CTRL_IRQHandler
 EDGELOCK_REQ1_IRQHandler
 EDGELOCK_REQ2_IRQHandler
@@ -1466,19 +1406,19 @@ EQDC3_IRQHandler
 EQDC4_IRQHandler
 ADC2_IRQHandler
 DCDC_IRQHandler
-CAN3_DriverIRQHandler
-CAN3_ERROR_DriverIRQHandler
+Reserved207_IRQHandler
+Reserved208_IRQHandler
 DAC_IRQHandler
 LPSPI5_DriverIRQHandler
 LPSPI6_DriverIRQHandler
 LPUART7_DriverIRQHandler
 LPUART8_DriverIRQHandler
 SAI2_DriverIRQHandler
-SAI3_DriverIRQHandler
-ACMP1_IRQHandler
-ACMP2_IRQHandler
+Reserved215_IRQHandler
+Reserved216_IRQHandler
+Reserved217_IRQHandler
 ACMP3_IRQHandler
-ACMP4_IRQHandler
+Reserved219_IRQHandler
 CM7_PS_IRQHandler
 CM7_MCM_IRQHandler
 CM33_MCM_IRQHandler
@@ -1488,8 +1428,8 @@ GPT1_IRQHandler
 GPT2_IRQHandler
 KPP_IRQHandler
 USBPHY1_IRQHandler
-USBPHY2_IRQHandler
-USB_OTG2_IRQHandler
+Reserved229_IRQHandler
+Reserved230_IRQHandler
 USB_OTG1_IRQHandler
 FLEXSPI_SLV_DriverIRQHandler
 NETC_IRQHandler

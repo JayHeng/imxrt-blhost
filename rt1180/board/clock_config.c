@@ -18,9 +18,9 @@
 
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Clocks v13.0
-processor: MIMXRT1189xxxxx
-package_id: MIMXRT1189CVM8C
+product: Clocks v18.0
+processor: MIMXRT1186xxxxx
+package_id: MIMXRT1186CVJ8C
 mcu_data: ksdk2_0
 processor_version: 0.0.0
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
@@ -89,7 +89,6 @@ __attribute__((weak)) void DCDC_SetVoltage(uint8_t core, uint8_t targetVoltage)
 {
 }
 
-
 /*******************************************************************************
  ************************ BOARD_InitBootClocks function ************************
  ******************************************************************************/
@@ -124,10 +123,10 @@ outputs:
 - {id: ECAT_PORT1_REF_CLK.outFreq, value: 50 MHz}
 - {id: EDGELOCK_CLK_ROOT.outFreq, value: 200 MHz}
 - {id: ENET_REFCLK_ROOT.outFreq, value: 125 MHz}
-- {id: FLEXIO1_CLK_ROOT.outFreq, value: 120 MHz}
+- {id: FLEXIO1_CLK_ROOT.outFreq, value: 48 MHz}
 - {id: FLEXIO2_CLK_ROOT.outFreq, value: 48 MHz}
-- {id: FLEXSPI1_CLK_ROOT.outFreq, value: 1440/11 MHz}
-- {id: FLEXSPI2_CLK_ROOT.outFreq, value: 2160/11 MHz}
+- {id: FLEXSPI1_CLK_ROOT.outFreq, value: 2160/11 MHz}
+- {id: FLEXSPI2_CLK_ROOT.outFreq, value: 1080/11 MHz}
 - {id: FLEXSPI_SLV_CLK_ROOT.outFreq, value: 132 MHz}
 - {id: GPT1_CLK_ROOT.outFreq, value: 240 MHz}
 - {id: GPT2_CLK_ROOT.outFreq, value: 240 MHz}
@@ -153,7 +152,7 @@ outputs:
 - {id: M33_SYSTICK_CLK_ROOT.outFreq, value: 100 kHz}
 - {id: M7_CLK_ROOT.outFreq, value: 792 MHz}
 - {id: M7_SYSTICK_CLK_ROOT.outFreq, value: 100 kHz}
-- {id: MAC0_CLK_ROOT.outFreq, value: 50 MHz}
+- {id: MAC0_CLK_ROOT.outFreq, value: 125 MHz}
 - {id: MAC1_CLK_ROOT.outFreq, value: 125 MHz}
 - {id: MAC2_CLK_ROOT.outFreq, value: 125 MHz}
 - {id: MAC3_CLK_ROOT.outFreq, value: 125 MHz}
@@ -247,9 +246,9 @@ settings:
 - {id: CCM.CLOCK_ROOT2.DIV.scale, value: '2', locked: true}
 - {id: CCM.CLOCK_ROOT2.MUX.sel, value: ANADIG_OSC.OSC_RC_400M}
 - {id: CCM.CLOCK_ROOT20.MUX.sel, value: ANADIG_PLL.SYS_PLL3_DIV2_CLK}
-- {id: CCM.CLOCK_ROOT21.DIV.scale, value: '3', locked: true}
+- {id: CCM.CLOCK_ROOT21.DIV.scale, value: '2', locked: true}
 - {id: CCM.CLOCK_ROOT21.MUX.sel, value: ANADIG_PLL.SYS_PLL3_PFD0_CLK}
-- {id: CCM.CLOCK_ROOT22.DIV.scale, value: '2', locked: true}
+- {id: CCM.CLOCK_ROOT22.DIV.scale, value: '4', locked: true}
 - {id: CCM.CLOCK_ROOT22.MUX.sel, value: ANADIG_PLL.SYS_PLL3_PFD2_CLK}
 - {id: CCM.CLOCK_ROOT23.DIV.scale, value: '4', locked: true}
 - {id: CCM.CLOCK_ROOT23.MUX.sel, value: ANADIG_PLL.SYS_PLL2_CLK}
@@ -312,7 +311,7 @@ settings:
 - {id: CCM.CLOCK_ROOT5.MUX.sel, value: ANADIG_PLL.SYS_PLL3_CLK}
 - {id: CCM.CLOCK_ROOT50.DIV.scale, value: '2', locked: true}
 - {id: CCM.CLOCK_ROOT50.MUX.sel, value: ANADIG_PLL.SYS_PLL3_PFD3_CLK}
-- {id: CCM.CLOCK_ROOT51.DIV.scale, value: '10', locked: true}
+- {id: CCM.CLOCK_ROOT51.DIV.scale, value: '4', locked: true}
 - {id: CCM.CLOCK_ROOT51.MUX.sel, value: ANADIG_PLL.SYS_PLL1_DIV2_CLK}
 - {id: CCM.CLOCK_ROOT52.DIV.scale, value: '4', locked: true}
 - {id: CCM.CLOCK_ROOT52.MUX.sel, value: ANADIG_PLL.SYS_PLL1_DIV2_CLK}
@@ -346,7 +345,7 @@ settings:
 - {id: CCM.CLOCK_ROOT73.MUX.sel, value: ANADIG_PLL.SYS_PLL1_DIV5_CLK}
 - {id: CCM.CLOCK_ROOT8.DIV.scale, value: '240', locked: true}
 - {id: CCM.CLOCK_ROOT8.MUX.sel, value: ANADIG_OSC.OSC_24M}
-- {id: CCM.CLOCK_ROOT9.DIV.scale, value: '2', locked: true}
+- {id: CCM.CLOCK_ROOT9.DIV.scale, value: '5', locked: true}
 - {id: CCM.CLOCK_ROOT9.MUX.sel, value: ANADIG_PLL.SYS_PLL3_DIV2_CLK}
 sources:
 - {id: BLK_CTRL_WAKEUPMIX.ECAT_PORT0_REF_CLK_EXT.outFreq, value: 50 MHz, enabled: true}
@@ -439,15 +438,15 @@ void BOARD_BootClockRUN(void)
     /* Init Arm Pll. */
     CLOCK_InitArmPll(&armPllConfig_BOARD_BootClockRUN);
 
+#ifndef USE_SDRAM
     /* Init Sys Pll1. */
     CLOCK_InitSysPll1(&sysPll1Config_BOARD_BootClockRUN);
+#endif
 
-#ifndef USE_SDRAM
     /* Init Sys Pll2. */
     CLOCK_InitSysPll2(&sysPll2Config_BOARD_BootClockRUN);
     /* Init System Pll2 pfd0. */
     CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd0, 27);
-#endif
     /* Init System Pll2 pfd1. */
     CLOCK_InitPfd(kCLOCK_PllSys2, kCLOCK_Pfd1, 16);
     /* Init System Pll2 pfd2. */
@@ -458,15 +457,13 @@ void BOARD_BootClockRUN(void)
 #ifndef USE_HYPERRAM
     /* Init Sys Pll3. */
     CLOCK_InitSysPll3();
-#endif
     /* Init System Pll3 pfd0. */
     CLOCK_InitPfd(kCLOCK_PllSys3, kCLOCK_Pfd0, 22);
+#endif
     /* Init System Pll3 pfd1. */
     CLOCK_InitPfd(kCLOCK_PllSys3, kCLOCK_Pfd1, 33);
-#ifndef USE_HYPERRAM
     /* Init System Pll3 pfd2. */
     CLOCK_InitPfd(kCLOCK_PllSys3, kCLOCK_Pfd2, 22);
-#endif
     /* Init System Pll3 pfd3. */
     CLOCK_InitPfd(kCLOCK_PllSys3, kCLOCK_Pfd3, 18);
 
@@ -529,7 +526,7 @@ void BOARD_BootClockRUN(void)
 
     /* Configure FLEXIO1 using SYS_PLL3_DIV2_CLK */
     rootCfg.mux = kCLOCK_FLEXIO1_ClockRoot_MuxSysPll3Div2;
-    rootCfg.div = 2;
+    rootCfg.div = 5;
     CLOCK_SetRootClock(kCLOCK_Root_Flexio1, &rootCfg);
 
     /* Configure FLEXIO2 using SYS_PLL3_DIV2_CLK */
@@ -587,13 +584,13 @@ void BOARD_BootClockRUN(void)
     rootCfg.div = 1;
     CLOCK_SetRootClock(kCLOCK_Root_Gpt2, &rootCfg);
 
+#ifndef USE_HYPERRAM
     /* Configure FLEXSPI1 using SYS_PLL3_PFD0_CLK */
-    BOARD_SetFlexspiClock(FLEXSPI1, kCLOCK_FLEXSPI1_ClockRoot_MuxSysPll3Pfd0, 3U);
+    BOARD_SetFlexspiClock(FLEXSPI1, kCLOCK_FLEXSPI1_ClockRoot_MuxSysPll3Pfd0, 2U);
+#endif
 
     /* Configure FLEXSPI2 using SYS_PLL3_PFD2_CLK */
-#ifndef USE_HYPERRAM
-    BOARD_SetFlexspiClock(FLEXSPI2, kCLOCK_FLEXSPI2_ClockRoot_MuxSysPll3Pfd2, 2U);
-#endif
+    BOARD_SetFlexspiClock(FLEXSPI2, kCLOCK_FLEXSPI2_ClockRoot_MuxSysPll3Pfd2, 4U);
 
     /* Configure FLEXSPI_SLV using SYS_PLL2_CLK */
     rootCfg.mux = kCLOCK_FLEXSPI_SLV_ClockRoot_MuxSysPll2Out;
@@ -739,7 +736,7 @@ void BOARD_BootClockRUN(void)
 
     /* Configure MAC0 using SYS_PLL1_DIV2_CLK */
     rootCfg.mux = kCLOCK_MAC0_ClockRoot_MuxSysPll1Div2;
-    rootCfg.div = 10;
+    rootCfg.div = 4;
     CLOCK_SetRootClock(kCLOCK_Root_Mac0, &rootCfg);
 
     /* Configure MAC1 using SYS_PLL1_DIV2_CLK */

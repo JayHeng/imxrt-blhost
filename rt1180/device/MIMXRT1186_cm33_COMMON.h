@@ -1,9 +1,7 @@
 /*
 ** ###################################################################
-**     Processors:          MIMXRT1189CVM8B_cm33
-**                          MIMXRT1189CVM8C_cm33
-**                          MIMXRT1189XVM8B_cm33
-**                          MIMXRT1189XVM8C_cm33
+**     Processors:          MIMXRT1186CVJ8C_cm33
+**                          MIMXRT1186XVJ8C_cm33
 **
 **     Compilers:           GNU C Compiler
 **                          IAR ANSI C/C++ Compiler for ARM
@@ -15,7 +13,7 @@
 **     Build:               b251114
 **
 **     Abstract:
-**         CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+**         CMSIS Peripheral Access Layer for MIMXRT1186_cm33
 **
 **     Copyright 1997-2016 Freescale Semiconductor, Inc.
 **     Copyright 2016-2025 NXP
@@ -37,16 +35,16 @@
 */
 
 /*!
- * @file MIMXRT1189_cm33_COMMON.h
+ * @file MIMXRT1186_cm33_COMMON.h
  * @version 3.0
  * @date 2024-10-29
- * @brief CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+ * @brief CMSIS Peripheral Access Layer for MIMXRT1186_cm33
  *
- * CMSIS Peripheral Access Layer for MIMXRT1189_cm33
+ * CMSIS Peripheral Access Layer for MIMXRT1186_cm33
  */
 
-#if !defined(MIMXRT1189_CM33_COMMON_H_)
-#define MIMXRT1189_CM33_COMMON_H_                /**< Symbol preventing repeated inclusion */
+#if !defined(MIMXRT1186_CM33_COMMON_H_)
+#define MIMXRT1186_CM33_COMMON_H_                /**< Symbol preventing repeated inclusion */
 
 /** Memory map major version (memory maps with equal major version number are
  * compatible) */
@@ -172,7 +170,7 @@ typedef enum IRQn {
   GPIO3_1_IRQn                 = 60,               /**< GPIO3 interrupt 1 */
   I3C2_IRQn                    = 61,               /**< I3C2 interrupt */
   LPI2C3_IRQn                  = 62,               /**< LPI2C3 interrupt */
-  LPI2C4_IRQn                  = 63,               /**< LPI2C4 interrput */
+  Reserved79_IRQn              = 63,               /**< Reserved interrupt */
   LPIT2_IRQn                   = 64,               /**< LPIT2 interrupt */
   LPSPI3_IRQn                  = 65,               /**< LPSPI3 interrupt */
   LPSPI4_IRQn                  = 66,               /**< LPSPI4 interrupt */
@@ -186,8 +184,8 @@ typedef enum IRQn {
   SYS_CTR1_IRQn                = 74,               /**< System Counter compare interrupt 0 and 1 */
   TPM3_IRQn                    = 75,               /**< TPM3 interrupt */
   TPM4_IRQn                    = 76,               /**< TPM4 interrupt */
-  TPM5_IRQn                    = 77,               /**< TPM5 interrupt */
-  TPM6_IRQn                    = 78,               /**< TPM6 interrupt */
+  Reserved93_IRQn              = 77,               /**< Reserved interrupt */
+  Reserved94_IRQn              = 78,               /**< Reserved interrupt */
   RTWDOG3_IRQn                 = 79,               /**< RTWDOG3 interrupt */
   RTWDOG4_IRQn                 = 80,               /**< RTWDOG4 interrupt */
   RTWDOG5_IRQn                 = 81,               /**< RTWDOG5 interrupt */
@@ -195,7 +193,7 @@ typedef enum IRQn {
   TMPSNS_INT_IRQn              = 83,               /**< Temperature alarm interrupt */
   BBSM_IRQn                    = 84,               /**< BBSM wakeup alarm interrupt */
   LDO_AON_ANA_IRQn             = 85,               /**< Brown out interrupt */
-  USDHC1_IRQn                  = 86,               /**< USDHC1 */
+  Reserved102_IRQn             = 86,               /**< Reserved interrupt */
   USDHC2_IRQn                  = 87,               /**< USDHC2 */
   TRDC_MGR_MEGA_IRQn           = 88,               /**< MEGAMIX TRDC transfer error interrupt */
   SFA_IRQn                     = 89,               /**< Signal Frequency Analyzer interrupt */
@@ -261,14 +259,14 @@ typedef enum IRQn {
   LPIT3_IRQn                   = 149,              /**< LPIT3 interrupt */
   LPTMR3_IRQn                  = 150,              /**< LPTMR3 interrupt */
   TMR4_IRQn                    = 151,              /**< TMR4 interrupt */
-  LPI2C5_IRQn                  = 152,              /**< LPI2C5 interrupt */
+  Reserved168_IRQn             = 152,              /**< Reserved interrupt */
   LPI2C6_IRQn                  = 153,              /**< LPI2C6 interrupt */
   SAI4_IRQn                    = 154,              /**< SAI4 interrupt */
   SPDIF_IRQn                   = 155,              /**< SPDIF interrupt */
-  LPUART9_IRQn                 = 156,              /**< LPUART9 interrupt */
-  LPUART10_IRQn                = 157,              /**< LPUART10 interrupt */
-  LPUART11_IRQn                = 158,              /**< LPUART11 interrupt */
-  LPUART12_IRQn                = 159,              /**< LPUART12 interrupt */
+  Reserved172_IRQn             = 156,              /**< Reserved interrupt */
+  Reserved173_IRQn             = 157,              /**< Reserved interrupt */
+  Reserved174_IRQn             = 158,              /**< Reserved interrupt */
+  Reserved175_IRQn             = 159,              /**< Reserved interrupt */
   INTG_BOOTROM_DEBUG_CTRL_IRQn = 160,              /**< CM33, CM7, DAP access IRQ */
   EDGELOCK_REQ1_IRQn           = 161,              /**< Edgelock reuqest 1 interrupt */
   EDGELOCK_REQ2_IRQn           = 162,              /**< Edgelock reuqest 2 interrupt */
@@ -300,19 +298,19 @@ typedef enum IRQn {
   EQDC4_IRQn                   = 188,              /**< EQDC4 interrupt */
   ADC2_IRQn                    = 189,              /**< ADC2 interrupt */
   DCDC_IRQn                    = 190,              /**< DCDC brown out interrupt */
-  CAN3_IRQn                    = 191,              /**< CAN3 interrupt */
-  CAN3_ERROR_IRQn              = 192,              /**< CAN3 error interrupt */
+  Reserved207_IRQn             = 191,              /**< Reserved interrupt */
+  Reserved208_IRQn             = 192,              /**< Reserved interrupt */
   DAC_IRQn                     = 193,              /**< DAC interrupt */
   LPSPI5_IRQn                  = 194,              /**< LPSPI5 interrupt */
   LPSPI6_IRQn                  = 195,              /**< LPSPI6 interrupt */
   LPUART7_IRQn                 = 196,              /**< LPUART7 interrupt */
   LPUART8_IRQn                 = 197,              /**< LPUART8 interrupt */
   SAI2_IRQn                    = 198,              /**< SAI2 interrupt */
-  SAI3_IRQn                    = 199,              /**< SAI3 interrupt */
-  ACMP1_IRQn                   = 200,              /**< CMP1 interrupt */
-  ACMP2_IRQn                   = 201,              /**< CMP2 interrupt */
+  Reserved215_IRQn             = 199,              /**< Reserved interrupt */
+  Reserved216_IRQn             = 200,              /**< Reserved interrupt */
+  Reserved217_IRQn             = 201,              /**< Reserved interrupt */
   ACMP3_IRQn                   = 202,              /**< CMP3 interrupt */
-  ACMP4_IRQn                   = 203,              /**< CMP4 interrupt */
+  Reserved219_IRQn             = 203,              /**< Reserved interrupt */
   CM7_PS_IRQn                  = 204,              /**< M7 PS Tag/Data Parity Error */
   CM7_MCM_IRQn                 = 205,              /**< M7 MCM interrupt */
   CM33_MCM_IRQn                = 206,              /**< M33 MCM interrupt */
@@ -322,8 +320,8 @@ typedef enum IRQn {
   GPT2_IRQn                    = 210,              /**< GPT2 interrupt */
   KPP_IRQn                     = 211,              /**< KPP interrupt */
   USBPHY1_IRQn                 = 212,              /**< USBPHY1 interrupt */
-  USBPHY2_IRQn                 = 213,              /**< USBPHY2 interrupt */
-  USB_OTG2_IRQn                = 214,              /**< USBOTG2 interrupt */
+  Reserved229_IRQn             = 213,              /**< Reserved interrupt */
+  Reserved230_IRQn             = 214,              /**< Reserved interrupt */
   USB_OTG1_IRQn                = 215,              /**< USBOTG1 interrupt */
   FLEXSPI_SLV_IRQn             = 216,              /**< FLEXSPI follower interrupt */
   NETC_IRQn                    = 217,              /**< NETC interrupt */
@@ -372,18 +370,18 @@ typedef enum IRQn {
 #define __SAUREGION_PRESENT            1         /**< Defines if an SAU is present or not */
 
 #include "core_cm33.h"                 /* Core Peripheral Access Layer */
-#include "system_MIMXRT1189_cm33.h"    /* Device specific configuration file */
+#include "system_MIMXRT1186_cm33.h"    /* Device specific configuration file */
 
 /*!
  * @}
  */ /* end of group Cortex_Core_Configuration */
 
 
-#ifndef MIMXRT1189_cm33_SERIES
-#define MIMXRT1189_cm33_SERIES
+#ifndef MIMXRT1186_cm33_SERIES
+#define MIMXRT1186_cm33_SERIES
 #endif
 /* CPU specific feature definitions */
-#include "MIMXRT1189_cm33_features.h"
+#include "MIMXRT1186_cm33_features.h"
 
 /* ----------------------------------------------------------------------------
    -- Mapping Information
@@ -470,10 +468,10 @@ typedef enum _xbar_input_signal
     kXBAR1_InputIomuxXbarInout35    = 35|0x10000U, /**< IOMUX_XBAR_INOUT35 output assigned to XBAR1_IN35 input. */
     kXBAR1_InputIomuxXbarInout36    = 36|0x10000U, /**< IOMUX_XBAR_INOUT36 output assigned to XBAR1_IN36 input. */
     kXBAR1_InputIomuxXbarInout37    = 37|0x10000U, /**< IOMUX_XBAR_INOUT37 output assigned to XBAR1_IN37 input. */
-    kXBAR1_InputAcmp1Out            = 38|0x10000U, /**< ACMP1_OUT output assigned to XBAR1_IN38 input. */
-    kXBAR1_InputAcmp2Out            = 39|0x10000U, /**< ACMP2_OUT output assigned to XBAR1_IN39 input. */
+    kXBAR1_InputRESERVED38          = 38|0x10000U, /**< XBAR1_IN38 input is reserved. */
+    kXBAR1_InputRESERVED39          = 39|0x10000U, /**< XBAR1_IN39 input is reserved. */
     kXBAR1_InputAcmp3Out            = 40|0x10000U, /**< ACMP3_OUT output assigned to XBAR1_IN40 input. */
-    kXBAR1_InputAcmp4Out            = 41|0x10000U, /**< ACMP4_OUT output assigned to XBAR1_IN41 input. */
+    kXBAR1_InputRESERVED41          = 41|0x10000U, /**< XBAR1_IN41 input is reserved. */
     kXBAR1_InputQtimer1Timer0       = 42|0x10000U, /**< QTIMER1_TIMER0 output assigned to XBAR1_IN42 input. */
     kXBAR1_InputQtimer1Timer1       = 43|0x10000U, /**< QTIMER1_TIMER1 output assigned to XBAR1_IN43 input. */
     kXBAR1_InputQtimer1Timer2       = 44|0x10000U, /**< QTIMER1_TIMER2 output assigned to XBAR1_IN44 input. */
@@ -594,16 +592,16 @@ typedef enum _xbar_input_signal
     kXBAR1_InputTpm4ChTrigger2      = 159|0x10000U, /**< TPM4_CH_TRIGGER2 output assigned to XBAR1_IN159 input. */
     kXBAR1_InputTpm4ChTrigger3      = 160|0x10000U, /**< TPM4_CH_TRIGGER3 output assigned to XBAR1_IN160 input. */
     kXBAR1_InputTpm4Trigger         = 161|0x10000U, /**< TPM4_TRIGGER output assigned to XBAR1_IN161 input. */
-    kXBAR1_InputTpm5ChTrigger0      = 162|0x10000U, /**< TPM5_CH_TRIGGER0 output assigned to XBAR1_IN162 input. */
-    kXBAR1_InputTpm5ChTrigger1      = 163|0x10000U, /**< TPM5_CH_TRIGGER1 output assigned to XBAR1_IN163 input. */
-    kXBAR1_InputTpm5ChTrigger2      = 164|0x10000U, /**< TPM5_CH_TRIGGER2 output assigned to XBAR1_IN164 input. */
-    kXBAR1_InputTpm5ChTrigger3      = 165|0x10000U, /**< TPM5_CH_TRIGGER3 output assigned to XBAR1_IN165 input. */
-    kXBAR1_InputTpm5Trigger         = 166|0x10000U, /**< TPM5_TRIGGER output assigned to XBAR1_IN166 input. */
-    kXBAR1_InputTpm6ChTrigger0      = 167|0x10000U, /**< TPM6_CH_TRIGGER0 output assigned to XBAR1_IN167 input. */
-    kXBAR1_InputTpm6ChTrigger1      = 168|0x10000U, /**< TPM6_CH_TRIGGER1 output assigned to XBAR1_IN168 input. */
-    kXBAR1_InputTpm6ChTrigger2      = 169|0x10000U, /**< TPM6_CH_TRIGGER2 output assigned to XBAR1_IN169 input. */
-    kXBAR1_InputTpm6ChTrigger3      = 170|0x10000U, /**< TPM6_CH_TRIGGER3 output assigned to XBAR1_IN170 input. */
-    kXBAR1_InputTpm6Trigger         = 171|0x10000U, /**< TPM6_TRIGGER output assigned to XBAR1_IN171 input. */
+    kXBAR1_InputRESERVED162         = 162|0x10000U, /**< XBAR1_IN162 input is reserved. */
+    kXBAR1_InputRESERVED163         = 163|0x10000U, /**< XBAR1_IN163 input is reserved. */
+    kXBAR1_InputRESERVED164         = 164|0x10000U, /**< XBAR1_IN164 input is reserved. */
+    kXBAR1_InputRESERVED165         = 165|0x10000U, /**< XBAR1_IN165 input is reserved. */
+    kXBAR1_InputRESERVED166         = 166|0x10000U, /**< XBAR1_IN166 input is reserved. */
+    kXBAR1_InputRESERVED167         = 167|0x10000U, /**< XBAR1_IN167 input is reserved. */
+    kXBAR1_InputRESERVED168         = 168|0x10000U, /**< XBAR1_IN168 input is reserved. */
+    kXBAR1_InputRESERVED169         = 169|0x10000U, /**< XBAR1_IN169 input is reserved. */
+    kXBAR1_InputRESERVED170         = 170|0x10000U, /**< XBAR1_IN170 input is reserved. */
+    kXBAR1_InputRESERVED171         = 171|0x10000U, /**< XBAR1_IN171 input is reserved. */
     kXBAR1_InputLptmr1TriggerDelay  = 172|0x10000U, /**< LPTMR1_TRIGGER_DELAY output assigned to XBAR1_IN172 input. */
     kXBAR1_InputLptmr2TriggerDelay  = 173|0x10000U, /**< LPTMR2_TRIGGER_DELAY output assigned to XBAR1_IN173 input. */
     kXBAR1_InputLptmr3TriggerDelay  = 174|0x10000U, /**< LPTMR3_TRIGGER_DELAY output assigned to XBAR1_IN174 input. */
@@ -652,10 +650,10 @@ typedef enum _xbar_input_signal
     kXBAR2_InputLogicHigh           = 1|0x20000U,  /**< LOGIC_HIGH output assigned to XBAR2_IN1 input. */
     kXBAR2_InputLogicLow1           = 2|0x20000U,  /**< LOGIC_LOW1 output assigned to XBAR2_IN2 input. */
     kXBAR2_InputLogicHigh1          = 3|0x20000U,  /**< LOGIC_HIGH1 output assigned to XBAR2_IN3 input. */
-    kXBAR2_InputAcmp1Out            = 4|0x20000U,  /**< ACMP1_OUT output assigned to XBAR2_IN4 input. */
-    kXBAR2_InputAcmp2Out            = 5|0x20000U,  /**< ACMP2_OUT output assigned to XBAR2_IN5 input. */
+    kXBAR2_InputRESERVED4           = 4|0x20000U,  /**< XBAR2_IN4 input is reserved. */
+    kXBAR2_InputRESERVED5           = 5|0x20000U,  /**< XBAR2_IN5 input is reserved. */
     kXBAR2_InputAcmp3Out            = 6|0x20000U,  /**< ACMP3_OUT output assigned to XBAR2_IN6 input. */
-    kXBAR2_InputAcmp4Out            = 7|0x20000U,  /**< ACMP4_OUT output assigned to XBAR2_IN7 input. */
+    kXBAR2_InputRESERVED7           = 7|0x20000U,  /**< XBAR2_IN7 input is reserved. */
     kXBAR2_InputQtimer1Timer0       = 8|0x20000U,  /**< QTIMER1_TIMER0 output assigned to XBAR2_IN8 input. */
     kXBAR2_InputQtimer1Timer1       = 9|0x20000U,  /**< QTIMER1_TIMER1 output assigned to XBAR2_IN9 input. */
     kXBAR2_InputQtimer1Timer2       = 10|0x20000U, /**< QTIMER1_TIMER2 output assigned to XBAR2_IN10 input. */
@@ -772,16 +770,16 @@ typedef enum _xbar_input_signal
     kXBAR2_InputTpm4ChTrigger2      = 121|0x20000U, /**< TPM4_CH_TRIGGER2 output assigned to XBAR2_IN121 input. */
     kXBAR2_InputTpm4ChTrigger3      = 122|0x20000U, /**< TPM4_CH_TRIGGER3 output assigned to XBAR2_IN122 input. */
     kXBAR2_InputTpm4Trigger         = 123|0x20000U, /**< TPM4_TRIGGER output assigned to XBAR2_IN123 input. */
-    kXBAR2_InputTpm5ChTrigger0      = 124|0x20000U, /**< TPM5_CH_TRIGGER0 output assigned to XBAR2_IN124 input. */
-    kXBAR2_InputTpm5ChTrigger1      = 125|0x20000U, /**< TPM5_CH_TRIGGER1 output assigned to XBAR2_IN125 input. */
-    kXBAR2_InputTpm5ChTrigger2      = 126|0x20000U, /**< TPM5_CH_TRIGGER2 output assigned to XBAR2_IN126 input. */
-    kXBAR2_InputTpm5ChTrigger3      = 127|0x20000U, /**< TPM5_CH_TRIGGER3 output assigned to XBAR2_IN127 input. */
-    kXBAR2_InputTpm5Trigger         = 128|0x20000U, /**< TPM5_TRIGGER output assigned to XBAR2_IN128 input. */
-    kXBAR2_InputTpm6ChTrigger0      = 129|0x20000U, /**< TPM6_CH_TRIGGER0 output assigned to XBAR2_IN129 input. */
-    kXBAR2_InputTpm6ChTrigger1      = 130|0x20000U, /**< TPM6_CH_TRIGGER1 output assigned to XBAR2_IN130 input. */
-    kXBAR2_InputTpm6ChTrigger2      = 131|0x20000U, /**< TPM6_CH_TRIGGER2 output assigned to XBAR2_IN131 input. */
-    kXBAR2_InputTpm6ChTrigger3      = 132|0x20000U, /**< TPM6_CH_TRIGGER3 output assigned to XBAR2_IN132 input. */
-    kXBAR2_InputTpm6Trigger         = 133|0x20000U, /**< TPM6_TRIGGER output assigned to XBAR2_IN133 input. */
+    kXBAR2_InputRESERVED124         = 124|0x20000U, /**< XBAR2_IN124 input is reserved. */
+    kXBAR2_InputRESERVED125         = 125|0x20000U, /**< XBAR2_IN125 input is reserved. */
+    kXBAR2_InputRESERVED126         = 126|0x20000U, /**< XBAR2_IN126 input is reserved. */
+    kXBAR2_InputRESERVED127         = 127|0x20000U, /**< XBAR2_IN127 input is reserved. */
+    kXBAR2_InputRESERVED128         = 128|0x20000U, /**< XBAR2_IN128 input is reserved. */
+    kXBAR2_InputRESERVED129         = 129|0x20000U, /**< XBAR2_IN129 input is reserved. */
+    kXBAR2_InputRESERVED130         = 130|0x20000U, /**< XBAR2_IN130 input is reserved. */
+    kXBAR2_InputRESERVED131         = 131|0x20000U, /**< XBAR2_IN131 input is reserved. */
+    kXBAR2_InputRESERVED132         = 132|0x20000U, /**< XBAR2_IN132 input is reserved. */
+    kXBAR2_InputRESERVED133         = 133|0x20000U, /**< XBAR2_IN133 input is reserved. */
     kXBAR2_InputLptmr1TriggerDelay  = 134|0x20000U, /**< LPTMR1_TRIGGER_DELAY output assigned to XBAR2_IN134 input. */
     kXBAR2_InputLptmr2TriggerDelay  = 135|0x20000U, /**< LPTMR2_TRIGGER_DELAY output assigned to XBAR2_IN135 input. */
     kXBAR2_InputLptmr3TriggerDelay  = 136|0x20000U, /**< LPTMR3_TRIGGER_DELAY output assigned to XBAR2_IN136 input. */
@@ -830,10 +828,10 @@ typedef enum _xbar_input_signal
     kXBAR3_InputLogicHigh           = 1|0x30000U,  /**< LOGIC_HIGH output assigned to XBAR3_IN1 input. */
     kXBAR3_InputLogicLow1           = 2|0x30000U,  /**< LOGIC_LOW1 output assigned to XBAR3_IN2 input. */
     kXBAR3_InputLogicHigh1          = 3|0x30000U,  /**< LOGIC_HIGH1 output assigned to XBAR3_IN3 input. */
-    kXBAR3_InputAcmp1Out            = 4|0x30000U,  /**< ACMP1_OUT output assigned to XBAR3_IN4 input. */
-    kXBAR3_InputAcmp2Out            = 5|0x30000U,  /**< ACMP2_OUT output assigned to XBAR3_IN5 input. */
+    kXBAR3_InputRESERVED4           = 4|0x30000U,  /**< XBAR3_IN4 input is reserved. */
+    kXBAR3_InputRESERVED5           = 5|0x30000U,  /**< XBAR3_IN5 input is reserved. */
     kXBAR3_InputAcmp3Out            = 6|0x30000U,  /**< ACMP3_OUT output assigned to XBAR3_IN6 input. */
-    kXBAR3_InputAcmp4Out            = 7|0x30000U,  /**< ACMP4_OUT output assigned to XBAR3_IN7 input. */
+    kXBAR3_InputRESERVED7           = 7|0x30000U,  /**< XBAR3_IN7 input is reserved. */
     kXBAR3_InputQtimer1Timer0       = 8|0x30000U,  /**< QTIMER1_TIMER0 output assigned to XBAR3_IN8 input. */
     kXBAR3_InputQtimer1Timer1       = 9|0x30000U,  /**< QTIMER1_TIMER1 output assigned to XBAR3_IN9 input. */
     kXBAR3_InputQtimer1Timer2       = 10|0x30000U, /**< QTIMER1_TIMER2 output assigned to XBAR3_IN10 input. */
@@ -950,16 +948,16 @@ typedef enum _xbar_input_signal
     kXBAR3_InputTpm4ChTrigger2      = 121|0x30000U, /**< TPM4_CH_TRIGGER2 output assigned to XBAR3_IN121 input. */
     kXBAR3_InputTpm4ChTrigger3      = 122|0x30000U, /**< TPM4_CH_TRIGGER3 output assigned to XBAR3_IN122 input. */
     kXBAR3_InputTpm4Trigger         = 123|0x30000U, /**< TPM4_TRIGGER output assigned to XBAR3_IN123 input. */
-    kXBAR3_InputTpm5ChTrigger0      = 124|0x30000U, /**< TPM5_CH_TRIGGER0 output assigned to XBAR3_IN124 input. */
-    kXBAR3_InputTpm5ChTrigger1      = 125|0x30000U, /**< TPM5_CH_TRIGGER1 output assigned to XBAR3_IN125 input. */
-    kXBAR3_InputTpm5ChTrigger2      = 126|0x30000U, /**< TPM5_CH_TRIGGER2 output assigned to XBAR3_IN126 input. */
-    kXBAR3_InputTpm5ChTrigger3      = 127|0x30000U, /**< TPM5_CH_TRIGGER3 output assigned to XBAR3_IN127 input. */
-    kXBAR3_InputTpm5Trigger         = 128|0x30000U, /**< TPM5_TRIGGER output assigned to XBAR3_IN128 input. */
-    kXBAR3_InputTpm6ChTrigger0      = 129|0x30000U, /**< TPM6_CH_TRIGGER0 output assigned to XBAR3_IN129 input. */
-    kXBAR3_InputTpm6ChTrigger1      = 130|0x30000U, /**< TPM6_CH_TRIGGER1 output assigned to XBAR3_IN130 input. */
-    kXBAR3_InputTpm6ChTrigger2      = 131|0x30000U, /**< TPM6_CH_TRIGGER2 output assigned to XBAR3_IN131 input. */
-    kXBAR3_InputTpm6ChTrigger3      = 132|0x30000U, /**< TPM6_CH_TRIGGER3 output assigned to XBAR3_IN132 input. */
-    kXBAR3_InputTpm6Trigger         = 133|0x30000U, /**< TPM6_TRIGGER output assigned to XBAR3_IN133 input. */
+    kXBAR3_InputRESERVED124         = 124|0x30000U, /**< XBAR3_IN124 input is reserved. */
+    kXBAR3_InputRESERVED125         = 125|0x30000U, /**< XBAR3_IN125 input is reserved. */
+    kXBAR3_InputRESERVED126         = 126|0x30000U, /**< XBAR3_IN126 input is reserved. */
+    kXBAR3_InputRESERVED127         = 127|0x30000U, /**< XBAR3_IN127 input is reserved. */
+    kXBAR3_InputRESERVED128         = 128|0x30000U, /**< XBAR3_IN128 input is reserved. */
+    kXBAR3_InputRESERVED129         = 129|0x30000U, /**< XBAR3_IN129 input is reserved. */
+    kXBAR3_InputRESERVED130         = 130|0x30000U, /**< XBAR3_IN130 input is reserved. */
+    kXBAR3_InputRESERVED131         = 131|0x30000U, /**< XBAR3_IN131 input is reserved. */
+    kXBAR3_InputRESERVED132         = 132|0x30000U, /**< XBAR3_IN132 input is reserved. */
+    kXBAR3_InputRESERVED133         = 133|0x30000U, /**< XBAR3_IN133 input is reserved. */
     kXBAR3_InputLptmr1TriggerDelay  = 134|0x30000U, /**< LPTMR1_TRIGGER_DELAY output assigned to XBAR3_IN134 input. */
     kXBAR3_InputLptmr2TriggerDelay  = 135|0x30000U, /**< LPTMR2_TRIGGER_DELAY output assigned to XBAR3_IN135 input. */
     kXBAR3_InputLptmr3TriggerDelay  = 136|0x30000U, /**< LPTMR3_TRIGGER_DELAY output assigned to XBAR3_IN136 input. */
@@ -1046,10 +1044,10 @@ typedef enum _xbar_output_signal
     kXBAR1_OutputTriggerSyncIn5     = 35|0x10000U, /**< XBAR1_OUT35 output assigned to TRIGGER_SYNC_IN5 */
     kXBAR1_OutputTriggerSyncIn6     = 36|0x10000U, /**< XBAR1_OUT36 output assigned to TRIGGER_SYNC_IN6 */
     kXBAR1_OutputTriggerSyncIn7     = 37|0x10000U, /**< XBAR1_OUT37 output assigned to TRIGGER_SYNC_IN7 */
-    kXBAR1_OutputAcmp1Sample        = 38|0x10000U, /**< XBAR1_OUT38 output assigned to ACMP1_SAMPLE */
-    kXBAR1_OutputAcmp2Sample        = 39|0x10000U, /**< XBAR1_OUT39 output assigned to ACMP2_SAMPLE */
+    kXBAR1_OutputRESERVED38         = 38|0x10000U, /**< XBAR1_OUT38 output is reserved. */
+    kXBAR1_OutputRESERVED39         = 39|0x10000U, /**< XBAR1_OUT39 output is reserved. */
     kXBAR1_OutputAcmp3Sample        = 40|0x10000U, /**< XBAR1_OUT40 output assigned to ACMP3_SAMPLE */
-    kXBAR1_OutputAcmp4Sample        = 41|0x10000U, /**< XBAR1_OUT41 output assigned to ACMP4_SAMPLE */
+    kXBAR1_OutputRESERVED41         = 41|0x10000U, /**< XBAR1_OUT41 output is reserved. */
     kXBAR1_OutputFlexpwm1Exta0      = 42|0x10000U, /**< XBAR1_OUT42 output assigned to FLEXPWM1_EXTA0 */
     kXBAR1_OutputFlexpwm1Exta1      = 43|0x10000U, /**< XBAR1_OUT43 output assigned to FLEXPWM1_EXTA1 */
     kXBAR1_OutputFlexpwm1Exta2      = 44|0x10000U, /**< XBAR1_OUT44 output assigned to FLEXPWM1_EXTA2 */
@@ -1167,8 +1165,8 @@ typedef enum _xbar_output_signal
     kXBAR1_OutputLpi2c1TrigIn       = 156|0x10000U, /**< XBAR1_OUT156 output assigned to LPI2C1_TRIG_IN */
     kXBAR1_OutputLpi2c2TrigIn       = 157|0x10000U, /**< XBAR1_OUT157 output assigned to LPI2C2_TRIG_IN */
     kXBAR1_OutputLpi2c3TrigIn       = 158|0x10000U, /**< XBAR1_OUT158 output assigned to LPI2C3_TRIG_IN */
-    kXBAR1_OutputLpi2c4TrigIn       = 159|0x10000U, /**< XBAR1_OUT159 output assigned to LPI2C4_TRIG_IN */
-    kXBAR1_OutputLpi2c5TrigIn       = 160|0x10000U, /**< XBAR1_OUT160 output assigned to LPI2C5_TRIG_IN */
+    kXBAR1_OutputRESERVED159        = 159|0x10000U, /**< XBAR1_OUT159 output is reserved. */
+    kXBAR1_OutputRESERVED160        = 160|0x10000U, /**< XBAR1_OUT160 output is reserved. */
     kXBAR1_OutputLpi2c6TrigIn       = 161|0x10000U, /**< XBAR1_OUT161 output assigned to LPI2C6_TRIG_IN */
     kXBAR1_OutputLpspi1TrigIn       = 162|0x10000U, /**< XBAR1_OUT162 output assigned to LPSPI1_TRIG_IN */
     kXBAR1_OutputLpspi2TrigIn       = 163|0x10000U, /**< XBAR1_OUT163 output assigned to LPSPI2_TRIG_IN */
@@ -1184,10 +1182,10 @@ typedef enum _xbar_output_signal
     kXBAR1_OutputLpuart6TrigIn      = 173|0x10000U, /**< XBAR1_OUT173 output assigned to LPUART6_TRIG_IN */
     kXBAR1_OutputLpuart7TrigIn      = 174|0x10000U, /**< XBAR1_OUT174 output assigned to LPUART7_TRIG_IN */
     kXBAR1_OutputLpuart8TrigIn      = 175|0x10000U, /**< XBAR1_OUT175 output assigned to LPUART8_TRIG_IN */
-    kXBAR1_OutputLpuart9TrigIn      = 176|0x10000U, /**< XBAR1_OUT176 output assigned to LPUART9_TRIG_IN */
-    kXBAR1_OutputLpuart10TrigIn     = 177|0x10000U, /**< XBAR1_OUT177 output assigned to LPUART10_TRIG_IN */
-    kXBAR1_OutputLpuart11TrigIn     = 178|0x10000U, /**< XBAR1_OUT178 output assigned to LPUART11_TRIG_IN */
-    kXBAR1_OutputLpuart12TrigIn     = 179|0x10000U, /**< XBAR1_OUT179 output assigned to LPUART12_TRIG_IN */
+    kXBAR1_OutputRESERVED176        = 176|0x10000U, /**< XBAR1_OUT176 output is reserved. */
+    kXBAR1_OutputRESERVED177        = 177|0x10000U, /**< XBAR1_OUT177 output is reserved. */
+    kXBAR1_OutputRESERVED178        = 178|0x10000U, /**< XBAR1_OUT178 output is reserved. */
+    kXBAR1_OutputRESERVED179        = 179|0x10000U, /**< XBAR1_OUT179 output is reserved. */
     kXBAR1_OutputLpit123TrigIn0     = 180|0x10000U, /**< XBAR1_OUT180 output assigned to LPIT1_2_3_TRIG_IN0 */
     kXBAR1_OutputLpit123TrigIn1     = 181|0x10000U, /**< XBAR1_OUT181 output assigned to LPIT1_2_3_TRIG_IN1 */
     kXBAR1_OutputLpit123TrigIn2     = 182|0x10000U, /**< XBAR1_OUT182 output assigned to LPIT1_2_3_TRIG_IN2 */
@@ -1202,12 +1200,12 @@ typedef enum _xbar_output_signal
     kXBAR1_OutputTpm3TrigIn3        = 191|0x10000U, /**< XBAR1_OUT191 output assigned to TPM3_TRIG_IN3 */
     kXBAR1_OutputTpm456TrigIn0      = 192|0x10000U, /**< XBAR1_OUT192 output assigned to TPM4_5_6_TRIG_IN0 */
     kXBAR1_OutputTpm4TrigIn1        = 193|0x10000U, /**< XBAR1_OUT193 output assigned to TPM4_TRIG_IN1 */
-    kXBAR1_OutputTpm5TrigIn1        = 194|0x10000U, /**< XBAR1_OUT194 output assigned to TPM5_TRIG_IN1 */
-    kXBAR1_OutputTpm6TrigIn1        = 195|0x10000U, /**< XBAR1_OUT195 output assigned to TPM6_TRIG_IN1 */
+    kXBAR1_OutputRESERVED194        = 194|0x10000U, /**< XBAR1_OUT194 output is reserved. */
+    kXBAR1_OutputRESERVED195        = 195|0x10000U, /**< XBAR1_OUT195 output is reserved. */
     kXBAR1_OutputTpm456TrigIn2      = 196|0x10000U, /**< XBAR1_OUT196 output assigned to TPM4_5_6_TRIG_IN2 */
     kXBAR1_OutputTpm4TrigIn3        = 197|0x10000U, /**< XBAR1_OUT197 output assigned to TPM4_TRIG_IN3 */
-    kXBAR1_OutputTpm5TrigIn3        = 198|0x10000U, /**< XBAR1_OUT198 output assigned to TPM5_TRIG_IN3 */
-    kXBAR1_OutputTpm6TrigIn3        = 199|0x10000U, /**< XBAR1_OUT199 output assigned to TPM6_TRIG_IN3 */
+    kXBAR1_OutputRESERVED198        = 198|0x10000U, /**< XBAR1_OUT198 output is reserved. */
+    kXBAR1_OutputRESERVED199        = 199|0x10000U, /**< XBAR1_OUT199 output is reserved. */
     kXBAR1_OutputNetcTmrTrig1       = 200|0x10000U, /**< XBAR1_OUT200 output assigned to NETC_TMR_TRIG1 */
     kXBAR1_OutputNetcTmrTrig2       = 201|0x10000U, /**< XBAR1_OUT201 output assigned to NETC_TMR_TRIG2 */
     kXBAR1_OutputRESERVED202        = 202|0x10000U, /**< XBAR1_OUT202 output is reserved. */
@@ -1837,22 +1835,14 @@ typedef enum _xbar_output_signal
   #define CAN2                                     ((CAN_Type *)CAN2_BASE)
   /** Peripheral CAN2 base pointer */
   #define CAN2_NS                                  ((CAN_Type *)CAN2_BASE_NS)
-  /** Peripheral CAN3 base address */
-  #define CAN3_BASE                                (0x545B0000u)
-  /** Peripheral CAN3 base address */
-  #define CAN3_BASE_NS                             (0x445B0000u)
-  /** Peripheral CAN3 base pointer */
-  #define CAN3                                     ((CAN_Type *)CAN3_BASE)
-  /** Peripheral CAN3 base pointer */
-  #define CAN3_NS                                  ((CAN_Type *)CAN3_BASE_NS)
   /** Array initializer of CAN peripheral base addresses */
-  #define CAN_BASE_ADDRS                           { 0u, CAN1_BASE, CAN2_BASE, CAN3_BASE }
+  #define CAN_BASE_ADDRS                           { 0u, CAN1_BASE, CAN2_BASE }
   /** Array initializer of CAN peripheral base pointers */
-  #define CAN_BASE_PTRS                            { (CAN_Type *)0u, CAN1, CAN2, CAN3 }
+  #define CAN_BASE_PTRS                            { (CAN_Type *)0u, CAN1, CAN2 }
   /** Array initializer of CAN peripheral base addresses */
-  #define CAN_BASE_ADDRS_NS                        { 0u, CAN1_BASE_NS, CAN2_BASE_NS, CAN3_BASE_NS }
+  #define CAN_BASE_ADDRS_NS                        { 0u, CAN1_BASE_NS, CAN2_BASE_NS }
   /** Array initializer of CAN peripheral base pointers */
-  #define CAN_BASE_PTRS_NS                         { (CAN_Type *)0u, CAN1_NS, CAN2_NS, CAN3_NS }
+  #define CAN_BASE_PTRS_NS                         { (CAN_Type *)0u, CAN1_NS, CAN2_NS }
 #else
   /** Peripheral CAN1 base address */
   #define CAN1_BASE                                (0x443A0000u)
@@ -1862,22 +1852,18 @@ typedef enum _xbar_output_signal
   #define CAN2_BASE                                (0x425B0000u)
   /** Peripheral CAN2 base pointer */
   #define CAN2                                     ((CAN_Type *)CAN2_BASE)
-  /** Peripheral CAN3 base address */
-  #define CAN3_BASE                                (0x445B0000u)
-  /** Peripheral CAN3 base pointer */
-  #define CAN3                                     ((CAN_Type *)CAN3_BASE)
   /** Array initializer of CAN peripheral base addresses */
-  #define CAN_BASE_ADDRS                           { 0u, CAN1_BASE, CAN2_BASE, CAN3_BASE }
+  #define CAN_BASE_ADDRS                           { 0u, CAN1_BASE, CAN2_BASE }
   /** Array initializer of CAN peripheral base pointers */
-  #define CAN_BASE_PTRS                            { (CAN_Type *)0u, CAN1, CAN2, CAN3 }
+  #define CAN_BASE_PTRS                            { (CAN_Type *)0u, CAN1, CAN2 }
 #endif
 /** Interrupt vectors for the CAN peripheral type */
-#define CAN_Rx_Warning_IRQS                      { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
-#define CAN_Tx_Warning_IRQS                      { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
-#define CAN_Wake_Up_IRQS                         { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
-#define CAN_Error_IRQS                           { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
-#define CAN_Bus_Off_IRQS                         { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
-#define CAN_ORed_Message_buffer_IRQS             { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn, CAN3_IRQn }
+#define CAN_Rx_Warning_IRQS                      { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
+#define CAN_Tx_Warning_IRQS                      { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
+#define CAN_Wake_Up_IRQS                         { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
+#define CAN_Error_IRQS                           { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
+#define CAN_Bus_Off_IRQS                         { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
+#define CAN_ORed_Message_buffer_IRQS             { NotAvail_IRQn, CAN1_IRQn, CAN2_IRQn }
 
 /* CCM - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -1910,22 +1896,6 @@ typedef enum _xbar_output_signal
 
 /* CMP - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
-  /** Peripheral CMP1 base address */
-  #define CMP1_BASE                                (0x52DC0000u)
-  /** Peripheral CMP1 base address */
-  #define CMP1_BASE_NS                             (0x42DC0000u)
-  /** Peripheral CMP1 base pointer */
-  #define CMP1                                     ((CMP_Type *)CMP1_BASE)
-  /** Peripheral CMP1 base pointer */
-  #define CMP1_NS                                  ((CMP_Type *)CMP1_BASE_NS)
-  /** Peripheral CMP2 base address */
-  #define CMP2_BASE                                (0x52DD0000u)
-  /** Peripheral CMP2 base address */
-  #define CMP2_BASE_NS                             (0x42DD0000u)
-  /** Peripheral CMP2 base pointer */
-  #define CMP2                                     ((CMP_Type *)CMP2_BASE)
-  /** Peripheral CMP2 base pointer */
-  #define CMP2_NS                                  ((CMP_Type *)CMP2_BASE_NS)
   /** Peripheral CMP3 base address */
   #define CMP3_BASE                                (0x52DE0000u)
   /** Peripheral CMP3 base address */
@@ -1934,46 +1904,26 @@ typedef enum _xbar_output_signal
   #define CMP3                                     ((CMP_Type *)CMP3_BASE)
   /** Peripheral CMP3 base pointer */
   #define CMP3_NS                                  ((CMP_Type *)CMP3_BASE_NS)
-  /** Peripheral CMP4 base address */
-  #define CMP4_BASE                                (0x52DF0000u)
-  /** Peripheral CMP4 base address */
-  #define CMP4_BASE_NS                             (0x42DF0000u)
-  /** Peripheral CMP4 base pointer */
-  #define CMP4                                     ((CMP_Type *)CMP4_BASE)
-  /** Peripheral CMP4 base pointer */
-  #define CMP4_NS                                  ((CMP_Type *)CMP4_BASE_NS)
   /** Array initializer of CMP peripheral base addresses */
-  #define CMP_BASE_ADDRS                           { 0u, CMP1_BASE, CMP2_BASE, CMP3_BASE, CMP4_BASE }
+  #define CMP_BASE_ADDRS                           { 0u, 0u, 0u, CMP3_BASE }
   /** Array initializer of CMP peripheral base pointers */
-  #define CMP_BASE_PTRS                            { (CMP_Type *)0u, CMP1, CMP2, CMP3, CMP4 }
+  #define CMP_BASE_PTRS                            { (CMP_Type *)0u, (CMP_Type *)0u, (CMP_Type *)0u, CMP3 }
   /** Array initializer of CMP peripheral base addresses */
-  #define CMP_BASE_ADDRS_NS                        { 0u, CMP1_BASE_NS, CMP2_BASE_NS, CMP3_BASE_NS, CMP4_BASE_NS }
+  #define CMP_BASE_ADDRS_NS                        { 0u, 0u, 0u, CMP3_BASE_NS }
   /** Array initializer of CMP peripheral base pointers */
-  #define CMP_BASE_PTRS_NS                         { (CMP_Type *)0u, CMP1_NS, CMP2_NS, CMP3_NS, CMP4_NS }
+  #define CMP_BASE_PTRS_NS                         { (CMP_Type *)0u, (CMP_Type *)0u, (CMP_Type *)0u, CMP3_NS }
 #else
-  /** Peripheral CMP1 base address */
-  #define CMP1_BASE                                (0x42DC0000u)
-  /** Peripheral CMP1 base pointer */
-  #define CMP1                                     ((CMP_Type *)CMP1_BASE)
-  /** Peripheral CMP2 base address */
-  #define CMP2_BASE                                (0x42DD0000u)
-  /** Peripheral CMP2 base pointer */
-  #define CMP2                                     ((CMP_Type *)CMP2_BASE)
   /** Peripheral CMP3 base address */
   #define CMP3_BASE                                (0x42DE0000u)
   /** Peripheral CMP3 base pointer */
   #define CMP3                                     ((CMP_Type *)CMP3_BASE)
-  /** Peripheral CMP4 base address */
-  #define CMP4_BASE                                (0x42DF0000u)
-  /** Peripheral CMP4 base pointer */
-  #define CMP4                                     ((CMP_Type *)CMP4_BASE)
   /** Array initializer of CMP peripheral base addresses */
-  #define CMP_BASE_ADDRS                           { 0u, CMP1_BASE, CMP2_BASE, CMP3_BASE, CMP4_BASE }
+  #define CMP_BASE_ADDRS                           { 0u, 0u, 0u, CMP3_BASE }
   /** Array initializer of CMP peripheral base pointers */
-  #define CMP_BASE_PTRS                            { (CMP_Type *)0u, CMP1, CMP2, CMP3, CMP4 }
+  #define CMP_BASE_PTRS                            { (CMP_Type *)0u, (CMP_Type *)0u, (CMP_Type *)0u, CMP3 }
 #endif
 /** Interrupt vectors for the CMP peripheral type */
-#define CMP_IRQS                                 { NotAvail_IRQn, ACMP1_IRQn, ACMP2_IRQn, ACMP3_IRQn, ACMP4_IRQn }
+#define CMP_IRQS                                 { NotAvail_IRQn, NotAvail_IRQn, NotAvail_IRQn, ACMP3_IRQn }
 
 /* DAC - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -2905,14 +2855,6 @@ typedef enum _xbar_output_signal
   #define SAI2                                     ((I2S_Type *)SAI2_BASE)
   /** Peripheral SAI2 base pointer */
   #define SAI2_NS                                  ((I2S_Type *)SAI2_BASE_NS)
-  /** Peripheral SAI3 base address */
-  #define SAI3_BASE                                (0x52BC0000u)
-  /** Peripheral SAI3 base address */
-  #define SAI3_BASE_NS                             (0x42BC0000u)
-  /** Peripheral SAI3 base pointer */
-  #define SAI3                                     ((I2S_Type *)SAI3_BASE)
-  /** Peripheral SAI3 base pointer */
-  #define SAI3_NS                                  ((I2S_Type *)SAI3_BASE_NS)
   /** Peripheral SAI4 base address */
   #define SAI4_BASE                                (0x52BD0000u)
   /** Peripheral SAI4 base address */
@@ -2922,13 +2864,13 @@ typedef enum _xbar_output_signal
   /** Peripheral SAI4 base pointer */
   #define SAI4_NS                                  ((I2S_Type *)SAI4_BASE_NS)
   /** Array initializer of I2S peripheral base addresses */
-  #define I2S_BASE_ADDRS                           { 0u, SAI1_BASE, SAI2_BASE, SAI3_BASE, SAI4_BASE }
+  #define I2S_BASE_ADDRS                           { 0u, SAI1_BASE, SAI2_BASE, 0u, SAI4_BASE }
   /** Array initializer of I2S peripheral base pointers */
-  #define I2S_BASE_PTRS                            { (I2S_Type *)0u, SAI1, SAI2, SAI3, SAI4 }
+  #define I2S_BASE_PTRS                            { (I2S_Type *)0u, SAI1, SAI2, (I2S_Type *)0u, SAI4 }
   /** Array initializer of I2S peripheral base addresses */
-  #define I2S_BASE_ADDRS_NS                        { 0u, SAI1_BASE_NS, SAI2_BASE_NS, SAI3_BASE_NS, SAI4_BASE_NS }
+  #define I2S_BASE_ADDRS_NS                        { 0u, SAI1_BASE_NS, SAI2_BASE_NS, 0u, SAI4_BASE_NS }
   /** Array initializer of I2S peripheral base pointers */
-  #define I2S_BASE_PTRS_NS                         { (I2S_Type *)0u, SAI1_NS, SAI2_NS, SAI3_NS, SAI4_NS }
+  #define I2S_BASE_PTRS_NS                         { (I2S_Type *)0u, SAI1_NS, SAI2_NS, (I2S_Type *)0u, SAI4_NS }
 #else
   /** Peripheral SAI1 base address */
   #define SAI1_BASE                                (0x443B0000u)
@@ -2938,22 +2880,18 @@ typedef enum _xbar_output_signal
   #define SAI2_BASE                                (0x42BB0000u)
   /** Peripheral SAI2 base pointer */
   #define SAI2                                     ((I2S_Type *)SAI2_BASE)
-  /** Peripheral SAI3 base address */
-  #define SAI3_BASE                                (0x42BC0000u)
-  /** Peripheral SAI3 base pointer */
-  #define SAI3                                     ((I2S_Type *)SAI3_BASE)
   /** Peripheral SAI4 base address */
   #define SAI4_BASE                                (0x42BD0000u)
   /** Peripheral SAI4 base pointer */
   #define SAI4                                     ((I2S_Type *)SAI4_BASE)
   /** Array initializer of I2S peripheral base addresses */
-  #define I2S_BASE_ADDRS                           { 0u, SAI1_BASE, SAI2_BASE, SAI3_BASE, SAI4_BASE }
+  #define I2S_BASE_ADDRS                           { 0u, SAI1_BASE, SAI2_BASE, 0u, SAI4_BASE }
   /** Array initializer of I2S peripheral base pointers */
-  #define I2S_BASE_PTRS                            { (I2S_Type *)0u, SAI1, SAI2, SAI3, SAI4 }
+  #define I2S_BASE_PTRS                            { (I2S_Type *)0u, SAI1, SAI2, (I2S_Type *)0u, SAI4 }
 #endif
 /** Interrupt vectors for the I2S peripheral type */
-#define I2S_RX_IRQS                              { NotAvail_IRQn, SAI1_IRQn, SAI2_IRQn, SAI3_IRQn, SAI4_IRQn }
-#define I2S_TX_IRQS                              { NotAvail_IRQn, SAI1_IRQn, SAI2_IRQn, SAI3_IRQn, SAI4_IRQn }
+#define I2S_RX_IRQS                              { NotAvail_IRQn, SAI1_IRQn, SAI2_IRQn, NotAvail_IRQn, SAI4_IRQn }
+#define I2S_TX_IRQS                              { NotAvail_IRQn, SAI1_IRQn, SAI2_IRQn, NotAvail_IRQn, SAI4_IRQn }
 
 /* I3C - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -3229,22 +3167,6 @@ typedef enum _xbar_output_signal
   #define LPI2C3                                   ((LPI2C_Type *)LPI2C3_BASE)
   /** Peripheral LPI2C3 base pointer */
   #define LPI2C3_NS                                ((LPI2C_Type *)LPI2C3_BASE_NS)
-  /** Peripheral LPI2C4 base address */
-  #define LPI2C4_BASE                              (0x52540000u)
-  /** Peripheral LPI2C4 base address */
-  #define LPI2C4_BASE_NS                           (0x42540000u)
-  /** Peripheral LPI2C4 base pointer */
-  #define LPI2C4                                   ((LPI2C_Type *)LPI2C4_BASE)
-  /** Peripheral LPI2C4 base pointer */
-  #define LPI2C4_NS                                ((LPI2C_Type *)LPI2C4_BASE_NS)
-  /** Peripheral LPI2C5 base address */
-  #define LPI2C5_BASE                              (0x52D30000u)
-  /** Peripheral LPI2C5 base address */
-  #define LPI2C5_BASE_NS                           (0x42D30000u)
-  /** Peripheral LPI2C5 base pointer */
-  #define LPI2C5                                   ((LPI2C_Type *)LPI2C5_BASE)
-  /** Peripheral LPI2C5 base pointer */
-  #define LPI2C5_NS                                ((LPI2C_Type *)LPI2C5_BASE_NS)
   /** Peripheral LPI2C6 base address */
   #define LPI2C6_BASE                              (0x52D40000u)
   /** Peripheral LPI2C6 base address */
@@ -3254,13 +3176,13 @@ typedef enum _xbar_output_signal
   /** Peripheral LPI2C6 base pointer */
   #define LPI2C6_NS                                ((LPI2C_Type *)LPI2C6_BASE_NS)
   /** Array initializer of LPI2C peripheral base addresses */
-  #define LPI2C_BASE_ADDRS                         { 0u, LPI2C1_BASE, LPI2C2_BASE, LPI2C3_BASE, LPI2C4_BASE, LPI2C5_BASE, LPI2C6_BASE }
+  #define LPI2C_BASE_ADDRS                         { 0u, LPI2C1_BASE, LPI2C2_BASE, LPI2C3_BASE, 0u, 0u, LPI2C6_BASE }
   /** Array initializer of LPI2C peripheral base pointers */
-  #define LPI2C_BASE_PTRS                          { (LPI2C_Type *)0u, LPI2C1, LPI2C2, LPI2C3, LPI2C4, LPI2C5, LPI2C6 }
+  #define LPI2C_BASE_PTRS                          { (LPI2C_Type *)0u, LPI2C1, LPI2C2, LPI2C3, (LPI2C_Type *)0u, (LPI2C_Type *)0u, LPI2C6 }
   /** Array initializer of LPI2C peripheral base addresses */
-  #define LPI2C_BASE_ADDRS_NS                      { 0u, LPI2C1_BASE_NS, LPI2C2_BASE_NS, LPI2C3_BASE_NS, LPI2C4_BASE_NS, LPI2C5_BASE_NS, LPI2C6_BASE_NS }
+  #define LPI2C_BASE_ADDRS_NS                      { 0u, LPI2C1_BASE_NS, LPI2C2_BASE_NS, LPI2C3_BASE_NS, 0u, 0u, LPI2C6_BASE_NS }
   /** Array initializer of LPI2C peripheral base pointers */
-  #define LPI2C_BASE_PTRS_NS                       { (LPI2C_Type *)0u, LPI2C1_NS, LPI2C2_NS, LPI2C3_NS, LPI2C4_NS, LPI2C5_NS, LPI2C6_NS }
+  #define LPI2C_BASE_PTRS_NS                       { (LPI2C_Type *)0u, LPI2C1_NS, LPI2C2_NS, LPI2C3_NS, (LPI2C_Type *)0u, (LPI2C_Type *)0u, LPI2C6_NS }
 #else
   /** Peripheral LPI2C1 base address */
   #define LPI2C1_BASE                              (0x44340000u)
@@ -3274,25 +3196,17 @@ typedef enum _xbar_output_signal
   #define LPI2C3_BASE                              (0x42530000u)
   /** Peripheral LPI2C3 base pointer */
   #define LPI2C3                                   ((LPI2C_Type *)LPI2C3_BASE)
-  /** Peripheral LPI2C4 base address */
-  #define LPI2C4_BASE                              (0x42540000u)
-  /** Peripheral LPI2C4 base pointer */
-  #define LPI2C4                                   ((LPI2C_Type *)LPI2C4_BASE)
-  /** Peripheral LPI2C5 base address */
-  #define LPI2C5_BASE                              (0x42D30000u)
-  /** Peripheral LPI2C5 base pointer */
-  #define LPI2C5                                   ((LPI2C_Type *)LPI2C5_BASE)
   /** Peripheral LPI2C6 base address */
   #define LPI2C6_BASE                              (0x42D40000u)
   /** Peripheral LPI2C6 base pointer */
   #define LPI2C6                                   ((LPI2C_Type *)LPI2C6_BASE)
   /** Array initializer of LPI2C peripheral base addresses */
-  #define LPI2C_BASE_ADDRS                         { 0u, LPI2C1_BASE, LPI2C2_BASE, LPI2C3_BASE, LPI2C4_BASE, LPI2C5_BASE, LPI2C6_BASE }
+  #define LPI2C_BASE_ADDRS                         { 0u, LPI2C1_BASE, LPI2C2_BASE, LPI2C3_BASE, 0u, 0u, LPI2C6_BASE }
   /** Array initializer of LPI2C peripheral base pointers */
-  #define LPI2C_BASE_PTRS                          { (LPI2C_Type *)0u, LPI2C1, LPI2C2, LPI2C3, LPI2C4, LPI2C5, LPI2C6 }
+  #define LPI2C_BASE_PTRS                          { (LPI2C_Type *)0u, LPI2C1, LPI2C2, LPI2C3, (LPI2C_Type *)0u, (LPI2C_Type *)0u, LPI2C6 }
 #endif
 /** Interrupt vectors for the LPI2C peripheral type */
-#define LPI2C_IRQS                               { NotAvail_IRQn, LPI2C1_IRQn, LPI2C2_IRQn, LPI2C3_IRQn, LPI2C4_IRQn, LPI2C5_IRQn, LPI2C6_IRQn }
+#define LPI2C_IRQS                               { NotAvail_IRQn, LPI2C1_IRQn, LPI2C2_IRQn, LPI2C3_IRQn, NotAvail_IRQn, NotAvail_IRQn, LPI2C6_IRQn }
 
 /* LPIT - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -3561,46 +3475,14 @@ typedef enum _xbar_output_signal
   #define LPUART8                                  ((LPUART_Type *)LPUART8_BASE)
   /** Peripheral LPUART8 base pointer */
   #define LPUART8_NS                               ((LPUART_Type *)LPUART8_BASE_NS)
-  /** Peripheral LPUART9 base address */
-  #define LPUART9_BASE                             (0x52D70000u)
-  /** Peripheral LPUART9 base address */
-  #define LPUART9_BASE_NS                          (0x42D70000u)
-  /** Peripheral LPUART9 base pointer */
-  #define LPUART9                                  ((LPUART_Type *)LPUART9_BASE)
-  /** Peripheral LPUART9 base pointer */
-  #define LPUART9_NS                               ((LPUART_Type *)LPUART9_BASE_NS)
-  /** Peripheral LPUART10 base address */
-  #define LPUART10_BASE                            (0x52D80000u)
-  /** Peripheral LPUART10 base address */
-  #define LPUART10_BASE_NS                         (0x42D80000u)
-  /** Peripheral LPUART10 base pointer */
-  #define LPUART10                                 ((LPUART_Type *)LPUART10_BASE)
-  /** Peripheral LPUART10 base pointer */
-  #define LPUART10_NS                              ((LPUART_Type *)LPUART10_BASE_NS)
-  /** Peripheral LPUART11 base address */
-  #define LPUART11_BASE                            (0x52D90000u)
-  /** Peripheral LPUART11 base address */
-  #define LPUART11_BASE_NS                         (0x42D90000u)
-  /** Peripheral LPUART11 base pointer */
-  #define LPUART11                                 ((LPUART_Type *)LPUART11_BASE)
-  /** Peripheral LPUART11 base pointer */
-  #define LPUART11_NS                              ((LPUART_Type *)LPUART11_BASE_NS)
-  /** Peripheral LPUART12 base address */
-  #define LPUART12_BASE                            (0x54580000u)
-  /** Peripheral LPUART12 base address */
-  #define LPUART12_BASE_NS                         (0x44580000u)
-  /** Peripheral LPUART12 base pointer */
-  #define LPUART12                                 ((LPUART_Type *)LPUART12_BASE)
-  /** Peripheral LPUART12 base pointer */
-  #define LPUART12_NS                              ((LPUART_Type *)LPUART12_BASE_NS)
   /** Array initializer of LPUART peripheral base addresses */
-  #define LPUART_BASE_ADDRS                        { 0u, LPUART1_BASE, LPUART2_BASE, LPUART3_BASE, LPUART4_BASE, LPUART5_BASE, LPUART6_BASE, LPUART7_BASE, LPUART8_BASE, LPUART9_BASE, LPUART10_BASE, LPUART11_BASE, LPUART12_BASE }
+  #define LPUART_BASE_ADDRS                        { 0u, LPUART1_BASE, LPUART2_BASE, LPUART3_BASE, LPUART4_BASE, LPUART5_BASE, LPUART6_BASE, LPUART7_BASE, LPUART8_BASE }
   /** Array initializer of LPUART peripheral base pointers */
-  #define LPUART_BASE_PTRS                         { (LPUART_Type *)0u, LPUART1, LPUART2, LPUART3, LPUART4, LPUART5, LPUART6, LPUART7, LPUART8, LPUART9, LPUART10, LPUART11, LPUART12 }
+  #define LPUART_BASE_PTRS                         { (LPUART_Type *)0u, LPUART1, LPUART2, LPUART3, LPUART4, LPUART5, LPUART6, LPUART7, LPUART8 }
   /** Array initializer of LPUART peripheral base addresses */
-  #define LPUART_BASE_ADDRS_NS                     { 0u, LPUART1_BASE_NS, LPUART2_BASE_NS, LPUART3_BASE_NS, LPUART4_BASE_NS, LPUART5_BASE_NS, LPUART6_BASE_NS, LPUART7_BASE_NS, LPUART8_BASE_NS, LPUART9_BASE_NS, LPUART10_BASE_NS, LPUART11_BASE_NS, LPUART12_BASE_NS }
+  #define LPUART_BASE_ADDRS_NS                     { 0u, LPUART1_BASE_NS, LPUART2_BASE_NS, LPUART3_BASE_NS, LPUART4_BASE_NS, LPUART5_BASE_NS, LPUART6_BASE_NS, LPUART7_BASE_NS, LPUART8_BASE_NS }
   /** Array initializer of LPUART peripheral base pointers */
-  #define LPUART_BASE_PTRS_NS                      { (LPUART_Type *)0u, LPUART1_NS, LPUART2_NS, LPUART3_NS, LPUART4_NS, LPUART5_NS, LPUART6_NS, LPUART7_NS, LPUART8_NS, LPUART9_NS, LPUART10_NS, LPUART11_NS, LPUART12_NS }
+  #define LPUART_BASE_PTRS_NS                      { (LPUART_Type *)0u, LPUART1_NS, LPUART2_NS, LPUART3_NS, LPUART4_NS, LPUART5_NS, LPUART6_NS, LPUART7_NS, LPUART8_NS }
 #else
   /** Peripheral LPUART1 base address */
   #define LPUART1_BASE                             (0x44380000u)
@@ -3634,29 +3516,13 @@ typedef enum _xbar_output_signal
   #define LPUART8_BASE                             (0x42DA0000u)
   /** Peripheral LPUART8 base pointer */
   #define LPUART8                                  ((LPUART_Type *)LPUART8_BASE)
-  /** Peripheral LPUART9 base address */
-  #define LPUART9_BASE                             (0x42D70000u)
-  /** Peripheral LPUART9 base pointer */
-  #define LPUART9                                  ((LPUART_Type *)LPUART9_BASE)
-  /** Peripheral LPUART10 base address */
-  #define LPUART10_BASE                            (0x42D80000u)
-  /** Peripheral LPUART10 base pointer */
-  #define LPUART10                                 ((LPUART_Type *)LPUART10_BASE)
-  /** Peripheral LPUART11 base address */
-  #define LPUART11_BASE                            (0x42D90000u)
-  /** Peripheral LPUART11 base pointer */
-  #define LPUART11                                 ((LPUART_Type *)LPUART11_BASE)
-  /** Peripheral LPUART12 base address */
-  #define LPUART12_BASE                            (0x44580000u)
-  /** Peripheral LPUART12 base pointer */
-  #define LPUART12                                 ((LPUART_Type *)LPUART12_BASE)
   /** Array initializer of LPUART peripheral base addresses */
-  #define LPUART_BASE_ADDRS                        { 0u, LPUART1_BASE, LPUART2_BASE, LPUART3_BASE, LPUART4_BASE, LPUART5_BASE, LPUART6_BASE, LPUART7_BASE, LPUART8_BASE, LPUART9_BASE, LPUART10_BASE, LPUART11_BASE, LPUART12_BASE }
+  #define LPUART_BASE_ADDRS                        { 0u, LPUART1_BASE, LPUART2_BASE, LPUART3_BASE, LPUART4_BASE, LPUART5_BASE, LPUART6_BASE, LPUART7_BASE, LPUART8_BASE }
   /** Array initializer of LPUART peripheral base pointers */
-  #define LPUART_BASE_PTRS                         { (LPUART_Type *)0u, LPUART1, LPUART2, LPUART3, LPUART4, LPUART5, LPUART6, LPUART7, LPUART8, LPUART9, LPUART10, LPUART11, LPUART12 }
+  #define LPUART_BASE_PTRS                         { (LPUART_Type *)0u, LPUART1, LPUART2, LPUART3, LPUART4, LPUART5, LPUART6, LPUART7, LPUART8 }
 #endif
 /** Interrupt vectors for the LPUART peripheral type */
-#define LPUART_RX_TX_IRQS                        { NotAvail_IRQn, LPUART1_IRQn, LPUART2_IRQn, LPUART3_IRQn, LPUART4_IRQn, LPUART5_IRQn, LPUART6_IRQn, LPUART7_IRQn, LPUART8_IRQn, LPUART9_IRQn, LPUART10_IRQn, LPUART11_IRQn, LPUART12_IRQn }
+#define LPUART_RX_TX_IRQS                        { NotAvail_IRQn, LPUART1_IRQn, LPUART2_IRQn, LPUART3_IRQn, LPUART4_IRQn, LPUART5_IRQn, LPUART6_IRQn, LPUART7_IRQn, LPUART8_IRQn }
 
 /* MECC - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -5527,30 +5393,14 @@ typedef enum _xbar_output_signal
   #define TPM4                                     ((TPM_Type *)TPM4_BASE)
   /** Peripheral TPM4 base pointer */
   #define TPM4_NS                                  ((TPM_Type *)TPM4_BASE_NS)
-  /** Peripheral TPM5 base address */
-  #define TPM5_BASE                                (0x52500000u)
-  /** Peripheral TPM5 base address */
-  #define TPM5_BASE_NS                             (0x42500000u)
-  /** Peripheral TPM5 base pointer */
-  #define TPM5                                     ((TPM_Type *)TPM5_BASE)
-  /** Peripheral TPM5 base pointer */
-  #define TPM5_NS                                  ((TPM_Type *)TPM5_BASE_NS)
-  /** Peripheral TPM6 base address */
-  #define TPM6_BASE                                (0x52510000u)
-  /** Peripheral TPM6 base address */
-  #define TPM6_BASE_NS                             (0x42510000u)
-  /** Peripheral TPM6 base pointer */
-  #define TPM6                                     ((TPM_Type *)TPM6_BASE)
-  /** Peripheral TPM6 base pointer */
-  #define TPM6_NS                                  ((TPM_Type *)TPM6_BASE_NS)
   /** Array initializer of TPM peripheral base addresses */
-  #define TPM_BASE_ADDRS                           { 0u, TPM1_BASE, TPM2_BASE, TPM3_BASE, TPM4_BASE, TPM5_BASE, TPM6_BASE }
+  #define TPM_BASE_ADDRS                           { 0u, TPM1_BASE, TPM2_BASE, TPM3_BASE, TPM4_BASE }
   /** Array initializer of TPM peripheral base pointers */
-  #define TPM_BASE_PTRS                            { (TPM_Type *)0u, TPM1, TPM2, TPM3, TPM4, TPM5, TPM6 }
+  #define TPM_BASE_PTRS                            { (TPM_Type *)0u, TPM1, TPM2, TPM3, TPM4 }
   /** Array initializer of TPM peripheral base addresses */
-  #define TPM_BASE_ADDRS_NS                        { 0u, TPM1_BASE_NS, TPM2_BASE_NS, TPM3_BASE_NS, TPM4_BASE_NS, TPM5_BASE_NS, TPM6_BASE_NS }
+  #define TPM_BASE_ADDRS_NS                        { 0u, TPM1_BASE_NS, TPM2_BASE_NS, TPM3_BASE_NS, TPM4_BASE_NS }
   /** Array initializer of TPM peripheral base pointers */
-  #define TPM_BASE_PTRS_NS                         { (TPM_Type *)0u, TPM1_NS, TPM2_NS, TPM3_NS, TPM4_NS, TPM5_NS, TPM6_NS }
+  #define TPM_BASE_PTRS_NS                         { (TPM_Type *)0u, TPM1_NS, TPM2_NS, TPM3_NS, TPM4_NS }
 #else
   /** Peripheral TPM1 base address */
   #define TPM1_BASE                                (0x44310000u)
@@ -5568,21 +5418,13 @@ typedef enum _xbar_output_signal
   #define TPM4_BASE                                (0x424F0000u)
   /** Peripheral TPM4 base pointer */
   #define TPM4                                     ((TPM_Type *)TPM4_BASE)
-  /** Peripheral TPM5 base address */
-  #define TPM5_BASE                                (0x42500000u)
-  /** Peripheral TPM5 base pointer */
-  #define TPM5                                     ((TPM_Type *)TPM5_BASE)
-  /** Peripheral TPM6 base address */
-  #define TPM6_BASE                                (0x42510000u)
-  /** Peripheral TPM6 base pointer */
-  #define TPM6                                     ((TPM_Type *)TPM6_BASE)
   /** Array initializer of TPM peripheral base addresses */
-  #define TPM_BASE_ADDRS                           { 0u, TPM1_BASE, TPM2_BASE, TPM3_BASE, TPM4_BASE, TPM5_BASE, TPM6_BASE }
+  #define TPM_BASE_ADDRS                           { 0u, TPM1_BASE, TPM2_BASE, TPM3_BASE, TPM4_BASE }
   /** Array initializer of TPM peripheral base pointers */
-  #define TPM_BASE_PTRS                            { (TPM_Type *)0u, TPM1, TPM2, TPM3, TPM4, TPM5, TPM6 }
+  #define TPM_BASE_PTRS                            { (TPM_Type *)0u, TPM1, TPM2, TPM3, TPM4 }
 #endif
 /** Interrupt vectors for the TPM peripheral type */
-#define TPM_IRQS                                 { NotAvail_IRQn, TPM1_IRQn, TPM2_IRQn, TPM3_IRQn, TPM4_IRQn, TPM5_IRQn, TPM6_IRQn }
+#define TPM_IRQS                                 { NotAvail_IRQn, TPM1_IRQn, TPM2_IRQn, TPM3_IRQn, TPM4_IRQn }
 
 /* TRDC - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -5704,42 +5546,30 @@ typedef enum _xbar_output_signal
   #define USB_OTG1                                 ((USB_Type *)USB_OTG1_BASE)
   /** Peripheral USB_OTG1 base pointer */
   #define USB_OTG1_NS                              ((USB_Type *)USB_OTG1_BASE_NS)
-  /** Peripheral USB_OTG2 base address */
-  #define USB_OTG2_BASE                            (0x52C90000u)
-  /** Peripheral USB_OTG2 base address */
-  #define USB_OTG2_BASE_NS                         (0x42C90000u)
-  /** Peripheral USB_OTG2 base pointer */
-  #define USB_OTG2                                 ((USB_Type *)USB_OTG2_BASE)
-  /** Peripheral USB_OTG2 base pointer */
-  #define USB_OTG2_NS                              ((USB_Type *)USB_OTG2_BASE_NS)
   /** Array initializer of USB peripheral base addresses */
-  #define USB_BASE_ADDRS                           { 0u, USB_OTG1_BASE, USB_OTG2_BASE }
+  #define USB_BASE_ADDRS                           { 0u, USB_OTG1_BASE }
   /** Array initializer of USB peripheral base pointers */
-  #define USB_BASE_PTRS                            { (USB_Type *)0u, USB_OTG1, USB_OTG2 }
+  #define USB_BASE_PTRS                            { (USB_Type *)0u, USB_OTG1 }
   /** Array initializer of USB peripheral base addresses */
-  #define USB_BASE_ADDRS_NS                        { 0u, USB_OTG1_BASE_NS, USB_OTG2_BASE_NS }
+  #define USB_BASE_ADDRS_NS                        { 0u, USB_OTG1_BASE_NS }
   /** Array initializer of USB peripheral base pointers */
-  #define USB_BASE_PTRS_NS                         { (USB_Type *)0u, USB_OTG1_NS, USB_OTG2_NS }
+  #define USB_BASE_PTRS_NS                         { (USB_Type *)0u, USB_OTG1_NS }
 #else
   /** Peripheral USB_OTG1 base address */
   #define USB_OTG1_BASE                            (0x42C80000u)
   /** Peripheral USB_OTG1 base pointer */
   #define USB_OTG1                                 ((USB_Type *)USB_OTG1_BASE)
-  /** Peripheral USB_OTG2 base address */
-  #define USB_OTG2_BASE                            (0x42C90000u)
-  /** Peripheral USB_OTG2 base pointer */
-  #define USB_OTG2                                 ((USB_Type *)USB_OTG2_BASE)
   /** Array initializer of USB peripheral base addresses */
-  #define USB_BASE_ADDRS                           { 0u, USB_OTG1_BASE, USB_OTG2_BASE }
+  #define USB_BASE_ADDRS                           { 0u, USB_OTG1_BASE }
   /** Array initializer of USB peripheral base pointers */
-  #define USB_BASE_PTRS                            { (USB_Type *)0u, USB_OTG1, USB_OTG2 }
+  #define USB_BASE_PTRS                            { (USB_Type *)0u, USB_OTG1 }
 #endif
 /** Interrupt vectors for the USB peripheral type */
-#define USB_IRQS                                 { NotAvail_IRQn, USB_OTG1_IRQn, USB_OTG2_IRQn }
+#define USB_IRQS                                 { NotAvail_IRQn, USB_OTG1_IRQn }
 /* Backward compatibility */
-#define USBHS_IRQS                               { USB_OTG1_IRQn, USB_OTG2_IRQn }
+#define USBHS_IRQS                               { USB_OTG1_IRQn }
 #define USBHS_IRQHandler                         USB_OTG1_IRQHandler
-#define USBHS_STACK_BASE_ADDRS                   { USB_OTG1_BASE, USB_OTG2_BASE }
+#define USBHS_STACK_BASE_ADDRS                   { USB_OTG1_BASE }
 
 
 /* USBHSDCD - Peripheral instance base addresses */
@@ -5801,35 +5631,23 @@ typedef enum _xbar_output_signal
   #define USBNC_OTG1                               ((USBNC_Type *)USBNC_OTG1_BASE)
   /** Peripheral USBNC_OTG1 base pointer */
   #define USBNC_OTG1_NS                            ((USBNC_Type *)USBNC_OTG1_BASE_NS)
-  /** Peripheral USBNC_OTG2 base address */
-  #define USBNC_OTG2_BASE                          (0x52C90200u)
-  /** Peripheral USBNC_OTG2 base address */
-  #define USBNC_OTG2_BASE_NS                       (0x42C90200u)
-  /** Peripheral USBNC_OTG2 base pointer */
-  #define USBNC_OTG2                               ((USBNC_Type *)USBNC_OTG2_BASE)
-  /** Peripheral USBNC_OTG2 base pointer */
-  #define USBNC_OTG2_NS                            ((USBNC_Type *)USBNC_OTG2_BASE_NS)
   /** Array initializer of USBNC peripheral base addresses */
-  #define USBNC_BASE_ADDRS                         { 0u, USBNC_OTG1_BASE, USBNC_OTG2_BASE }
+  #define USBNC_BASE_ADDRS                         { 0u, USBNC_OTG1_BASE }
   /** Array initializer of USBNC peripheral base pointers */
-  #define USBNC_BASE_PTRS                          { (USBNC_Type *)0u, USBNC_OTG1, USBNC_OTG2 }
+  #define USBNC_BASE_PTRS                          { (USBNC_Type *)0u, USBNC_OTG1 }
   /** Array initializer of USBNC peripheral base addresses */
-  #define USBNC_BASE_ADDRS_NS                      { 0u, USBNC_OTG1_BASE_NS, USBNC_OTG2_BASE_NS }
+  #define USBNC_BASE_ADDRS_NS                      { 0u, USBNC_OTG1_BASE_NS }
   /** Array initializer of USBNC peripheral base pointers */
-  #define USBNC_BASE_PTRS_NS                       { (USBNC_Type *)0u, USBNC_OTG1_NS, USBNC_OTG2_NS }
+  #define USBNC_BASE_PTRS_NS                       { (USBNC_Type *)0u, USBNC_OTG1_NS }
 #else
   /** Peripheral USBNC_OTG1 base address */
   #define USBNC_OTG1_BASE                          (0x42C80200u)
   /** Peripheral USBNC_OTG1 base pointer */
   #define USBNC_OTG1                               ((USBNC_Type *)USBNC_OTG1_BASE)
-  /** Peripheral USBNC_OTG2 base address */
-  #define USBNC_OTG2_BASE                          (0x42C90200u)
-  /** Peripheral USBNC_OTG2 base pointer */
-  #define USBNC_OTG2                               ((USBNC_Type *)USBNC_OTG2_BASE)
   /** Array initializer of USBNC peripheral base addresses */
-  #define USBNC_BASE_ADDRS                         { 0u, USBNC_OTG1_BASE, USBNC_OTG2_BASE }
+  #define USBNC_BASE_ADDRS                         { 0u, USBNC_OTG1_BASE }
   /** Array initializer of USBNC peripheral base pointers */
-  #define USBNC_BASE_PTRS                          { (USBNC_Type *)0u, USBNC_OTG1, USBNC_OTG2 }
+  #define USBNC_BASE_PTRS                          { (USBNC_Type *)0u, USBNC_OTG1 }
 #endif
 /* Backward compatibility */
 #define USB_OTGn_CTRL     CTRL1
@@ -5864,10 +5682,10 @@ typedef enum _xbar_output_signal
 #define USBNC_USB_OTGn_CTRL_WIR_SHIFT     USBNC_CTRL1_WIR_SHIFT
 #define USBNC_USB_OTGn_CTRL_WIR(x)     USBNC_CTRL1_WIR(x)
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
-#define USBNC_STACK_BASE_ADDRS                { USBNC_OTG1_BASE, USBNC_OTG2_BASE }
-#define USBNC_STACK_BASE_ADDRS_NS             { USBNC_OTG1_BASE_NS, USBNC_OTG2_BASE_NS }
+#define USBNC_STACK_BASE_ADDRS                { USBNC_OTG1_BASE }
+#define USBNC_STACK_BASE_ADDRS_NS             { USBNC_OTG1_BASE_NS }
 #else
-#define USBNC_STACK_BASE_ADDRS                { USBNC_OTG1_BASE, USBNC_OTG2_BASE }
+#define USBNC_STACK_BASE_ADDRS                { USBNC_OTG1_BASE }
 #endif
 
 
@@ -5881,38 +5699,26 @@ typedef enum _xbar_output_signal
   #define USBPHY1                                  ((USBPHY_Type *)USBPHY1_BASE)
   /** Peripheral USBPHY1 base pointer */
   #define USBPHY1_NS                               ((USBPHY_Type *)USBPHY1_BASE_NS)
-  /** Peripheral USBPHY2 base address */
-  #define USBPHY2_BASE                             (0x52CB0000u)
-  /** Peripheral USBPHY2 base address */
-  #define USBPHY2_BASE_NS                          (0x42CB0000u)
-  /** Peripheral USBPHY2 base pointer */
-  #define USBPHY2                                  ((USBPHY_Type *)USBPHY2_BASE)
-  /** Peripheral USBPHY2 base pointer */
-  #define USBPHY2_NS                               ((USBPHY_Type *)USBPHY2_BASE_NS)
   /** Array initializer of USBPHY peripheral base addresses */
-  #define USBPHY_BASE_ADDRS                        { 0u, USBPHY1_BASE, USBPHY2_BASE }
+  #define USBPHY_BASE_ADDRS                        { 0u, USBPHY1_BASE }
   /** Array initializer of USBPHY peripheral base pointers */
-  #define USBPHY_BASE_PTRS                         { (USBPHY_Type *)0u, USBPHY1, USBPHY2 }
+  #define USBPHY_BASE_PTRS                         { (USBPHY_Type *)0u, USBPHY1 }
   /** Array initializer of USBPHY peripheral base addresses */
-  #define USBPHY_BASE_ADDRS_NS                     { 0u, USBPHY1_BASE_NS, USBPHY2_BASE_NS }
+  #define USBPHY_BASE_ADDRS_NS                     { 0u, USBPHY1_BASE_NS }
   /** Array initializer of USBPHY peripheral base pointers */
-  #define USBPHY_BASE_PTRS_NS                      { (USBPHY_Type *)0u, USBPHY1_NS, USBPHY2_NS }
+  #define USBPHY_BASE_PTRS_NS                      { (USBPHY_Type *)0u, USBPHY1_NS }
 #else
   /** Peripheral USBPHY1 base address */
   #define USBPHY1_BASE                             (0x42CA0000u)
   /** Peripheral USBPHY1 base pointer */
   #define USBPHY1                                  ((USBPHY_Type *)USBPHY1_BASE)
-  /** Peripheral USBPHY2 base address */
-  #define USBPHY2_BASE                             (0x42CB0000u)
-  /** Peripheral USBPHY2 base pointer */
-  #define USBPHY2                                  ((USBPHY_Type *)USBPHY2_BASE)
   /** Array initializer of USBPHY peripheral base addresses */
-  #define USBPHY_BASE_ADDRS                        { 0u, USBPHY1_BASE, USBPHY2_BASE }
+  #define USBPHY_BASE_ADDRS                        { 0u, USBPHY1_BASE }
   /** Array initializer of USBPHY peripheral base pointers */
-  #define USBPHY_BASE_PTRS                         { (USBPHY_Type *)0u, USBPHY1, USBPHY2 }
+  #define USBPHY_BASE_PTRS                         { (USBPHY_Type *)0u, USBPHY1 }
 #endif
 /** Interrupt vectors for the USBPHY peripheral type */
-#define USBPHY_IRQS                              { NotAvail_IRQn, USBPHY1_IRQn, USBPHY2_IRQn }
+#define USBPHY_IRQS                              { NotAvail_IRQn, USBPHY1_IRQn }
 /* Backward compatibility */
 #define USBPHY_CTRL_ENDEVPLUGINDET_MASK     USBPHY_CTRL_ENDEVPLUGINDETECT_MASK
 #define USBPHY_CTRL_ENDEVPLUGINDET_SHIFT    USBPHY_CTRL_ENDEVPLUGINDETECT_SHIFT
@@ -5922,23 +5728,15 @@ typedef enum _xbar_output_signal
 #define USBPHY_TX_TXCAL45DM(x)              USBPHY_TX_TXCAL45DN(x)
 
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
-#define USBPHY_STACK_BASE_ADDRS             { USBPHY1_BASE, USBPHY2_BASE }
-#define USBPHY_STACK_BASE_ADDRS_NS          { USBPHY1_BASE_NS, USBPHY2_BASE_NS }
+#define USBPHY_STACK_BASE_ADDRS             { USBPHY1_BASE }
+#define USBPHY_STACK_BASE_ADDRS_NS          { USBPHY1_BASE_NS }
 #else
-#define USBPHY_STACK_BASE_ADDRS             { USBPHY1_BASE, USBPHY2_BASE }
+#define USBPHY_STACK_BASE_ADDRS             { USBPHY1_BASE }
 #endif
 
 
 /* USDHC - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
-  /** Peripheral USDHC1 base address */
-  #define USDHC1_BASE                              (0x52850000u)
-  /** Peripheral USDHC1 base address */
-  #define USDHC1_BASE_NS                           (0x42850000u)
-  /** Peripheral USDHC1 base pointer */
-  #define USDHC1                                   ((USDHC_Type *)USDHC1_BASE)
-  /** Peripheral USDHC1 base pointer */
-  #define USDHC1_NS                                ((USDHC_Type *)USDHC1_BASE_NS)
   /** Peripheral USDHC2 base address */
   #define USDHC2_BASE                              (0x52860000u)
   /** Peripheral USDHC2 base address */
@@ -5948,29 +5746,25 @@ typedef enum _xbar_output_signal
   /** Peripheral USDHC2 base pointer */
   #define USDHC2_NS                                ((USDHC_Type *)USDHC2_BASE_NS)
   /** Array initializer of USDHC peripheral base addresses */
-  #define USDHC_BASE_ADDRS                         { 0u, USDHC1_BASE, USDHC2_BASE }
+  #define USDHC_BASE_ADDRS                         { 0u, 0u, USDHC2_BASE }
   /** Array initializer of USDHC peripheral base pointers */
-  #define USDHC_BASE_PTRS                          { (USDHC_Type *)0u, USDHC1, USDHC2 }
+  #define USDHC_BASE_PTRS                          { (USDHC_Type *)0u, (USDHC_Type *)0u, USDHC2 }
   /** Array initializer of USDHC peripheral base addresses */
-  #define USDHC_BASE_ADDRS_NS                      { 0u, USDHC1_BASE_NS, USDHC2_BASE_NS }
+  #define USDHC_BASE_ADDRS_NS                      { 0u, 0u, USDHC2_BASE_NS }
   /** Array initializer of USDHC peripheral base pointers */
-  #define USDHC_BASE_PTRS_NS                       { (USDHC_Type *)0u, USDHC1_NS, USDHC2_NS }
+  #define USDHC_BASE_PTRS_NS                       { (USDHC_Type *)0u, (USDHC_Type *)0u, USDHC2_NS }
 #else
-  /** Peripheral USDHC1 base address */
-  #define USDHC1_BASE                              (0x42850000u)
-  /** Peripheral USDHC1 base pointer */
-  #define USDHC1                                   ((USDHC_Type *)USDHC1_BASE)
   /** Peripheral USDHC2 base address */
   #define USDHC2_BASE                              (0x42860000u)
   /** Peripheral USDHC2 base pointer */
   #define USDHC2                                   ((USDHC_Type *)USDHC2_BASE)
   /** Array initializer of USDHC peripheral base addresses */
-  #define USDHC_BASE_ADDRS                         { 0u, USDHC1_BASE, USDHC2_BASE }
+  #define USDHC_BASE_ADDRS                         { 0u, 0u, USDHC2_BASE }
   /** Array initializer of USDHC peripheral base pointers */
-  #define USDHC_BASE_PTRS                          { (USDHC_Type *)0u, USDHC1, USDHC2 }
+  #define USDHC_BASE_PTRS                          { (USDHC_Type *)0u, (USDHC_Type *)0u, USDHC2 }
 #endif
 /** Interrupt vectors for the USDHC peripheral type */
-#define USDHC_IRQS                               { NotAvail_IRQn, USDHC1_IRQn, USDHC2_IRQn }
+#define USDHC_IRQS                               { NotAvail_IRQn, NotAvail_IRQn, USDHC2_IRQn }
 
 /* VMBANDGAP - Peripheral instance base addresses */
 #if (defined(__ARM_FEATURE_CMSE) && (__ARM_FEATURE_CMSE & 0x2))
@@ -6199,5 +5993,5 @@ typedef enum _xbar_output_signal
  */ /* end of group SDK_Compatibility_Symbols */
 
 
-#endif  /* MIMXRT1189_CM33_COMMON_H_ */
+#endif  /* MIMXRT1186_CM33_COMMON_H_ */
 

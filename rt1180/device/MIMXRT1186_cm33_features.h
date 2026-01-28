@@ -24,13 +24,13 @@
 ** ###################################################################
 */
 
-#ifndef _MIMXRT1189_cm33_FEATURES_H_
-#define _MIMXRT1189_cm33_FEATURES_H_
+#ifndef _MIMXRT1186_cm33_FEATURES_H_
+#define _MIMXRT1186_cm33_FEATURES_H_
 
 /* SOC module features */
 
 /* @brief ACMP availability on the SoC. */
-#define FSL_FEATURE_SOC_ACMP_COUNT (4)
+#define FSL_FEATURE_SOC_ACMP_COUNT (1)
 /* @brief AOI availability on the SoC. */
 #define FSL_FEATURE_SOC_AOI_COUNT (4)
 /* @brief ASRC availability on the SoC. */
@@ -54,7 +54,7 @@
 /* @brief EWM availability on the SoC. */
 #define FSL_FEATURE_SOC_EWM_COUNT (1)
 /* @brief FLEXCAN availability on the SoC. */
-#define FSL_FEATURE_SOC_FLEXCAN_COUNT (3)
+#define FSL_FEATURE_SOC_FLEXCAN_COUNT (2)
 /* @brief FLEXIO availability on the SoC. */
 #define FSL_FEATURE_SOC_FLEXIO_COUNT (2)
 /* @brief FLEXSPI availability on the SoC. */
@@ -66,7 +66,7 @@
 /* @brief I3C availability on the SoC. */
 #define FSL_FEATURE_SOC_I3C_COUNT (2)
 /* @brief I2S availability on the SoC. */
-#define FSL_FEATURE_SOC_I2S_COUNT (4)
+#define FSL_FEATURE_SOC_I2S_COUNT (3)
 /* @brief IEE availability on the SoC. */
 #define FSL_FEATURE_SOC_IEE_COUNT (1)
 /* @brief IOMUXC availability on the SoC. */
@@ -76,7 +76,7 @@
 /* @brief LPADC availability on the SoC. */
 #define FSL_FEATURE_SOC_LPADC_COUNT (2)
 /* @brief LPI2C availability on the SoC. */
-#define FSL_FEATURE_SOC_LPI2C_COUNT (6)
+#define FSL_FEATURE_SOC_LPI2C_COUNT (4)
 /* @brief LPIT availability on the SoC. */
 #define FSL_FEATURE_SOC_LPIT_COUNT (3)
 /* @brief LPSPI availability on the SoC. */
@@ -84,7 +84,7 @@
 /* @brief LPTMR availability on the SoC. */
 #define FSL_FEATURE_SOC_LPTMR_COUNT (3)
 /* @brief LPUART availability on the SoC. */
-#define FSL_FEATURE_SOC_LPUART_COUNT (12)
+#define FSL_FEATURE_SOC_LPUART_COUNT (8)
 /* @brief MU availability on the SoC. */
 #define FSL_FEATURE_SOC_MU_COUNT (2)
 /* @brief OCOTP availability on the SoC. */
@@ -110,19 +110,19 @@
 /* @brief TMR availability on the SoC. */
 #define FSL_FEATURE_SOC_TMR_COUNT (8)
 /* @brief TPM availability on the SoC. */
-#define FSL_FEATURE_SOC_TPM_COUNT (6)
+#define FSL_FEATURE_SOC_TPM_COUNT (4)
 /* @brief TSTMR availability on the SoC. */
 #define FSL_FEATURE_SOC_TSTMR_COUNT (2)
 /* @brief USBHS availability on the SoC. */
-#define FSL_FEATURE_SOC_USBHS_COUNT (2)
+#define FSL_FEATURE_SOC_USBHS_COUNT (1)
 /* @brief USBHSDCD availability on the SoC. */
 #define FSL_FEATURE_SOC_USBHSDCD_COUNT (2)
 /* @brief USBNC availability on the SoC. */
-#define FSL_FEATURE_SOC_USBNC_COUNT (2)
+#define FSL_FEATURE_SOC_USBNC_COUNT (1)
 /* @brief USBPHY availability on the SoC. */
-#define FSL_FEATURE_SOC_USBPHY_COUNT (2)
+#define FSL_FEATURE_SOC_USBPHY_COUNT (1)
 /* @brief USDHC availability on the SoC. */
-#define FSL_FEATURE_SOC_USDHC_COUNT (2)
+#define FSL_FEATURE_SOC_USDHC_COUNT (1)
 /* @brief VREF availability on the SoC. */
 #define FSL_FEATURE_SOC_VREF_COUNT (1)
 /* @brief XBAR_DSC availability on the SoC. */
@@ -998,14 +998,12 @@
 #define FSL_FEATURE_SAI_FIFO_COUNTn(x) \
     (((x) == SAI1) ? (16) : \
     (((x) == SAI2) ? (32) : \
-    (((x) == SAI3) ? (32) : \
-    (((x) == SAI4) ? (32) : (-1)))))
+    (((x) == SAI4) ? (32) : (-1))))
 /* @brief Receive/transmit channel number (register bit fields TCR3[TCE], RCR3[RCE], registers TDRn and RDRn). */
 #define FSL_FEATURE_SAI_CHANNEL_COUNTn(x) \
     (((x) == SAI1) ? (2) : \
     (((x) == SAI2) ? (1) : \
-    (((x) == SAI3) ? (1) : \
-    (((x) == SAI4) ? (4) : (-1)))))
+    (((x) == SAI4) ? (4) : (-1))))
 /* @brief Maximum words per frame (register bit fields TCR3[WDFL], TCR4[FRSZ], TMR[TWM], RCR3[WDFL], RCR4[FRSZ], RMR[RWM]). */
 #define FSL_FEATURE_SAI_MAX_WORDS_PER_FRAME (32)
 /* @brief Has support of combining multiple data channel FIFOs into single channel FIFO (register bit fields TCR3[CFR], TCR4[FCOMB], TFR0[WCP], TFR1[WCP], RCR3[CFR], RCR4[FCOMB], RFR0[RCP], RFR1[RCP]). */
@@ -1200,7 +1198,7 @@
 /* USBHS module features */
 
 /* @brief EHCI module instance count */
-#define FSL_FEATURE_USBHS_EHCI_COUNT (2)
+#define FSL_FEATURE_USBHS_EHCI_COUNT (1)
 /* @brief Number of endpoints supported */
 #define FSL_FEATURE_USBHS_ENDPT_COUNT (8)
 /* @brief If the USB controller support eUSB PHY */
@@ -1221,9 +1219,7 @@
 /* @brief USDHC has no bitfield WTMK_LVL[WR_BRST_LEN] and WTMK_LVL[RD_BRST_LEN] */
 #define FSL_FEATURE_USDHC_HAS_NO_RW_BURST_LEN (1)
 /* @brief If USDHC instance support 8 bit width */
-#define FSL_FEATURE_USDHC_INSTANCE_SUPPORT_8_BIT_WIDTHn(x) \
-    (((x) == USDHC1) ? (0) : \
-    (((x) == USDHC2) ? (1) : (-1)))
+#define FSL_FEATURE_USDHC_INSTANCE_SUPPORT_8_BIT_WIDTHn(x) (1)
 /* @brief If USDHC instance support HS400 mode */
 #define FSL_FEATURE_USDHC_INSTANCE_SUPPORT_HS400_MODEn(x) (1)
 /* @brief If USDHC instance support 1v8 signal */
@@ -1258,5 +1254,5 @@
 /* @brief Cache does not support write buffer. */
 #define FSL_FEATURE_XCACHE_HAS_NO_WRITE_BUF (1)
 
-#endif /* _MIMXRT1189_cm33_FEATURES_H_ */
+#endif /* _MIMXRT1186_cm33_FEATURES_H_ */
 

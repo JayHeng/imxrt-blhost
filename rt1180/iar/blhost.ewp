@@ -243,8 +243,8 @@
                     <state>SDK_DEBUGCONSOLE=1</state>
                     <state>MCUX_META_BUILD</state>
                     <state>MCUXPRESSO_SDK</state>
-                    <state>CPU_MIMXRT1189CVM8C_cm33</state>
-                    <state>MIMXRT1189_cm33_SERIES</state>
+                    <state>CPU_MIMXRT1186CVJ8C_cm33</state>
+                    <state>MIMXRT1186_cm33_SERIES</state>
                     <state>XIP_EXTERNAL_FLASH=1</state>
                     <state>XIP_BOOT_HEADER_ENABLE=1</state>
                     <state>BOOTLOADER_HOST</state>
@@ -581,8 +581,8 @@
                 <option>
                     <name>ADefines</name>
                     <state>MCUXPRESSO_SDK</state>
-                    <state>CPU_MIMXRT1189CVM8C_cm33</state>
-                    <state>MIMXRT1189_cm33_SERIES</state>
+                    <state>CPU_MIMXRT1186CVJ8C_cm33</state>
+                    <state>MIMXRT1186_cm33_SERIES</state>
                 </option>
                 <option>
                     <name>AList</name>
@@ -826,7 +826,7 @@
                 </option>
                 <option>
                     <name>IlinkIcfFile</name>
-                    <state>$PROJ_DIR$/MIMXRT1189xxxxx_cm33_flexspi_nor.icf</state>
+                    <state>$PROJ_DIR$/MIMXRT1186xxxxx_cm33_flexspi_nor.icf</state>
                 </option>
                 <option>
                     <name>IlinkIcfFileSlave</name>
@@ -1950,19 +1950,19 @@
             <name>$PROJ_DIR$\..\device\fsl_device_registers.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\device\MIMXRT1189_cm33.h</name>
+            <name>$PROJ_DIR$\..\device\MIMXRT1186_cm33.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\device\MIMXRT1189_cm33_COMMON.h</name>
+            <name>$PROJ_DIR$\..\device\MIMXRT1186_cm33_COMMON.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\device\MIMXRT1189_cm33_features.h</name>
+            <name>$PROJ_DIR$\..\device\MIMXRT1186_cm33_features.h</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\device\system_MIMXRT1189_cm33.c</name>
+            <name>$PROJ_DIR$\..\device\system_MIMXRT1186_cm33.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\device\system_MIMXRT1189_cm33.h</name>
+            <name>$PROJ_DIR$\..\device\system_MIMXRT1186_cm33.h</name>
         </file>
     </group>
     <group>
@@ -2102,7 +2102,7 @@
         <group>
             <name>iar</name>
             <file>
-                <name>$PROJ_DIR$\startup_MIMXRT1189_cm33.s</name>
+                <name>$PROJ_DIR$\startup_MIMXRT1186_cm33.s</name>
             </file>
         </group>
     </group>
@@ -2136,10 +2136,10 @@
     <group>
         <name>xip</name>
         <file>
-            <name>$PROJ_DIR$\..\xip\evkmimxrt1180_flexspi_nor_config.c</name>
+            <name>$PROJ_DIR$\..\xip\frdmimxrt1186_flexspi_nor_config.c</name>
         </file>
         <file>
-            <name>$PROJ_DIR$\..\xip\evkmimxrt1180_flexspi_nor_config.h</name>
+            <name>$PROJ_DIR$\..\xip\frdmimxrt1186_flexspi_nor_config.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\xip\fsl_flexspi_nor_boot.c</name>
