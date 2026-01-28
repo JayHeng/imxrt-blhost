@@ -1998,6 +1998,21 @@
             <name>$PROJ_DIR$\..\drivers\fsl_dcdc.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_edma.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_edma.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_edma_core.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_edma_soc.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_edma_soc.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\drivers\fsl_ele_base_api.c</name>
         </file>
         <file>
@@ -2008,6 +2023,18 @@
         </file>
         <file>
             <name>$PROJ_DIR$\..\drivers\fsl_gpc.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_i3c.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_i3c.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_i3c_edma.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_i3c_edma.h</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\drivers\fsl_iomuxc.h</name>
@@ -2089,12 +2116,30 @@
         <name>source</name>
         <file>
             <name>$PROJ_DIR$\..\..\tools\blhost\src\blhost.cpp</name>
+            <excluded>
+                <configuration>RT600_firmware</configuration>
+            </excluded>
         </file>
         <file>
             <name>$PROJ_DIR$\..\source\blhost_app.c</name>
+            <excluded>
+                <configuration>RT600_firmware</configuration>
+            </excluded>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\source\i3c_master_transfer.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\source\lpi2c_polling_b2b_master.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\source\mcux_config.h</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\source\rom_isp_i2c_firmware_update.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\source\rom_isp_i2c_firmware_update.h</name>
         </file>
     </group>
     <group>

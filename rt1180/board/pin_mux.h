@@ -1,5 +1,6 @@
 /*
- * Copyright 2025 NXP
+ * Copyright 2026 NXP
+ * All rights reserved.
  *
  * SPDX-License-Identifier: BSD-3-Clause
  */
@@ -50,18 +51,6 @@ void BOARD_InitDEBUG_UARTPins_deinit(void);   /* Function assigned for the Corte
  *
  */
 void BOARD_InitCANPins(void);                 /* Function assigned for the Cortex-M33 */
-
-/* GPIO_AON_15 (coord B8), ETH0 */
-/* Routed pin properties */
-#define BOARD_INITNETPINS_ETH0_RESET_PERIPHERAL                           RGPIO1   /*!< Peripheral name */
-#define BOARD_INITNETPINS_ETH0_RESET_SIGNAL                              gpio_io   /*!< Signal name */
-#define BOARD_INITNETPINS_ETH0_RESET_CHANNEL                                 15U   /*!< Signal channel */
-
-/* Symbols to be used with GPIO driver */
-#define BOARD_INITNETPINS_ETH0_RESET_GPIO                                 RGPIO1   /*!< GPIO peripheral base pointer */
-#define BOARD_INITNETPINS_ETH0_RESET_INIT_GPIO_VALUE                          1U   /*!< GPIO output initial state */
-#define BOARD_INITNETPINS_ETH0_RESET_GPIO_PIN                                15U   /*!< GPIO pin number */
-#define BOARD_INITNETPINS_ETH0_RESET_GPIO_PIN_MASK                   (1U << 15U)   /*!< GPIO pin mask */
 
 /* GPIO_AON_20 (coord A3), ETH2 */
 /* Routed pin properties */
@@ -300,19 +289,19 @@ void BOARD_InitFLEXIO_PWMPins(void);          /* Function assigned for the Corte
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitFLEXIO_AFORMATPins(void);          /* Function assigned for the Cortex-M33 */
+void BOARD_InitFLEXIO_AFORMATPins(void);      /* Function assigned for the Cortex-M33 */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitFLEXIO_TFORMATPins(void);          /* Function assigned for the Cortex-M33 */
+void BOARD_InitFLEXIO_TFORMATPins(void);      /* Function assigned for the Cortex-M33 */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
  *
  */
-void BOARD_InitFLEXIO_BISSPins(void);
+void BOARD_InitFLEXIO_BISSPins(void);         /* Function assigned for the Cortex-M33 */
 
 /*!
  * @brief Configures pin routing and optionally pin electrical features.
@@ -377,6 +366,20 @@ void BOARD_InitALT_UARTPins(void);            /* Function assigned for the Corte
  *
  */
 void BOARD_InitALT_UARTPins_deinit(void);     /* Function assigned for the Cortex-M33 */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void BOARD_InitI3CPins(void);                 /* Function assigned for the Cortex-M33 */
+
+/*!
+ * @brief This is a de-initialization function for 'BOARD_InitI3CPins' function.
+ * It sets all pins features (routing, direction and electrical) to their after-reset state.
+ * It also tries to route the previous peripheral signals to their default pins.
+ *
+ */
+void BOARD_InitI3CPins_deinit(void);          /* Function assigned for the Cortex-M33 */
 
 #if defined(__cplusplus)
 }

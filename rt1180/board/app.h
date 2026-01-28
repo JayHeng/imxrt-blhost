@@ -12,7 +12,13 @@
  * Definitions
  ******************************************************************************/
 /*${macro:start}*/
+#define EXAMPLE_I2C_MASTER_BASE LPI2C3_BASE
 
+/* Get frequency of lpi2c clock */
+#define LPI2C_CLOCK_FREQUENCY (CLOCK_GetRootClockFreq(kCLOCK_Root_Lpi2c0304))
+
+#define LPI2C_MASTER_CLOCK_FREQUENCY LPI2C_CLOCK_FREQUENCY
+#define WAIT_TIME                    10U
 /*${macro:end}*/
 
 /*******************************************************************************
