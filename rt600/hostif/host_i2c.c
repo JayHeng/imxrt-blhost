@@ -11,6 +11,8 @@
 
 #define BUFFER_SIZE 1040
 
+#define I2C_MASTER_SLAVE_ADDR_7BIT (0x7EU)
+
 int i2c_setup(int fd, uint32_t speed, uint8_t address)
 {
     i2c_master_config_t masterConfig;
@@ -52,8 +54,10 @@ int i2c_write(int fd, char *buf, int size)
     if(size > BUFFER_SIZE)
         while(1);
 
-    xfer.slaveAddress   = deviceAddress;
+    xfer.slaveAddress   = deviceAddress;//I2C_MASTER_SLAVE_ADDR_7BIT;
     xfer.direction      = kI2C_Write;
+    //xfer.subaddress     = (uint32_t)deviceAddress;
+    //xfer.subaddressSize = 1;
     xfer.data           = buf;
     xfer.dataSize       = size;
     xfer.flags          = kI2C_TransferDefaultFlag;
@@ -72,8 +76,10 @@ int i2c_read(int fd, char *buf, int size)
     if(size > BUFFER_SIZE)
         while(1);
 
-    xfer.slaveAddress   = deviceAddress;
+    xfer.slaveAddress   = deviceAddress;//I2C_MASTER_SLAVE_ADDR_7BIT;
     xfer.direction      = kI2C_Read;
+    //xfer.subaddress     = (uint32_t)deviceAddress;
+    //xfer.subaddressSize = 1;
     xfer.data           = buf;
     xfer.dataSize       = size;
     xfer.flags          = kI2C_TransferDefaultFlag;

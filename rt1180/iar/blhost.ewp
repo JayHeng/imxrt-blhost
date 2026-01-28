@@ -2013,6 +2013,12 @@
             <name>$PROJ_DIR$\..\drivers\fsl_iomuxc.h</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_lpi2c.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\drivers\fsl_lpi2c.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\drivers\fsl_lpuart.c</name>
         </file>
         <file>
