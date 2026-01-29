@@ -72,12 +72,39 @@ char *blhost_i2c_args3[] = {
 /*******************************************************************************
  * Code
  ******************************************************************************/
+
+status_t ROM_ISP_LPI2C_MasterInitialize(void);
+status_t ROM_ISP_I2C_FirmwareUpdate(void);
 /*!
  * @brief Main function
  */
-int ota_main(uint8_t tgtIdx)
+//int ota_main(uint8_t tgtIdx)
+int main(void)
 {
+    /* Init board hardware. */
+    BOARD_InitHardware();
     PRINTF("BLHOST.\r\n");
+
+    {
+        status_t result;
+        // Initialize LPI2C master
+        result = ROM_ISP_LPI2C_MasterInitialize();
+        if (result != kStatus_Success)
+        {
+            PRINTF("LPI2C master initialization failed\r\n");
+            return -1;
+        }
+
+        // Perform firmware update via LPI2C
+        result = ROM_ISP_I2C_FirmwareUpdate();
+        if (result != kStatus_Success)
+        {
+            PRINTF("LPI2C firmware update failed\r\n");
+            return -1;
+        }
+    }
+
+
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
     //blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
     //blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
