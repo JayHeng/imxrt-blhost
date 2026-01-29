@@ -85,6 +85,7 @@ int main(void)
     BOARD_InitHardware();
     PRINTF("BLHOST.\r\n");
 
+    /*
     {
         status_t result;
         // Initialize LPI2C master
@@ -103,7 +104,7 @@ int main(void)
             return -1;
         }
     }
-
+    */
 
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
     //blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
