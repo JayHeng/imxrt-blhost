@@ -50,7 +50,7 @@ char *blhost_i2c_args2[] = {
     "--",
     "write-memory",
     "0x0",
-    "0x200000",
+    "0x04100000",
     "0x10000"
 };
 
