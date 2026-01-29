@@ -43,7 +43,7 @@ char *blhost_i2c_args0[] = {
 char *blhost_i2c_args2[] = {
     "blhost",
     "-i",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
     "0x80000",
@@ -100,11 +100,11 @@ char *blhost_i2c_args5[] = {
 char *blhost_i2c_args6[] = {
     "blhost",
     "-i",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
     "0x08010000",
-    "0x200000",
+    "0x28100000",
     "0x4000"
 };
 

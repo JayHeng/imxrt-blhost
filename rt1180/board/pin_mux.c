@@ -90,14 +90,14 @@ void BOARD_InitI2cPins(void)
       1U);                                    /* Software Input On Field: Force input path of pad GPIO_AON_16 */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AON_15_LPI2C2_SDA,          /* GPIO_AON_15 PAD functional properties : */
-      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+      0x1EU);                                 /* Slew Rate Field: Fast Slew Rate
                                                  Drive Strength Field: high driver
                                                  Pull / Keep Select Field: Pull Disable, Highz
                                                  Pull Up / Down Config. Field: Weak pull up
                                                  Open Drain Field: Enabled */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AON_16_LPI2C2_SCL,          /* GPIO_AON_16 PAD functional properties : */
-      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+      0x1EU);                                 /* Slew Rate Field: Fast Slew Rate
                                                  Drive Strength Field: high driver
                                                  Pull / Keep Select Field: Pull Disable, Highz
                                                  Pull Up / Down Config. Field: Weak pull up

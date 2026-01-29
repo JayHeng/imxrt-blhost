@@ -7,7 +7,7 @@
 
 #include "fsl_common.h"
 
-#define IMAGE_SECTION_ADDRESS 0x20200000
+#define IMAGE_SECTION_ADDRESS 0x28100000
 
 #if (defined(__ICCARM__))
 #pragma section = "__image_section"
