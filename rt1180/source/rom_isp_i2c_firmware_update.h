@@ -39,7 +39,8 @@ extern "C" {
 /*!
  * @brief Switch pins from I3C to LPI2C mode
  */
-void ROM_ISP_SwitchPinsToI2C(void);
+void ROM_ISP_InitUserI2CPins(void);
+void ROM_ISP_InitUserI2CPins_deinit(void);
 
 /*!
  * @brief Initialize LPI2C Master

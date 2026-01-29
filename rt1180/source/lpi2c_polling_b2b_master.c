@@ -24,7 +24,6 @@
 
 #define SLAVE_COUNT 5
 #define MAX_LOOPS 3
-#define TARGETSLVADDR 0x34U
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -244,7 +243,7 @@ static status_t I3C_NormalCommunication(void)
     return kStatus_Success;
 }
 
-static status_t I3C_Termination(void)
+static status_t I3C_Termination(uint8_t targetSlvAddr)
 {
     status_t result;
 
@@ -258,7 +257,7 @@ static status_t I3C_Termination(void)
     uint8_t targetSlaveIndex = 0xFF;
     for (uint8_t i = 0; i < SLAVE_COUNT; i++)
     {
-        if (g_slaveAddresses[i] == TARGETSLVADDR)
+        if (g_slaveAddresses[i] == targetSlvAddr)
         {
             targetSlaveIndex = i;
             break;
@@ -270,7 +269,7 @@ static status_t I3C_Termination(void)
         /* Set followed flag to 0x5A */
         g_master_txBuff[targetSlaveIndex].i3c_tx_frame_followed = 0x5A;
 
-        PRINTF("\r\n========== Final Transmission to I3C Slave 0x%02X ==========\r\n",TARGETSLVADDR);
+        PRINTF("\r\n========== Final Transmission to I3C Slave 0x%02X ==========\r\n",targetSlvAddr);
         PRINTF("--- Slave[%d] (0x%02X) - Termination Command ---\r\n",
                targetSlaveIndex, g_slaveAddresses[targetSlaveIndex]);
 
@@ -352,6 +351,7 @@ int main(void)
     }
 
     /* Phase 1: Normal I3C communication (3 loops) */
+    ////////////////////////////////////////////////////////////////////////////
     result = I3C_NormalCommunication();
     if (result != kStatus_Success)
     {
@@ -359,41 +359,52 @@ int main(void)
         return -1;
     }
 
-    /* Phase 2: Send termination command to I3C slave 0x34 only */
-    result = I3C_Termination();
-    if (result != kStatus_Success)
+    /* Phase 2.x: Send termination command to I3C slave */
+    ////////////////////////////////////////////////////////////////////////////
+    for (uint8_t i = 0; i < SLAVE_COUNT; i++)
     {
-        PRINTF("I3C termination failed\r\n");
-        return -1;
-    }
+        SDK_DelayAtLeastUs(100000, SystemCoreClock);
+        ROM_ISP_InitUserI2CPins_deinit();
+        CLOCK_DisableClock(kCLOCK_Iomuxc2);
+        BOARD_InitI3CPins();
+        SDK_DelayAtLeastUs(100000, SystemCoreClock);
 
-    /* Phase 3: Switch to LPI2C and perform firmware update */
-    SDK_DelayAtLeastUs(100000, SystemCoreClock);
-    BOARD_InitI3CPins_deinit();
-    CLOCK_DisableClock(kCLOCK_Iomuxc2);
-    ROM_ISP_SwitchPinsToI2C();
-    SDK_DelayAtLeastUs(100000, SystemCoreClock);
+        result = I3C_Termination(g_slaveAddresses[i]);
+        if (result != kStatus_Success)
+        {
+            PRINTF("I3C termination failed\r\n");
+            return -1;
+        }
 
-    /* Initialize LPI2C master */
-    result = ROM_ISP_LPI2C_MasterInitialize();
-    if (result != kStatus_Success)
-    {
-        PRINTF("LPI2C master initialization failed\r\n");
-        return -1;
-    }
+        /* Phase 3.x: Switch to LPI2C and perform firmware update */
+        ////////////////////////////////////////////////////////////////////////
+        SDK_DelayAtLeastUs(100000, SystemCoreClock);
+        BOARD_InitI3CPins_deinit();
+        CLOCK_DisableClock(kCLOCK_Iomuxc2);
+        ROM_ISP_InitUserI2CPins();
+        SDK_DelayAtLeastUs(100000, SystemCoreClock);
 
-    /* Perform firmware update via LPI2C */
-    result = ROM_ISP_I2C_FirmwareUpdate();
-    if (result != kStatus_Success)
-    {
-        PRINTF("LPI2C firmware update failed\r\n");
-        return -1;
+        /* Initialize LPI2C master */
+        result = ROM_ISP_LPI2C_MasterInitialize();
+        if (result != kStatus_Success)
+        {
+            PRINTF("LPI2C master initialization failed\r\n");
+            return -1;
+        }
+
+        /* Perform firmware update via LPI2C */
+        result = ROM_ISP_I2C_FirmwareUpdate();
+        if (result != kStatus_Success)
+        {
+            PRINTF("LPI2C firmware update failed\r\n");
+            return -1;
+        }
     }
 
     PRINTF("\r\n========================================\r\n");
     PRINTF("All operations completed!\r\n");
     PRINTF("- I3C Normal loops: %u\r\n", MAX_LOOPS);
-    PRINTF("- I3C Termination command sent to: 0x34\r\n");
+    PRINTF("- I3C Termination command sent to: all slaves\r\n");
     PRINTF("- LPI2C Firmware update completed\r\n");
     PRINTF("Program finished.\r\n");
     PRINTF("========================================\r\n");

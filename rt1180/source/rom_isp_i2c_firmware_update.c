@@ -21,7 +21,7 @@ static uint8_t g_i2c_master_rxBuff[16];
  * Code
  ******************************************************************************/
 
-void ROM_ISP_SwitchPinsToI2C(void)
+void ROM_ISP_InitUserI2CPins(void)
 {
     PRINTF("\r\nSwitching pins from I3C to LPI2C...\r\n");
 
@@ -53,6 +53,33 @@ void ROM_ISP_SwitchPinsToI2C(void)
                                                    Force ibe off Field: Disabled */
 
     PRINTF("Pins switched to LPI2C successfully\r\n");
+}
+        
+void ROM_ISP_InitUserI2CPins_deinit(void) {
+  CLOCK_EnableClock(kCLOCK_Iomuxc2);          /* Turn on LPCG: LPCG is ON. */
+
+  rgpio_pin_config_t gpio_pin_config = {
+      .pinDirection = kRGPIO_DigitalInput,
+      .outputLogic = 0U,
+  };
+  /* Initialize GPIO functionality on GPIO_AD_18 (pin L13) */
+  RGPIO_PinInit(RGPIO1, 15U, &gpio_pin_config);
+  RGPIO_SetPinInterruptConfig(RGPIO1, 15U, kRGPIO_InterruptOutput0, kRGPIO_InterruptOrDMADisabled);
+  RGPIO_PinInit(RGPIO1, 16U, &gpio_pin_config);
+  RGPIO_SetPinInterruptConfig(RGPIO1, 16U, kRGPIO_InterruptOutput0, kRGPIO_InterruptOrDMADisabled);
+
+  IOMUXC_SetPinMux(
+      IOMUXC_GPIO_AON_16_GPIO1_IO16,
+      0U);
+  IOMUXC_SetPinMux(
+      IOMUXC_GPIO_AON_15_GPIO1_IO15,
+      0U);
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AON_16_GPIO1_IO16,
+      0x08U);
+  IOMUXC_SetPinConfig(
+      IOMUXC_GPIO_AON_15_GPIO1_IO15,
+      0x08U);
 }
 
 status_t ROM_ISP_LPI2C_MasterInitialize(void)
