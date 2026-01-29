@@ -77,7 +77,7 @@ int i2c_read(int fd, char *buf, int size)
     //xfer.subaddress     = (uint32_t)deviceAddress;
     //xfer.subaddressSize = 1;
     xfer.data           = buf;
-    xfer.dataSize       = size - 1;
+    xfer.dataSize       = size;
     xfer.flags          = kLPI2C_TransferDefaultFlag;
 
     LPI2C_MasterTransferBlocking(LPI2C2, &xfer);
