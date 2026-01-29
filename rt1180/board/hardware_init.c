@@ -28,7 +28,7 @@ void BOARD_InitUserI2cPins(void)
       1U);                                    /* Software Input On Field: Force input path of pad GPIO_AD_19 */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AON_15_LPI2C2_SDA,           /* GPIO_AD_18 PAD functional properties : */
-      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+      0x1EU);                                 /* Slew Rate Field: Fast Slew Rate
                                                  Drive Strength Field: high driver
                                                  Pull / Keep Select Field: Pull Enable
                                                  Pull Up / Down Config. Field: Weak pull up
@@ -36,7 +36,7 @@ void BOARD_InitUserI2cPins(void)
                                                  Force ibe off Field: Disabled */
   IOMUXC_SetPinConfig(
       IOMUXC_GPIO_AON_16_LPI2C2_SCL,           /* GPIO_AD_19 PAD functional properties : */
-      0x1AU);                                 /* Slew Rate Field: Fast Slew Rate
+      0x1EU);                                 /* Slew Rate Field: Fast Slew Rate
                                                  Drive Strength Field: high driver
                                                  Pull / Keep Select Field: Pull Enable
                                                  Pull Up / Down Config. Field: Weak pull up
