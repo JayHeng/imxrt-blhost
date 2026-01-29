@@ -34,6 +34,8 @@ static status_t I3C_MasterSendData(uint8_t slaveAddr, uint8_t *txData, size_t da
 static status_t I3C_MasterReceiveData(uint8_t slaveAddr, uint8_t *rxData, size_t dataSize);
 static status_t I3C_NormalCommunicationAndTermination(void);
 
+extern int ota_main(uint8_t tgtIdx);
+
 /*******************************************************************************
  * Variables
  ******************************************************************************/
@@ -384,7 +386,8 @@ int main(void)
         ROM_ISP_InitUserI2CPins();
         SDK_DelayAtLeastUs(100000, SystemCoreClock);
 
-        /* Initialize LPI2C master */
+        /*
+        // Initialize LPI2C master
         result = ROM_ISP_LPI2C_MasterInitialize();
         if (result != kStatus_Success)
         {
@@ -392,13 +395,15 @@ int main(void)
             return -1;
         }
 
-        /* Perform firmware update via LPI2C */
+        // Perform firmware update via LPI2C
         result = ROM_ISP_I2C_FirmwareUpdate();
         if (result != kStatus_Success)
         {
             PRINTF("LPI2C firmware update failed\r\n");
             return -1;
         }
+        */
+        ota_main(i);
     }
 
     PRINTF("\r\n========================================\r\n");

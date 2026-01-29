@@ -2116,15 +2116,9 @@
         <name>source</name>
         <file>
             <name>$PROJ_DIR$\..\..\tools\blhost\src\blhost.cpp</name>
-            <excluded>
-                <configuration>RT600_firmware</configuration>
-            </excluded>
         </file>
         <file>
             <name>$PROJ_DIR$\..\source\blhost_app.c</name>
-            <excluded>
-                <configuration>RT600_firmware</configuration>
-            </excluded>
         </file>
         <file>
             <name>$PROJ_DIR$\..\source\i3c_master_transfer.h</name>

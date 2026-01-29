@@ -15,12 +15,6 @@
  * Definitions
  ******************************************************************************/
 
-#define BLHOST_USE_SPI (0)
-#define BLHOST_USE_I2C (1)
-
-#define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (0)
-#define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (1)
-
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
@@ -39,53 +33,8 @@ char *blhost_i2c_args0[] = {
     "1"
 };
 
-#define BLHOST_I2C_ARGC2 (8)
-char *blhost_i2c_args2[] = {
-    "blhost",
-    "-i",
-    "5,4000",
-    "--",
-    "write-memory",
-    "0x80000",
-    "0x04100000",
-    "0x80000"
-};
-
-#define BLHOST_I2C_ARGC3 (8)
-char *blhost_i2c_args3_1[] = {
-    "blhost",
-    "-i",
-    "2,0x10",
-    "--",
-    "fill-memory",
-    "0x10c000",
-    "4",
-    "0xc1503051"
-};
-char *blhost_i2c_args3_2[] = {
-    "blhost",
-    "-i",
-    "2,0x10",
-    "--",
-    "fill-memory",
-    "0x10c004",
-    "4",
-    "0x20000014"
-};
-
-#define BLHOST_I2C_ARGC4 (7)
-char *blhost_i2c_args4[] = {
-    "blhost",
-    "-i",
-    "2,0x10",
-    "--",
-    "configure-memory",
-    "0x9",
-    "0x10c000"
-};
-
-#define BLHOST_I2C_ARGC5 (8)
-char *blhost_i2c_args5[] = {
+#define BLHOST_I2C_ARGC1 (8)
+char *blhost_i2c_args1[] = {
     "blhost",
     "-i",
     "2,0x10",
@@ -96,8 +45,8 @@ char *blhost_i2c_args5[] = {
     "0x9"
 };
 
-#define BLHOST_I2C_ARGC6 (8)
-char *blhost_i2c_args6[] = {
+#define BLHOST_I2C_ARGC2 (8)
+char *blhost_i2c_args2[] = {
     "blhost",
     "-i",
     "5,4000",
@@ -108,9 +57,8 @@ char *blhost_i2c_args6[] = {
     "0x4000"
 };
 
-#define BLHOST_I2C_ARGC7 (8)
-// arg for sdk20-app_rt600.bin
-char *blhost_i2c_args7[] = {
+#define BLHOST_I2C_ARGC3 (8)
+char *blhost_i2c_args3[] = {
     "blhost",
     "-i",
     "2,0x10",
@@ -127,31 +75,13 @@ char *blhost_i2c_args7[] = {
 /*!
  * @brief Main function
  */
-int main(void)
+int ota_main(uint8_t tgtIdx)
 {
-    /* Init board hardware. */
-    BOARD_InitHardware();
-
     PRINTF("BLHOST.\r\n");
-
-#if BLHOST_USE_I2C
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
-    
-    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3_1, NULL);
-    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3_2, NULL);
-    blhost_main(BLHOST_I2C_ARGC4, blhost_i2c_args4, NULL);
-    blhost_main(BLHOST_I2C_ARGC5, blhost_i2c_args5, NULL);
-    blhost_main(BLHOST_I2C_ARGC6, blhost_i2c_args6, NULL);
-    
+    //blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
     //blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
-#if DEVICE_IN_3b110_SERIAL_ISP_BOOT
-    //blhost_main(BLHOST_I2C_ARGC7, blhost_i2c_args7, NULL);
-#endif
-#endif
-
+    //blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
     PRINTF("Done\r\n");
-    while (1)
-    {
-
-    }
+    return 0;
 }
