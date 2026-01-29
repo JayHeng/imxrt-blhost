@@ -33,28 +33,25 @@ char *blhost_i2c_args0[] = {
     "1"
 };
 
-#define BLHOST_I2C_ARGC1 (8)
+#define BLHOST_I2C_ARGC1 (5)
 char *blhost_i2c_args1[] = {
     "blhost",
     "-i",
     "2,0x10",
     "--",
-    "flash-erase-region",
-    "0x08010000",
-    "0x10000",
-    "0x9"
+    "flash-erase-all"
 };
 
 #define BLHOST_I2C_ARGC2 (8)
 char *blhost_i2c_args2[] = {
     "blhost",
     "-i",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
-    "0x08010000",
+    "0x0",
     "0x200000",
-    "0x4000"
+    "0x10000"
 };
 
 #define BLHOST_I2C_ARGC3 (8)
@@ -64,9 +61,9 @@ char *blhost_i2c_args3[] = {
     "2,0x10",
     "--",
     "execute",
-    "0x00082D09",
+    "0x000012c9",
     "0x0",
-    "0x20200000"
+    "0x20006000"
 };
 
 /*******************************************************************************
@@ -107,9 +104,9 @@ int main(void)
     */
 
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
-    //blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
-    //blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
-    //blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
+    blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
+    blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
+    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
     PRINTF("Done\r\n");
     return 0;
 }
