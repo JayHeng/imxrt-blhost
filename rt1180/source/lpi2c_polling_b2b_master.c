@@ -178,12 +178,11 @@ static status_t I3C_MasterReceiveData(uint8_t slaveAddr, uint8_t *rxData, size_t
  *
  * @return Status of the operation
  */
-static status_t I3C_NormalCommunicationAndTermination(void)
+static status_t I3C_NormalCommunication(void)
 {
     status_t result;
     uint32_t loopCount = 0;
 
-    /* Phase 1: Normal communication (3 loops) */
     PRINTF("\r\n========================================\r\n");
     PRINTF("Phase 1: Normal communication (%d loops)\r\n", MAX_LOOPS);
     PRINTF("========================================\r\n");
@@ -242,7 +241,13 @@ static status_t I3C_NormalCommunicationAndTermination(void)
         PRINTF("\r\n========== End Loop %u/%u ==========\r\n", loopCount, MAX_LOOPS);
     }
 
-    /* Phase 2: Send termination command to I3C slave 0x34 only */
+    return kStatus_Success;
+}
+
+static status_t I3C_Termination(void)
+{
+    status_t result;
+
     PRINTF("\r\n========================================\r\n");
     PRINTF("Phase 2: Send termination command to I3C slave\r\n");
     PRINTF("========================================\r\n");
@@ -346,11 +351,19 @@ int main(void)
         return -1;
     }
 
-    /* Perform normal communication and termination */
-    result = I3C_NormalCommunicationAndTermination();
+    /* Phase 1: Normal I3C communication (3 loops) */
+    result = I3C_NormalCommunication();
     if (result != kStatus_Success)
     {
         PRINTF("I3C communication failed\r\n");
+        return -1;
+    }
+
+    /* Phase 2: Send termination command to I3C slave 0x34 only */
+    result = I3C_Termination();
+    if (result != kStatus_Success)
+    {
+        PRINTF("I3C termination failed\r\n");
         return -1;
     }
 
