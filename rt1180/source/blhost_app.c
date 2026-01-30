@@ -145,8 +145,43 @@ void ota_prepare(void)
 
 int ota_main(uint8_t tgtIdx)
 {
+    status_t status = kStatus_Success;
     PRINTF("BLHOST.\r\n");
     g_appIndex = tgtIdx;
+
+    uint32_t sp = *((uint32_t *)g_appStart[tgtIdx]);
+    uint32_t pc = *((uint32_t *)(g_appStart[tgtIdx] + 4));
+
+    status = blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+    status = blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+    status = blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+    update_blhost_args_pc_sp(pc, sp);
+    status = blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
+    if (status != kStatus_Success)
+    {
+        return status;
+    }
+    PRINTF("Done\r\n");
+
+    return kStatus_Success;
+}
+
+int main(void)
+{
+    /* Init board hardware. */
+    BOARD_InitHardware();
 
     /*
     {
@@ -168,23 +203,6 @@ int ota_main(uint8_t tgtIdx)
         }
     }
     */
-    uint32_t sp = *((uint32_t *)g_appStart[tgtIdx]);
-    uint32_t pc = *((uint32_t *)(g_appStart[tgtIdx] + 4));
-
-    blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
-    blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
-    blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
-    update_blhost_args_pc_sp(pc, sp);
-    blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
-    PRINTF("Done\r\n");
-
-    return 0;
-}
-
-int main(void)
-{
-    /* Init board hardware. */
-    BOARD_InitHardware();
     
     ota_prepare();
     for (uint32_t i = 0; i < SLAVE_COUNT; i++)
