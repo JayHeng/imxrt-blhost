@@ -50,7 +50,7 @@ char *blhost_i2c_args2[] = {
     "--",
     "write-memory",
     "0x0",
-    "0x04100000",
+    "0x04080000",
     "0x10000"
 };
 
@@ -75,12 +75,11 @@ status_t ROM_ISP_I2C_FirmwareUpdate(void);
 /*!
  * @brief Main function
  */
-//int ota_main(uint8_t tgtIdx)
-int main(void)
+uint8_t g_targetIndex = 0;
+int ota_main(uint8_t tgtIdx)
 {
-    /* Init board hardware. */
-    BOARD_InitHardware();
     PRINTF("BLHOST.\r\n");
+    g_targetIndex = tgtIdx;
 
     /*
     {
@@ -108,5 +107,20 @@ int main(void)
     blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
     blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
     PRINTF("Done\r\n");
+
     return 0;
+}
+
+int main(void)
+{
+    /* Init board hardware. */
+    BOARD_InitHardware();
+    
+    ota_main(0);
+    ota_main(1);
+    ota_main(2);
+    ota_main(3);
+    ota_main(4);
+
+    while (1);
 }

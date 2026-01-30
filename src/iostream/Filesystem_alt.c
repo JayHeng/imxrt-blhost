@@ -7,8 +7,6 @@
 
 #include "fsl_common.h"
 
-#define IMAGE_SECTION_ADDRESS 0x04100000
-
 #if (defined(__ICCARM__))
 #pragma section = "__image_section"
 #endif
@@ -28,14 +26,44 @@ typedef struct _FileImage
 
 static volatile FileImage_t fileImage;
 
+extern uint8_t g_targetIndex;
+
 uint32_t get_image_size(void)
 {
-    return __section_size("__image_section");
+    //return __section_size("__image_section");
+    switch (g_targetIndex)
+    {
+        case 0:
+            return 0x20000;
+        case 1:
+            return 0x20000;
+        case 2:
+            return 0x20000;
+        case 3:
+            return 0x20000;
+        case 4:
+        default:
+            return 0x20000;
+    }
 }
 
 uint32_t get_image_start(void)
 {
-    return (uint32_t)__section_begin("__image_section");
+    //return (uint32_t)__section_begin("__image_section");
+    switch (g_targetIndex)
+    {
+        case 0:
+            return 0x04080000;
+        case 1:
+            return 0x040A0000;
+        case 2:
+            return 0x040C0000;
+        case 3:
+            return 0x040E0000;
+        case 4:
+        default:
+            return 0x04100000;
+    }
 }
 
 void* fopen_alt(const char *filename, const char *mode)
