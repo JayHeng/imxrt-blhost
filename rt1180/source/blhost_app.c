@@ -10,6 +10,8 @@
 #include "fsl_debug_console.h"
 #include "board.h"
 #include "app.h"
+#include <stdio.h>
+#include <stdint.h>
    
 #if (defined(__ICCARM__))
 #pragma section = ".intvec"
@@ -84,20 +86,29 @@ char *blhost_i2c_args2[] = {
 };
 
 #define BLHOST_I2C_ARGC3 (8)
-char *blhost_i2c_args3[] = {
+static char s_pc_buf[12];
+static char s_sp_buf[12];
+
+static char *blhost_i2c_args3[] = {
     "blhost",
     "-i",
     "2,0x10",
     "--",
     "execute",
-    "0x000012c9",
+    s_pc_buf,
     "0x0",
-    "0x20006000"
+    s_sp_buf
 };
 
 /*******************************************************************************
  * Code
  ******************************************************************************/
+
+void update_blhost_args_pc_sp(uint32_t pc, uint32_t sp)
+{
+    snprintf(s_pc_buf, sizeof(s_pc_buf), "0x%08X", pc);
+    snprintf(s_sp_buf, sizeof(s_sp_buf), "0x%08X", sp);
+}
 
 status_t ROM_ISP_LPI2C_MasterInitialize(void);
 status_t ROM_ISP_I2C_FirmwareUpdate(void);
@@ -157,10 +168,13 @@ int ota_main(uint8_t tgtIdx)
         }
     }
     */
+    uint32_t sp = *((uint32_t *)g_appStart[tgtIdx]);
+    uint32_t pc = *((uint32_t *)(g_appStart[tgtIdx] + 4));
 
     blhost_main(BLHOST_I2C_ARGC0, blhost_i2c_args0, NULL);
     blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
     blhost_main(BLHOST_I2C_ARGC2, blhost_i2c_args2, NULL);
+    update_blhost_args_pc_sp(pc, sp);
     blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
     PRINTF("Done\r\n");
 
