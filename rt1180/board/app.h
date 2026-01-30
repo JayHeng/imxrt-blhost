@@ -19,6 +19,10 @@
 
 #define LPI2C_MASTER_CLOCK_FREQUENCY LPI2C_CLOCK_FREQUENCY
 #define WAIT_TIME                    10U
+
+
+#define SLAVE_COUNT 5
+
 /*${macro:end}*/
 
 /*******************************************************************************

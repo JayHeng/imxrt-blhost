@@ -5,6 +5,7 @@
  * SPDX-License-Identifier: BSD-3-Clause
  */
 
+#include "app.h"
 #include "fsl_common.h"
 
 #if (defined(__ICCARM__))
@@ -26,44 +27,20 @@ typedef struct _FileImage
 
 static volatile FileImage_t fileImage;
 
-extern uint8_t g_targetIndex;
+extern uint8_t g_appIndex;
+extern uint32_t g_appStart[SLAVE_COUNT];
+extern uint32_t g_appSize[SLAVE_COUNT];
 
 uint32_t get_image_size(void)
 {
     //return __section_size("__image_section");
-    switch (g_targetIndex)
-    {
-        case 0:
-            return 0x20000;
-        case 1:
-            return 0x20000;
-        case 2:
-            return 0x20000;
-        case 3:
-            return 0x20000;
-        case 4:
-        default:
-            return 0x20000;
-    }
+    return g_appSize[g_appIndex];
 }
 
 uint32_t get_image_start(void)
 {
     //return (uint32_t)__section_begin("__image_section");
-    switch (g_targetIndex)
-    {
-        case 0:
-            return 0x04080000;
-        case 1:
-            return 0x040A0000;
-        case 2:
-            return 0x040C0000;
-        case 3:
-            return 0x040E0000;
-        case 4:
-        default:
-            return 0x04100000;
-    }
+    return g_appStart[g_appIndex];
 }
 
 void* fopen_alt(const char *filename, const char *mode)

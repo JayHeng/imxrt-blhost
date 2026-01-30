@@ -22,7 +22,6 @@
 
 #define EXAMPLE_I2C_MASTER ((LPI2C_Type *)EXAMPLE_I2C_MASTER_BASE)
 
-#define SLAVE_COUNT 5
 #define MAX_LOOPS 3
 /*******************************************************************************
  * Prototypes
@@ -34,6 +33,7 @@ static status_t I3C_MasterSendData(uint8_t slaveAddr, uint8_t *txData, size_t da
 static status_t I3C_MasterReceiveData(uint8_t slaveAddr, uint8_t *rxData, size_t dataSize);
 static status_t I3C_NormalCommunicationAndTermination(void);
 
+extern void ota_prepare(void);
 extern int ota_main(uint8_t tgtIdx);
 
 /*******************************************************************************

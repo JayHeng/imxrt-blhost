@@ -10,10 +10,39 @@
 #include "fsl_debug_console.h"
 #include "board.h"
 #include "app.h"
+   
+#if (defined(__ICCARM__))
+#pragma section = ".intvec"
+#endif
 
 /*******************************************************************************
  * Definitions
  ******************************************************************************/
+
+#define APP_TARGET_FLASH_SIZE (128*1024UL)
+
+#define SBL_MAGIC (0x4C425354) //'TSBL'
+
+typedef struct _tota_sbl_header
+{
+    uint32_t reserved[8];
+    uint32_t slot0StartAddr;
+    uint32_t slot1StartAddr;
+    uint32_t magic;
+} tota_sbl_header_t;
+
+#define APP_MAGIC (0x50504154) //'TAPP'
+
+typedef struct _tota_app_header
+{
+    uint32_t reserved0[8];
+    uint32_t length;
+    uint16_t authType;
+    uint16_t version;
+    uint32_t authRes;
+    uint32_t reserved1[2];
+    uint32_t appLoadAddr;
+} tota_app_header_t;
 
 /*******************************************************************************
  * Prototypes
@@ -75,11 +104,38 @@ status_t ROM_ISP_I2C_FirmwareUpdate(void);
 /*!
  * @brief Main function
  */
-uint8_t g_targetIndex = 0;
+uint8_t g_appIndex = 0;
+uint32_t g_appStart[SLAVE_COUNT];
+uint32_t g_appSize[SLAVE_COUNT];
+
+void ota_prepare(void)
+{
+    uint32_t vectorStart = (uint32_t)__section_begin(".intvec");
+    PRINTF("OTA app vector addr = 0x%x.\r\n", vectorStart);
+    tota_sbl_header_t *sblHeader = (tota_sbl_header_t *)vectorStart;
+    if (sblHeader->magic == SBL_MAGIC)
+    {
+        PRINTF("slot 0 start: 0x%x \r\n", sblHeader->slot0StartAddr);
+        for (uint32_t i = 0; i < SLAVE_COUNT; i++)
+        {
+            g_appStart[i] = FlexSPI2_AMBA_BASE + sblHeader->slot0StartAddr + i * APP_TARGET_FLASH_SIZE;
+            PRINTF("TARGET app%d vector addr = 0x%x.\r\n", i, g_appStart[i]);
+            tota_app_header_t *appHeader = (tota_app_header_t *)g_appStart[i];
+            g_appSize[i] = appHeader->length;
+            PRINTF("TARGET app%d length (bytes) = 0x%x.\r\n", i, g_appSize[i]);
+        }
+        PRINTF("slot 1 start: 0x%x \r\n", sblHeader->slot1StartAddr);
+    }
+    else
+    {
+        PRINTF("OTA app doesn't contain magic.\r\n");
+    }
+}
+
 int ota_main(uint8_t tgtIdx)
 {
     PRINTF("BLHOST.\r\n");
-    g_targetIndex = tgtIdx;
+    g_appIndex = tgtIdx;
 
     /*
     {
@@ -116,11 +172,11 @@ int main(void)
     /* Init board hardware. */
     BOARD_InitHardware();
     
-    ota_main(0);
-    ota_main(1);
-    ota_main(2);
-    ota_main(3);
-    ota_main(4);
+    ota_prepare();
+    for (uint32_t i = 0; i < SLAVE_COUNT; i++)
+    {
+        ota_main(i);
+    }
 
     while (1);
 }

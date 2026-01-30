@@ -61,9 +61,9 @@ __vector_table
         DCD     UsageFault_Handler                            ;Usage Fault Handler
 __vector_table_0x1c
         DCD     SecureFault_Handler                           ;Secure Fault Handler
-        DCD     0                                             ;Reserved
-        DCD     0                                             ;Reserved
-        DCD     0                                             ;Reserved
+        DCD     0x00080000                                             ;Reserved
+        DCD     0x00120000                                             ;Reserved
+        DCD     0x4C425354                                             ;Reserved
         DCD     SVC_Handler                                   ;SVCall Handler
         DCD     DebugMon_Handler                              ;Debug Monitor Handler
         DCD     0                                             ;Reserved
