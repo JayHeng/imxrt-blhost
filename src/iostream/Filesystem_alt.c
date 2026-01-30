@@ -26,34 +26,43 @@ typedef struct _FileImage
     uint32_t pos;
 }FileImage_t;
 
-static FileImage_t fileImage;
+static volatile FileImage_t fileImage;
 
+uint32_t get_image_size(void)
+{
+    return __section_size("__image_section");
+}
+
+uint32_t get_image_start(void)
+{
+    return (uint32_t)__section_begin("__image_section");
+}
 
 void* fopen_alt(const char *filename, const char *mode)
 {
     fileImage.pos = 0;
     fileImage.open = 1;
-    return &fileImage;
+    return (void*)&fileImage;
 }
 
 int fseek_alt(void *stream, int offset, int whence)
 {
     if(whence == 0) {
-        if((offset >= 0) && (offset < IMAGE_SIZE)) {
+        if((offset >= 0) && (offset < get_image_size())) {
             fileImage.pos = offset;
         } else {
             return -1;
         }
     } else if (whence == 1) {
-        if((fileImage.pos + offset < IMAGE_SIZE) && (fileImage.pos + offset > 0)) {
+        if((fileImage.pos + offset < get_image_size()) && (fileImage.pos + offset > 0)) {
             fileImage.pos += offset;
         } else {
             return -1;
         }
     } else {
-        if((offset <= 0) && (IMAGE_SIZE + offset >= 0))
+        if((offset <= 0) && (get_image_size() + offset >= 0))
         {
-            fileImage.pos = IMAGE_SIZE + offset;
+            fileImage.pos = get_image_size() + offset;
         } else {
             return -1;
         }
@@ -65,12 +74,12 @@ int fseek_alt(void *stream, int offset, int whence)
 int fread_alt(void *ptr, int size, int nmemb, void *stream)
 {
     int copysize = size * nmemb;
-    if(copysize + fileImage.pos > IMAGE_SIZE)
+    if(copysize + fileImage.pos > get_image_size())
     {
-        copysize = IMAGE_SIZE - fileImage.pos;
+        copysize = get_image_size() - fileImage.pos;
     }
 
-    memcpy(ptr, (void *)(IMAGE_SECTION_ADDRESS + fileImage.pos), copysize);
+    memcpy(ptr, (void *)(get_image_start() + fileImage.pos), copysize);
     fileImage.pos += copysize;
 
     return copysize;
@@ -94,5 +103,5 @@ void fclose_alt(void *stream)
 
 int feof_alt(void *stream)
 {
-    return (fileImage.pos == IMAGE_SIZE);
+    return (fileImage.pos == get_image_size());
 }
