@@ -50,8 +50,8 @@ void BOARD_InitHardware(void)
     BOARD_CommonSetting();
     BOARD_ConfigMPU();
     BOARD_InitBootPins();
-    //BOARD_InitI3CPins();
-    BOARD_InitUserI2cPins();
+    BOARD_InitI3CPins();
+    //BOARD_InitUserI2cPins();
     BOARD_InitBootClocks();
     BOARD_InitDebugConsole();
 }

@@ -3284,7 +3284,6 @@
             <name>$PROJ_DIR$\..\source\lpi2c_polling_b2b_master.c</name>
             <excluded>
                 <configuration>RT600_firmware</configuration>
-                <configuration>MCXA10_firmware</configuration>
             </excluded>
         </file>
         <file>

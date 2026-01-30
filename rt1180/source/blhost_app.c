@@ -178,31 +178,11 @@ int ota_main(uint8_t tgtIdx)
     return kStatus_Success;
 }
 
+/*
 int main(void)
 {
-    /* Init board hardware. */
+    // Init board hardware.
     BOARD_InitHardware();
-
-    /*
-    {
-        status_t result;
-        // Initialize LPI2C master
-        result = ROM_ISP_LPI2C_MasterInitialize();
-        if (result != kStatus_Success)
-        {
-            PRINTF("LPI2C master initialization failed\r\n");
-            return -1;
-        }
-
-        // Perform firmware update via LPI2C
-        result = ROM_ISP_I2C_FirmwareUpdate();
-        if (result != kStatus_Success)
-        {
-            PRINTF("LPI2C firmware update failed\r\n");
-            return -1;
-        }
-    }
-    */
     
     ota_prepare();
     for (uint32_t i = 0; i < SLAVE_COUNT; i++)
@@ -212,3 +192,4 @@ int main(void)
 
     while (1);
 }
+*/

@@ -363,6 +363,7 @@ int main(void)
 
     /* Phase 2.x: Send termination command to I3C slave */
     ////////////////////////////////////////////////////////////////////////////
+    ota_prepare();
     for (uint8_t i = 0; i < SLAVE_COUNT; i++)
     {
         SDK_DelayAtLeastUs(100000, SystemCoreClock);
@@ -403,7 +404,11 @@ int main(void)
             return -1;
         }
         */
-        ota_main(i);
+        result = kStatus_Fail;
+        while (result != kStatus_Success)
+        {
+            result = ota_main(i);
+        }
     }
 
     PRINTF("\r\n========================================\r\n");
