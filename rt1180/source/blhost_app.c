@@ -21,7 +21,8 @@
  * Definitions
  ******************************************************************************/
 
-#define APP_TARGET_FLASH_SIZE (128*1024UL)
+#define APP_TARGET_FLASH_SECTOR_SIZE (8*1024UL)
+#define APP_TARGET_FLASH_TOTAL_SIZE  (128*1024UL)
 
 #define SBL_MAGIC (0x4C425354) //'TSBL'
 
@@ -64,13 +65,26 @@ char *blhost_i2c_args0[] = {
     "1"
 };
 
-#define BLHOST_I2C_ARGC1 (5)
-char *blhost_i2c_args1[] = {
+#define BLHOST_I2C_ARGC1_1 (5)
+char *blhost_i2c_args1_1[] = {
     "blhost",
     "-i",
     "2,0x10",
     "--",
     "flash-erase-all"
+};
+
+#define BLHOST_I2C_ARGC1_2 (7)
+static char s_len_buf[12];
+
+char *blhost_i2c_args1_2[] = {
+    "blhost",
+    "-i",
+    "2,0x10",
+    "--",
+    "flash-erase-region",
+    "0x0",
+    s_len_buf
 };
 
 #define BLHOST_I2C_ARGC2 (8)
@@ -104,6 +118,11 @@ static char *blhost_i2c_args3[] = {
  * Code
  ******************************************************************************/
 
+void update_blhost_args_len(uint32_t len)
+{
+    snprintf(s_len_buf, sizeof(s_len_buf), "0x%08X", len);
+}
+
 void update_blhost_args_pc_sp(uint32_t pc, uint32_t sp)
 {
     snprintf(s_pc_buf, sizeof(s_pc_buf), "0x%08X", pc);
@@ -129,7 +148,7 @@ void ota_prepare(void)
         PRINTF("slot 0 start: 0x%x \r\n", sblHeader->slot0StartAddr);
         for (uint32_t i = 0; i < SLAVE_COUNT; i++)
         {
-            g_appStart[i] = FlexSPI2_AMBA_BASE + sblHeader->slot0StartAddr + i * APP_TARGET_FLASH_SIZE;
+            g_appStart[i] = FlexSPI2_AMBA_BASE + sblHeader->slot0StartAddr + i * APP_TARGET_FLASH_TOTAL_SIZE;
             PRINTF("TARGET app%d vector addr = 0x%x.\r\n", i, g_appStart[i]);
             tota_app_header_t *appHeader = (tota_app_header_t *)g_appStart[i];
             g_appSize[i] = appHeader->length;
@@ -157,7 +176,15 @@ int ota_main(uint8_t tgtIdx)
     {
         return status;
     }
-    status = blhost_main(BLHOST_I2C_ARGC1, blhost_i2c_args1, NULL);
+    //status = blhost_main(BLHOST_I2C_ARGC1_1, blhost_i2c_args1_1, NULL);
+    uint32_t len = g_appSize[tgtIdx];
+    len = (len / APP_TARGET_FLASH_SECTOR_SIZE + 1) * APP_TARGET_FLASH_SECTOR_SIZE;
+    if (len > APP_TARGET_FLASH_TOTAL_SIZE)
+    {
+        len = APP_TARGET_FLASH_TOTAL_SIZE;
+    }
+    update_blhost_args_len(len);
+    status = blhost_main(BLHOST_I2C_ARGC1_2, blhost_i2c_args1_2, NULL);
     if (status != kStatus_Success)
     {
         return status;
