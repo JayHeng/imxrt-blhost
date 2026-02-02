@@ -167,6 +167,8 @@ int ota_main(uint8_t tgtIdx)
     {
         return status;
     }
+    //pc = 0x000012c9;
+    //sp = 0x20006000;
     update_blhost_args_pc_sp(pc, sp);
     status = blhost_main(BLHOST_I2C_ARGC3, blhost_i2c_args3, NULL);
     if (status != kStatus_Success)
@@ -179,17 +181,21 @@ int ota_main(uint8_t tgtIdx)
 }
 
 /*
+void BOARD_InitUserI2cPins(void);
 int main(void)
 {
     // Init board hardware.
     BOARD_InitHardware();
+    BOARD_InitUserI2cPins();
     
     ota_prepare();
     for (uint32_t i = 0; i < SLAVE_COUNT; i++)
     {
-        ota_main(i);
+        ota_main(1);
+        SDK_DelayAtLeastUs(5000000, SystemCoreClock);
     }
 
     while (1);
 }
 */
+

@@ -22,7 +22,7 @@
 
 #define EXAMPLE_I2C_MASTER ((LPI2C_Type *)EXAMPLE_I2C_MASTER_BASE)
 
-#define MAX_LOOPS 3
+#define MAX_LOOPS 1
 /*******************************************************************************
  * Prototypes
  ******************************************************************************/
