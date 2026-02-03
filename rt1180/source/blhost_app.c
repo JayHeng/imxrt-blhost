@@ -22,6 +22,7 @@
  ******************************************************************************/
 
 #define APP_TARGET_FLASH_SECTOR_SIZE (8*1024UL)
+#define MCXA132_FLASH_TOTAL_SIZE     (64*1024UL)
 #define APP_TARGET_FLASH_TOTAL_SIZE  (128*1024UL)
 
 #define SBL_MAGIC (0x4C425354) //'TSBL'
@@ -179,12 +180,16 @@ int ota_main(uint8_t tgtIdx)
     //status = blhost_main(BLHOST_I2C_ARGC1_1, blhost_i2c_args1_1, NULL);
     uint32_t len = g_appSize[tgtIdx];
     len = (len / APP_TARGET_FLASH_SECTOR_SIZE + 1) * APP_TARGET_FLASH_SECTOR_SIZE;
-    if (len > APP_TARGET_FLASH_TOTAL_SIZE)
+    if (len >= MCXA132_FLASH_TOTAL_SIZE)
     {
-        len = APP_TARGET_FLASH_TOTAL_SIZE;
+        status = blhost_main(BLHOST_I2C_ARGC1_1, blhost_i2c_args1_1, NULL);
     }
-    update_blhost_args_len(len);
-    status = blhost_main(BLHOST_I2C_ARGC1_2, blhost_i2c_args1_2, NULL);
+    else
+    {
+        update_blhost_args_len(len);
+        status = blhost_main(BLHOST_I2C_ARGC1_2, blhost_i2c_args1_2, NULL);
+    }
+
     if (status != kStatus_Success)
     {
         return status;
