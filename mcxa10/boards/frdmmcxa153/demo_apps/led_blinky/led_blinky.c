@@ -19,14 +19,20 @@
 /*******************************************************************************
  * Variables
  ******************************************************************************/
-
+uint32_t s_maxCount = 0;
+   
 /*******************************************************************************
  * Code
  ******************************************************************************/
 void SysTick_Handler(void)
 {
-    /* Toggle pin connected to LED */
-    GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
+    s_maxCount++;
+    if (s_maxCount == 5)
+    {
+        /* Toggle pin connected to LED */
+        GPIO_PortToggle(BOARD_LED_GPIO, 1u << BOARD_LED_GPIO_PIN);
+        s_maxCount = 0;
+    }
 }
 
 /*!
@@ -35,7 +41,11 @@ void SysTick_Handler(void)
 int main(void)
 {
     /* Board pin init */
-    BOARD_InitHardware();
+#if BOARD_IS_FRDM
+    BOARD_InitHardwareFRDM();
+#elif BOARD_IS_EVB
+    BOARD_InitHardwareEVB();
+#endif
 
     while (1)
     {

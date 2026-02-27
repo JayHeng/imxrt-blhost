@@ -29,6 +29,7 @@ pin_labels:
 #include "fsl_port.h"
 #include "fsl_gpio.h"
 #include "pin_mux.h"
+#include "app.h"
 
 /* FUNCTION ************************************************************************************************************
  *
@@ -38,7 +39,7 @@ pin_labels:
  * END ****************************************************************************************************************/
 void BOARD_InitBootPins(void)
 {
-    BOARD_InitPins();
+    BOARD_InitPinsFRDM();
 }
 
 /* clang-format off */
@@ -59,7 +60,7 @@ BOARD_InitPins:
  * Description   : Configures pin routing and optionally pin electrical features.
  *
  * END ****************************************************************************************************************/
-void BOARD_InitPins(void)
+void BOARD_InitPinsFRDM(void)
 {
     /* Write to GPIO3: Peripheral clock is enabled */
     CLOCK_EnableClock(kCLOCK_GateGPIO3);
@@ -101,6 +102,50 @@ void BOARD_InitPins(void)
                                        kPORT_UnlockRegister};
     /* PORT3_12 (pin 38) is configured as P3_12 */
     PORT_SetPinConfig(BOARD_INITPINS_LED_RED_PORT, BOARD_INITPINS_LED_RED_PIN, &LED_RED);
+}
+
+void BOARD_InitPinsEVB(void)
+{
+    /* Write to GPIO1: Peripheral clock is enabled */
+    CLOCK_EnableClock(kCLOCK_GateGPIO2);
+    /* Write to PORT1: Peripheral clock is enabled */
+    CLOCK_EnableClock(kCLOCK_GatePORT2);
+    /* GPIO1 peripheral is released from reset */
+    RESET_ReleasePeripheralReset(kGPIO2_RST_SHIFT_RSTn);
+    /* PORT1 peripheral is released from reset */
+    RESET_ReleasePeripheralReset(kPORT2_RST_SHIFT_RSTn);
+
+    gpio_pin_config_t LED_RED_config = {
+        .pinDirection = kGPIO_DigitalOutput,
+        .outputLogic = 0U
+    };
+    /* Initialize GPIO functionality on pin PIO1_9  */
+    GPIO_PinInit(BOARD_LED_GPIO, BOARD_LED_GPIO_PIN, &LED_RED_config);
+
+    const port_pin_config_t LED_RED = {/* Internal pull-up/down resistor is disabled */
+                                       kPORT_PullDisable,
+                                       /* Low internal pull resistor value is selected. */
+                                       kPORT_LowPullResistor,
+                                       /* Fast slew rate is configured */
+                                       kPORT_FastSlewRate,
+                                       /* Passive input filter is disabled */
+                                       kPORT_PassiveFilterDisable,
+                                       /* Open drain output is disabled */
+                                       kPORT_OpenDrainDisable,
+                                       /* Low drive strength is configured */
+                                       kPORT_LowDriveStrength,
+                                       /* Normal drive strength is configured */
+                                       kPORT_NormalDriveStrength,
+                                       /* Pin is configured as P1_9 */
+                                       kPORT_MuxAlt0,
+                                       /* Digital input enabled */
+                                       kPORT_InputBufferEnable,
+                                       /* Digital input is not inverted */
+                                       kPORT_InputNormal,
+                                       /* Pin Control Register fields [15:0] are not locked */
+                                       kPORT_UnlockRegister};
+    /* PORT1_9 is configured */
+    PORT_SetPinConfig(BOARD_LED_PORT, BOARD_LED_GPIO_PIN, &LED_RED);
 }
 /***********************************************************************************************************************
  * EOF
