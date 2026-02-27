@@ -55,6 +55,7 @@ dkms.conf
 /*/iar/RT700_firmware/
 /*/iar/MCXA10_firmware/
 /*/iar/settings/
+*.ewt
 
 
 
