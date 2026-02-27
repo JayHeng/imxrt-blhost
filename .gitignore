@@ -57,5 +57,12 @@ dkms.conf
 /*/iar/settings/
 *.ewt
 
+/*/*/*/*/*/iar/debug/
+/*/*/*/*/*/iar/release/
+/*/*/*/*/*/iar/settings/
+
+/*/*/*/*/*/*/*/iar/debug/
+/*/*/*/*/*/*/*/iar/release/
+/*/*/*/*/*/*/*/iar/settings/
 
 
