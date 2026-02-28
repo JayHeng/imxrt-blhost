@@ -83,7 +83,7 @@ void BOARD_InitPins(void)
     /* PORT1 peripheral is released from reset */
     RESET_ReleasePeripheralReset(kPORT1_RST_SHIFT_RSTn);
 
-    const port_pin_config_t port0_16_pin54_config = {/* Internal pull-up/down resistor is disabled */
+    const port_pin_config_t port1_8_config = {/* Internal pull-up/down resistor is disabled */
                                                      kPORT_PullDisable,
                                                      /* Low internal pull resistor value is selected. */
                                                      kPORT_LowPullResistor,
@@ -105,10 +105,10 @@ void BOARD_InitPins(void)
                                                      kPORT_InputNormal,
                                                      /* Pin Control Register fields [15:0] are not locked */
                                                      kPORT_UnlockRegister};
-    /* PORT0_16 (pin 54) is configured as I3C0_SDA */
-    PORT_SetPinConfig(PORT0, 16U, &port0_16_pin54_config);
+    /* PORT1_8 is configured as I3C0_SDA */
+    PORT_SetPinConfig(PORT1, 8U, &port1_8_config);
 
-    const port_pin_config_t port0_17_pin55_config = {/* Internal pull-up/down resistor is disabled */
+    const port_pin_config_t port1_9_config = {/* Internal pull-up/down resistor is disabled */
                                                      kPORT_PullDisable,
                                                      /* Low internal pull resistor value is selected. */
                                                      kPORT_LowPullResistor,
@@ -130,8 +130,8 @@ void BOARD_InitPins(void)
                                                      kPORT_InputNormal,
                                                      /* Pin Control Register fields [15:0] are not locked */
                                                      kPORT_UnlockRegister};
-    /* PORT0_17 (pin 55) is configured as I3C0_SCL */
-    PORT_SetPinConfig(PORT0, 17U, &port0_17_pin55_config);
+    /* PORT1_9 is configured as I3C0_SCL */
+    PORT_SetPinConfig(PORT1, 9U, &port1_9_config);
 
     const port_pin_config_t port0_2_pin51_config = {/* Internal pull-up resistor is enabled */
                                                     kPORT_PullUp,

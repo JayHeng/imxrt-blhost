@@ -14,9 +14,9 @@ void BOARD_InitHardware(void)
 {
     RESET_PeripheralReset(kDMA_RST_SHIFT_RSTn);
 
-    /* Attach 24M clock to I3C */
-    CLOCK_SetClockDiv(kCLOCK_DivI3C0_FCLK, 4U);
-    CLOCK_AttachClk(kFRO_HF_DIV_to_I3C0FCLK);
+    /* Attach 12M clock to I3C */
+    CLOCK_SetClockDiv(kCLOCK_DivI3C0_FCLK, 1U);
+    CLOCK_AttachClk(kFRO12M_to_I3C0FCLK);
 
     BOARD_InitPins();
     BOARD_InitBootClocks();

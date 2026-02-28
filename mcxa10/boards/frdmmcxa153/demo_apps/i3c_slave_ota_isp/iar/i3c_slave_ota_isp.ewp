@@ -2568,7 +2568,7 @@
     <group>
         <name>source</name>
         <file>
-            <name>$PROJ_DIR$\..\i3c_edma_b2b_transfer_slave.c</name>
+            <name>$PROJ_DIR$\..\i3c_slave_ota_isp.c</name>
         </file>
         <file>
             <name>$PROJ_DIR$\..\mcux_config.h</name>

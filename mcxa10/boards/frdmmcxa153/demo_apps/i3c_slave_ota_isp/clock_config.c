@@ -52,7 +52,7 @@ extern uint32_t SystemCoreClock;
  ******************************************************************************/
 void BOARD_InitBootClocks(void)
 {
-    BOARD_BootClockFRO96M();
+    BOARD_BootClockFRO12M();
 }
 
 /*******************************************************************************
