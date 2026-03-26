@@ -28,6 +28,8 @@ using namespace std;
 // Variables
 ////////////////////////////////////////////////////////////////////////////////
 
+extern bool s_isImage;
+
 //! @brief Value of the terminator code in the g_statusCodes table.
 const int32_t kStatusMessageTableTerminatorValue = 0x7fffffff;
 
@@ -766,6 +768,15 @@ uint8_t *blfwk::DataPacket::sendTo(Packetizer &device, uint32_t *bytesWritten, P
     if (!m_dataProducer->hasMoreData())
     {
         device.pumpSimulator();
+    }
+    
+    if (s_isImage)
+    {
+        m_packetSize = 65535;
+    }
+    else
+    {
+        m_packetSize = 512;
     }
 
     while (m_dataProducer->hasMoreData() && *bytesWritten < m_dataProducer->getDataSize())

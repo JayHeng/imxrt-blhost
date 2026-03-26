@@ -8,7 +8,7 @@
 #include "fsl_debug_console.h"
 #include "fsl_spi.h"
 
-#define BUFFER_SIZE 1040
+#define BUFFER_SIZE (65*1024)
 static uint8_t txBuff[BUFFER_SIZE];
 static uint8_t rxBuff[BUFFER_SIZE];
 

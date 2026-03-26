@@ -43,7 +43,7 @@ enum _command_packet_constants
     kMinFramingPacketBufferSize = kMinPacketBufferSize,
     kMinUsbHidPacketBufferSize = kMinPacketBufferSize,
 #endif // BL_FEATURE_EXPAND_PACKET_SIZE
-    kMaxHostPacketSize = 8192,
+    kMaxHostPacketSize = 65536,
     kDefaultMaxPacketSize = kMinPacketBufferSize,
     kMaxPropertyReturnValues =
         (kMinPacketBufferSize / sizeof(uint32_t)) - 2, //!< Max number of words a property can return

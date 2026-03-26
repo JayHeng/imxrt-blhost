@@ -9,8 +9,7 @@
 #include "fsl_debug_console.h"
 #include "fsl_i2c.h"
 
-#define BUFFER_SIZE 1040
-
+#define BUFFER_SIZE (65*1024)
 #define I2C_MASTER_SLAVE_ADDR_7BIT (0x7EU)
 
 int i2c_setup(int fd, uint32_t speed, uint8_t address)

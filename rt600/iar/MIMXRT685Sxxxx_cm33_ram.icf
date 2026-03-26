@@ -28,7 +28,7 @@ define symbol usb_bdt_size             = 0x0;
 if (isdefinedsymbol(__stack_size__)) {
   define symbol __size_cstack__        = __stack_size__;
 } else {
-  define symbol __size_cstack__        = 0x8000;
+  define symbol __size_cstack__        = 0x20000;
 }
 
 if (isdefinedsymbol(__heap_size__)) {
@@ -42,17 +42,20 @@ if (isdefinedsymbol(__heap_size__)) {
 /* The SRAM region [0x20000-0x7FFFF] is reserved for Non-cached shared memory between M33 and DSP. */
 
 
-define symbol m_interrupts_start               = 0x00080000;
-define symbol m_interrupts_end                 = 0x0008012F;
+define symbol m_interrupts_start               = 0x00020000;
+define symbol m_interrupts_end                 = 0x0002012F;
 
-define symbol m_text_start                     = 0x00080130;
-define symbol m_text_end                       = 0x000FFFFF;
+define symbol m_text_start                     = 0x00020130;
+define symbol m_text_end                       = 0x0007FFFF;
 
-define symbol m_data_start                     = 0x20100000;
-define symbol m_data_end                       = 0x201FFFFF;
+define symbol m_data_start                     = 0x20380000;
+define symbol m_data_end                       = 0x2046FFFF;
 
-define symbol m_image_start                    = 0x20200000;
-define symbol m_image_end                      = 0x2047FFFF;
+define symbol m_image_start                    = 0x20080000;
+define symbol m_image_end                      = 0x2037FFFF;
+
+define symbol m_loader_start                   = 0x20470000;
+define symbol m_loader_end                     = 0x2047FFFF;
 
 define symbol m_usb_sram_start                 = 0x40140000;
 define symbol m_usb_sram_end                   = 0x40143FFF;
@@ -69,6 +72,7 @@ define region TEXT_region             = mem:[from m_interrupts_start to m_interr
                                       | mem:[from m_text_start to m_text_end];
 define region DATA_region             = mem:[from m_data_start to m_data_end - __size_cstack__];
 define region CSTACK_region           = mem:[from m_data_end-__size_cstack__ + 1 to m_data_end];
+define region LOADER_region           = mem:[from m_loader_start to m_loader_end];
 define region IMAGE_region            = mem:[from m_image_start to m_image_end];
 
 define block CSTACK    with alignment = 8, size = __size_cstack__   { };
@@ -96,4 +100,5 @@ place in DATA_region                        { last block HEAP };
 place in CSTACK_region                      { block CSTACK };
 place in USB_BDT_region                     { section m_usb_bdt };
 place in USB_SRAM_region                    { section m_usb_global };
+place in LOADER_region                      { section __loader_section};
 place in IMAGE_region                       { section __image_section};

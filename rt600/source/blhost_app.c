@@ -15,8 +15,12 @@
  * Definitions
  ******************************************************************************/
 
-#define BLHOST_USE_SPI (0)
-#define BLHOST_USE_I2C (1)
+void mcu_sleep(uint32_t microseconds);
+
+extern bool s_isImage;
+
+#define BLHOST_USE_SPI (1)
+#define BLHOST_USE_I2C (0)
 
 #define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (0)
 #define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (1)
@@ -60,22 +64,32 @@ char *blhost_spi_args1[] = {
 };
 
 #define BLHOST_SPI_ARGC2 (8)
-char *blhost_spi_args2[] = {
+char *blhost_spi_args2_1[] = {
     "blhost",
     "-s",
-    "2,0x10",
+    "5,4000",
+    "--",
+    "write-memory",
+    "0x400000",
+    "0x470000",
+    "0x10000"
+};
+char *blhost_spi_args2_2[] = {
+    "blhost",
+    "-s",
+    "5,4000",
     "--",
     "write-memory",
     "0x80000",
-    "0x200000",
-    "0x80000"
+    "0x80000",
+    "0x300000"
 };
 
 #define BLHOST_I2C_ARGC2 (8)
 char *blhost_i2c_args2[] = {
     "blhost",
     "-i",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
     "0x80000",
@@ -132,7 +146,7 @@ char *blhost_i2c_args5[] = {
 char *blhost_i2c_args6[] = {
     "blhost",
     "-i",
-    "5,4000",
+    "2,0x10",
     "--",
     "write-memory",
     "0x08010000",
@@ -188,8 +202,14 @@ int main(void)
     PRINTF("BLHOST.\r\n");
 
 #if BLHOST_USE_SPI
+    s_isImage = false;
     blhost_main(BLHOST_SPI_ARGC0, blhost_spi_args0, NULL);
-    blhost_main(BLHOST_SPI_ARGC2, blhost_spi_args2, NULL);
+    blhost_main(BLHOST_SPI_ARGC2, blhost_spi_args2_1, NULL);
+
+    mcu_sleep(100000);
+    s_isImage = true;
+    blhost_main(BLHOST_SPI_ARGC0, blhost_spi_args0, NULL);
+    blhost_main(BLHOST_SPI_ARGC2, blhost_spi_args2_2, NULL);
 #ifdef RT700_BLINKY_IMAGE
     blhost_main(BLHOST_SPI_ARGC3, blhost_spi_args3, NULL);
 #endif
