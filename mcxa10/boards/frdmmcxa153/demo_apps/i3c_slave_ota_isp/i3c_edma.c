@@ -7,7 +7,6 @@
 #include "fsl_i3c_edma.h"
 #include "i3c_edma.h"
 #include "fsl_romapi.h"
-#include "m1_sm_snsless_enc.h"
 
 /*******************************************************************************
  * Definitions
@@ -67,6 +66,15 @@ volatile  uint16_t motor_eControlModeSel = 0;
 volatile  uint16_t motor_eAppSwitch = 0;
 volatile  int32_t motor_a32PositionCmd = 0;
 
+/*! @brief PMSM FOC with BEMF observer in DQ */
+typedef struct _mcdef_pmsm_t
+{
+    signed short f16SpeedFilt;
+    signed long a32Position;
+    uint16_t sFaultIdPending;
+} mcdef_pmsm_t;
+
+mcdef_pmsm_t g_sM1Drive;
 
 #define BOOT_ARG_TAG (0xEBu)
 
@@ -162,8 +170,8 @@ void I3C0_IRQHandler(void)
         if (g_slave_rxBuff.i3c_tx_frame_followed == 1)
         {
             g_slave_txBuff.sFaultIdPending    = g_sM1Drive.sFaultIdPending;
-            g_slave_txBuff.a32Position        = g_sM1Drive.sPosition.a32Position;
-            g_slave_txBuff.f16SpeedFilt       = g_sM1Drive.sSpeed.f16SpeedFilt;
+            g_slave_txBuff.a32Position        = g_sM1Drive.a32Position;
+            g_slave_txBuff.f16SpeedFilt       = g_sM1Drive.f16SpeedFilt;
             EDMA_TCD_SADDR(EDMA_TCD_BASE(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL), 0) =	(uint32_t)&g_slave_txBuff;
             EDMA_TCD_CITER(EDMA_TCD_BASE(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL), 0) =	sizeof(g_slave_txBuff);
             EDMA_TCD_BITER(EDMA_TCD_BASE(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL), 0) =	sizeof(g_slave_txBuff);
@@ -206,7 +214,7 @@ void I3C_InitSlave(void)
     i3c_slave_config_t slaveConfig;
     edma_config_t config;
 
-    memset(&edma_tx_transferConfig, 0, sizeof(edma_transfer_config_t));
+    memset((void *)&edma_tx_transferConfig, 0, sizeof(edma_transfer_config_t));
     g_slave_txBuff.a32Position        = 0x1234;
     g_slave_txBuff.f16SpeedFilt	      = 0x56;
     g_slave_txBuff.sFaultIdPending    = 0x78;
@@ -222,7 +230,7 @@ void I3C_InitSlave(void)
 
     /* 3rd: Config EDMA TCD */
     /* (1) I3C Rx DMA Install */
-    EDMA_PrepareTransfer(&edma_rx_transferConfig,
+    EDMA_PrepareTransfer((edma_transfer_config_t *)&edma_rx_transferConfig,
                         (void*)&I3C0->SRDATAB,
                         1,
                         (uint8_t*)&g_slave_rxBuff,
@@ -230,14 +238,14 @@ void I3C_InitSlave(void)
                         1,
                         sizeof(g_slave_rxBuff),
                         kEDMA_PeripheralToMemory);
-    EDMA_SetTransferConfig(EXAMPLE_DMA, EXAMPLE_I3C_RX_DMA_CHANNEL, &edma_rx_transferConfig, NULL);
+    EDMA_SetTransferConfig(EXAMPLE_DMA, EXAMPLE_I3C_RX_DMA_CHANNEL, (const edma_transfer_config_t *)&edma_rx_transferConfig, NULL);
     EDMA_EnableChannelRequest(EXAMPLE_DMA, EXAMPLE_I3C_RX_DMA_CHANNEL);
 
     /* (2) I3C Tx DMA Install */
     /* === Step 3: Configure TX DMA Channel (Memory -> Peripheral) === */
     EDMA_ClearChannelStatusFlags(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL, kEDMA_DoneFlag|kEDMA_ErrorFlag|kEDMA_InterruptFlag);
     EDMA_SetChannelMux(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL, EXAMPLE_I3C_TX_DMA_CHANNEL_MUX);
-    EDMA_PrepareTransfer(&edma_tx_transferConfig,
+    EDMA_PrepareTransfer((edma_transfer_config_t *)&edma_tx_transferConfig,
                          (uint8_t *)&g_slave_txBuff,  /* Source: TX buffer in RAM */
                          1,                            /* Source address offset: 1 byte */
                          (void *)&I3C0->SWDATAB,      /* Destination: I3C TX data register */
@@ -245,7 +253,7 @@ void I3C_InitSlave(void)
                          1,                            /* Minor loop transfer size: 1 byte */
                          sizeof(g_slave_txBuff),    /* Major loop count: 16 bytes total */
                          kEDMA_MemoryToPeripheral);   /* Transfer direction */
-    EDMA_SetTransferConfig(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL, &edma_tx_transferConfig, NULL);
+    EDMA_SetTransferConfig(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL, (const edma_transfer_config_t *)&edma_tx_transferConfig, NULL);
     EDMA_DisableChannelRequest(EXAMPLE_DMA, EXAMPLE_I3C_TX_DMA_CHANNEL);  /* Disable until needed */
 
 

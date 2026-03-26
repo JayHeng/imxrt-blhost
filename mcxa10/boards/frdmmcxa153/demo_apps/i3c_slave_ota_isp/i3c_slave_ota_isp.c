@@ -11,6 +11,7 @@
 #include "fsl_debug_console.h"
 #include "fsl_i3c_edma.h"
 #include "app.h"
+#include "i3c_edma.h"
 
 /*******************************************************************************
  * Definitions
@@ -40,6 +41,9 @@ int main(void)
     BOARD_InitHardware();
 
     PRINTF("MCUX SDK version: %s\r\n", MCUXSDK_VERSION_FULL_STR);
+
+    /* Init I3C Device */
+    I3C_InitSlave();
 
     while (1)
     {
