@@ -12,6 +12,15 @@
 static uint8_t txBuff[BUFFER_SIZE];
 static uint8_t rxBuff[BUFFER_SIZE];
 
+#define USED_SPI_INSTANCE (14)
+#if USED_SPI_INSTANCE == 5
+#define SPI_MASTER          SPI5
+#define SPI_MASTER_CLK      kCLOCK_Flexcomm5Clk
+#elif USED_SPI_INSTANCE == 14
+#define SPI_MASTER          SPI14
+#define SPI_MASTER_CLK      kCLOCK_Flexcomm14Clk
+#endif
+
 int spi_setup(int fd, uint32_t speed, uint32_t mode, uint32_t bits_per_word)
 {
     spi_master_config_t userConfig = {0};
@@ -20,7 +29,7 @@ int spi_setup(int fd, uint32_t speed, uint32_t mode, uint32_t bits_per_word)
 //    PRINTF("spi_setup %d, mode = %d, bpw = %d\r\n", speed, mode, bits_per_word);
 
     SPI_MasterGetDefaultConfig(&userConfig);
-    srcFreq = CLOCK_GetFreq(kCLOCK_Flexcomm5Clk);
+    srcFreq = CLOCK_GetFreq(SPI_MASTER_CLK);
 
     userConfig.baudRate_Bps = 1000000;
     userConfig.polarity                  = kSPI_ClockPolarityActiveLow;
@@ -28,7 +37,7 @@ int spi_setup(int fd, uint32_t speed, uint32_t mode, uint32_t bits_per_word)
     userConfig.sselNum = (spi_ssel_t)kSPI_Ssel0;
     userConfig.sselPol = (spi_spol_t)0;
 
-    SPI_MasterInit(SPI5, &userConfig, srcFreq);	
+    SPI_MasterInit(SPI_MASTER, &userConfig, srcFreq);	
     return 0;
 }
 
@@ -51,7 +60,7 @@ int spi_write(int fd, char *buf, int size)
     xfer.rxData      = rxBuff;
     xfer.dataSize    = size;
     xfer.configFlags = kSPI_FrameAssert;
-    SPI_MasterTransferBlocking(SPI5, &xfer);
+    SPI_MasterTransferBlocking(SPI_MASTER, &xfer);
 
     return size;
 }
@@ -70,7 +79,7 @@ int spi_read(int fd, char *buf, int size)
     xfer.rxData      = buf;
     xfer.dataSize    = size;
     xfer.configFlags = kSPI_FrameAssert;
-    SPI_MasterTransferBlocking(SPI5, &xfer);
+    SPI_MasterTransferBlocking(SPI_MASTER, &xfer);
 
     return size;
 }
@@ -79,6 +88,7 @@ int spi_open(char *port)
 {
 //    PRINTF("spi_open %s\r\n", port);
     CLOCK_AttachClk(kFFRO_to_FLEXCOMM5);
+    CLOCK_AttachClk(kFFRO_to_FLEXCOMM14);
 	
     return 0;
 }

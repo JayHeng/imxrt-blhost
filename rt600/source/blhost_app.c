@@ -22,8 +22,8 @@ extern bool s_isImage;
 #define BLHOST_USE_SPI (1)
 #define BLHOST_USE_I2C (0)
 
-#define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (0)
-#define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (1)
+#define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (1)
+#define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (0)
 
 /*******************************************************************************
  * Prototypes
