@@ -2539,7 +2539,7 @@
                 <option>
                     <name>CCDefines</name>
                     <state>DEBUG</state>
-                    <state>SDK_DEBUGCONSOLE=1</state>
+                    <state>SDK_DEBUGCONSOLE=0</state>
                     <state>MCUX_META_BUILD</state>
                     <state>MCUXPRESSO_SDK</state>
                     <state>CPU_MIMXRT685SFVKB_cm33</state>
@@ -3359,7 +3359,7 @@
                 </option>
                 <option>
                     <name>IlinkRawBinaryFile2</name>
-                    <state>$PROJ_DIR$\rt500_spiloader_v1.0.bin</state>
+                    <state>$PROJ_DIR$\rt500_spiloader_v2.0.bin</state>
                 </option>
                 <option>
                     <name>IlinkRawBinarySymbol2</name>

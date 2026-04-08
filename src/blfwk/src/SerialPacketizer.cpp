@@ -421,6 +421,8 @@ status_t SerialPacketizer::serial_packet_send_sync(uint8_t framingPacketType)
     return status;
 }
 
+extern bool s_isImage;
+
 // See SerialPacketizer.h for documentation of this method.
 status_t SerialPacketizer::wait_for_ack_packet()
 {
@@ -443,6 +445,13 @@ status_t SerialPacketizer::wait_for_ack_packet()
                        sync.header.packetType);
             status = kStatus_InvalidPacketType;
             break;
+        }
+        else
+        {
+            //if ((s_isImage) && (sync.header.packetType == kFramingPacketType_Ack))
+            //{
+            //    Log::info("ACK packet(0x5A,A1) from device received\n");
+            //}
         }
 
         if (sync.header.packetType == kFramingPacketType_AckAbort)
