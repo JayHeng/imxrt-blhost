@@ -21,17 +21,35 @@ static uint8_t rxBuff[BUFFER_SIZE];
 #define SPI_MASTER_CLK      kCLOCK_Flexcomm14Clk
 #endif
 
+extern bool s_isImage;
+
 int spi_setup(int fd, uint32_t speed, uint32_t mode, uint32_t bits_per_word)
 {
+    static bool isSpiDeinited = false;
     spi_master_config_t userConfig = {0};
     uint32_t srcFreq               = 0;
-
-//    PRINTF("spi_setup %d, mode = %d, bpw = %d\r\n", speed, mode, bits_per_word);
 
     SPI_MasterGetDefaultConfig(&userConfig);
     srcFreq = CLOCK_GetFreq(SPI_MASTER_CLK);
 
-    userConfig.baudRate_Bps = 1000000;
+    if (s_isImage)
+    {
+        if (!isSpiDeinited)
+        {
+            SPI_Deinit(SPI_MASTER);
+            isSpiDeinited = true;
+            userConfig.baudRate_Bps = 12000000;
+        }
+        else
+        {
+            userConfig.baudRate_Bps = 12000000;
+        }
+    }
+    else
+    {
+        userConfig.baudRate_Bps = 12000000;
+    }
+    PRINTF("spi_setup baudrate = %d, \r\n", userConfig.baudRate_Bps);
     userConfig.polarity                  = kSPI_ClockPolarityActiveLow;
     userConfig.phase                     = kSPI_ClockPhaseSecondEdge;	
     userConfig.sselNum = (spi_ssel_t)kSPI_Ssel0;

@@ -159,7 +159,7 @@ void BOARD_BootClockRUN(void)
     POWER_DisablePD(kPDRUNCFG_PD_LPOSC); /* Power on LPOSC (1MHz) */
     /* Configure FFRO clock */
     POWER_DisablePD(kPDRUNCFG_PD_FFRO);  /* Power on FFRO (48/60MHz) */
-    CLOCK_EnableFfroClk(kCLOCK_Ffro48M); /* Enable FFRO clock*/
+    CLOCK_EnableFfroClk(kCLOCK_Ffro60M); /* Enable FFRO clock*/
     /* Configure SFRO clock */
     POWER_DisablePD(kPDRUNCFG_PD_SFRO); /* Power on SFRO (16MHz) */
     CLOCK_EnableSfroClk();              /* Wait until SFRO stable */
