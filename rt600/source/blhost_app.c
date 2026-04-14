@@ -74,6 +74,28 @@ char *blhost_spi_args1[] = {
     "0x80000110"
 };
 
+#define BLHOST_UART_ARGC2 (8)
+char *blhost_uart_args2_1[] = {
+    "blhost",
+    "-p",
+    "0,57600",
+    "--",
+    "write-memory",
+    "0x400000",
+    "0x470000",
+    "0x10000"
+};
+char *blhost_uart_args2_2[] = {
+    "blhost",
+    "-p",
+    "0,57600",
+    "--",
+    "write-memory",
+    "0x80000",
+    "0x80000",
+    "0x300000"
+};
+
 #define BLHOST_SPI_ARGC2 (8)
 char *blhost_spi_args2_1[] = {
     "blhost",
@@ -215,6 +237,7 @@ int main(void)
 #if BLHOST_USE_UART
     s_isImage = false;
     blhost_main(BLHOST_UART_ARGC0, blhost_uart_args0, NULL);
+    blhost_main(BLHOST_UART_ARGC2, blhost_uart_args2_1, NULL);
 
 #elif BLHOST_USE_SPI
     s_isImage = false;
