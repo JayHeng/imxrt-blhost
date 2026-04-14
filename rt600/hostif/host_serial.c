@@ -10,6 +10,20 @@
 
 #define BUFFER_SIZE (65*1024)
 
+/*! @brief Ring buffer size (Unit: Byte). */
+#define UART_RING_BUFFER_SIZE 512
+
+/*
+  Ring buffer for data input and output, in this example, input data are saved
+  to ring buffer in IRQ handler. The main function polls the ring buffer status,
+  if there are new data, then send them out.
+  Ring buffer full: (((rxIndex + 1) % UART_RING_BUFFER_SIZE) == fetchIndex)
+  Ring buffer empty: (rxIndex == fetchIndex)
+*/
+uint8_t uartRingBuffer[UART_RING_BUFFER_SIZE];
+volatile uint16_t fetchIndex; /* Index of the data to fetch. */
+volatile uint16_t recvIndex;  /* Index of the memory to save new arrived data. */
+
 int serial_setup(int fd, int speed)
 {
     usart_config_t config;
@@ -31,6 +45,8 @@ int serial_setup(int fd, int speed)
     srcFreq = CLOCK_GetFlexCommClkFreq(0U);
 
     USART_Init(USART0, &config, srcFreq);
+    USART_EnableInterrupts(USART0, kUSART_RxLevelInterruptEnable | kUSART_RxErrorInterruptEnable);
+    EnableIRQ(FLEXCOMM0_IRQn);
 
     return 0;
 }
@@ -58,12 +74,45 @@ int serial_write(int fd, char *buf, int size)
     return size;
 }
 
+void FLEXCOMM0_IRQHandler(void)
+{
+    uint8_t data;
+
+    /* If new data arrived. */
+    if ((kUSART_RxFifoNotEmptyFlag | kUSART_RxError) & USART_GetStatusFlags(USART0))
+    {
+        data = USART_ReadByte(USART0);
+        /* If ring buffer is not full, add data to ring buffer. */
+        if (((recvIndex + 1) % UART_RING_BUFFER_SIZE) != fetchIndex)
+        {
+            uartRingBuffer[recvIndex] = data;
+            recvIndex++;
+            recvIndex %= UART_RING_BUFFER_SIZE;
+        }
+    }
+    SDK_ISR_EXIT_BARRIER;
+}
+
 int serial_read(int fd, char *buf, int size)
 {
     if(size > BUFFER_SIZE)
 	    while(1);
     
-    USART_ReadBlocking(USART0, buf, size);
+    //USART_ReadBlocking(USART0, buf, size);
+    int remainingBytes = size;
+    char * tmpBuf = buf;
+    while (remainingBytes > 0)
+    {
+        if (recvIndex != fetchIndex)
+        {
+            *tmpBuf = uartRingBuffer[fetchIndex];
+            tmpBuf++;
+            remainingBytes--;
+            fetchIndex++;
+            fetchIndex %= UART_RING_BUFFER_SIZE;
+        }
+    }
+
 #if 0
     int loops = size;
     PRINTF("\r\nTP Recv: ");
