@@ -195,7 +195,7 @@ status_t SerialPacketizer::ping(
         {
             host_delay(((1000 * 90) / comSpeed) + 20);
         } else {
-			host_delay(kDefaultByteReadTimeoutUs);
+            host_delay(kDefaultByteReadTimeoutUs);
         }
 
         // Read response packet type.

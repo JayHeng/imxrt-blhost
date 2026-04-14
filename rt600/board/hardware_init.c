@@ -18,6 +18,8 @@ void BOARD_InitHardware(void)
 {
     BOARD_InitBootPins();
     BOARD_InitBootClocks();
+#if (defined(SDK_DEBUGCONSOLE) && (SDK_DEBUGCONSOLE == DEBUGCONSOLE_REDIRECT_TO_SDK))
     BOARD_InitDebugConsole();
+#endif
 }
 /*${function:end}*/

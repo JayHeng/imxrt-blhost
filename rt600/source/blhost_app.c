@@ -19,8 +19,9 @@ void mcu_sleep(uint32_t microseconds);
 
 extern bool s_isImage;
 
-#define BLHOST_USE_SPI (1)
-#define BLHOST_USE_I2C (0)
+#define BLHOST_USE_UART (1)
+#define BLHOST_USE_SPI  (0)
+#define BLHOST_USE_I2C  (0)
 
 #define DEVICE_IN_3b111_SERIAL_MASTER_BOOT (1)
 #define DEVICE_IN_3b110_SERIAL_ISP_BOOT    (0)
@@ -32,6 +33,16 @@ extern bool s_isImage;
 /*******************************************************************************
  * Variables
  ******************************************************************************/
+#define BLHOST_UART_ARGC0 (6)
+char *blhost_uart_args0[] = {
+    "blhost",
+    "-p",           // -p means uart
+    "0,57600",     // means dev/uart-0,57600
+    "--",
+    "get-property",
+    "1"
+};
+
 #define BLHOST_SPI_ARGC0 (6)
 char *blhost_spi_args0[] = {
     "blhost",
@@ -201,7 +212,11 @@ int main(void)
 
     PRINTF("BLHOST.\r\n");
 
-#if BLHOST_USE_SPI
+#if BLHOST_USE_UART
+    s_isImage = false;
+    blhost_main(BLHOST_UART_ARGC0, blhost_uart_args0, NULL);
+
+#elif BLHOST_USE_SPI
     s_isImage = false;
     blhost_main(BLHOST_SPI_ARGC0, blhost_spi_args0, NULL);
     blhost_main(BLHOST_SPI_ARGC2, blhost_spi_args2_1, NULL);
